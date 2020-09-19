@@ -1,0 +1,45 @@
+{
+	"scenes": [
+		{
+			"name": "Main Scene",
+			"gameObjects": [
+				{
+					"name": "GameObject",
+					"components": [
+						{
+							"name": "HtmlRenderer",
+							"className": "game-object"
+						}
+					],
+					"transform": {
+						"position": {
+							"x": 10,
+							"y": 10
+						},
+						"width": 100,
+						"height": 100
+					},
+					"children": []
+				},
+				{
+					"name": "GameObject1",
+					"components": [
+						{
+							"name": "HtmlRenderer",
+							"className": "game-object"
+						}
+					],
+					"transform": {
+						"position": {
+							"x": 100,
+							"y": 100
+						},
+						"width": 100,
+						"height": 100
+					},
+					"children": []
+				}
+			]
+		}
+	]
+}
