@@ -1,0 +1,62 @@
+0. How to make the offline Dino game available online? (dev tools: network)
+1. Create Root Game Object
+2. Create Cloud Game Object
+ - Create CloudMoverGameComponent.
+   - Cut the cloud png from the screenshot.
+   - Speed as the only parameter.
+   - Three clouds on the screen at start.
+   - When move outside the screen put the cloud to the right whit some new Y and random shift at X axis.
+3. Create Dino Game Object (position x=100, y=200)
+  - Cut the dino png-s from the screenshot. Run version, 2 slides, left leg up and right leg up.
+  - add AnimateGameComponent
+  - add HtmlRendererGameComponent - should be second because some of its parameters are changed in the AnimateGameComponent
+4. Create DinoJumpGameComponent and set it for Dino Game Object
+  - parameters: speed = 200 and height = 100
+  - Keys: Space and ArrowUp
+  - ** add gravity
+5. Create Ground Game Component
+  - Cut the ground.png from the screenshot
+  - Create Ground GameObject in game-data
+  - Create GroundRemoverComponent that removes ground GameObject when it moves out of the screen at the left.
+  - Create GroundMoverComponent that will create ground gameObject each time when there is free space to the right.
+    a. create function that creates ground gameObject with GroundRemoverComponent
+6. Cacti!
+  - Cut cactus from the screenshot
+  - create CactusMoverGameComponent ('speed', 200; 'minInterval', 1000; 'maxInterval', 2000)
+  - obstacleInfos: IObstacleInfo[]
+  - class IObstacleInfo {
+  	name: string;
+  	picture: string;
+  	width: number;
+  	height: number;
+  	slideWidth: number;
+  	slideHeight: number;
+  	slidesInARow: number;
+  	slidesCount: number;
+  	animationSpeed: number;
+  }
+  - create createObstacleGameObject function and call it in the interval between minInterval and maxInterval
+  - set the GroundRemoveOutOfScreenComponent for the obstacles;
+7. add the dynamicObjects and put all dynamic gameObjects under this game objects to make it possible to pause all objects
+  - Create Button GameObject and create component that takes mouse data and keyboard data, check that click is on the button and and pauses/resumes game
+8. Collisions
+  - Check collisions inside the CactusMoverGameComponent using Rect.intersects
+  - if collision is found then pause dynamicObjects and enable Start Button
+  - Start Button click (or Enter key) reset the CactusMoverGameComponent and resume the dynamicObjects
+9. Score
+  - CenterObjectComponent (centerByXAxis, centerByYAxis, shift: Vector2)
+  - Create ScoreGameObject inside dynamicObjects, css = font-family: monospace
+  - update the score each second / divider
+  - write with trailing zeros.
+10. Bend Down
+  - cut the slides of running bend down Dino.
+  - Create еhe GameObject Dino Bend with the new slides (make it inactive)
+  - Create GameComponent DinoChangerGameComponent, in update method check the ArrowDown and make Dino Bend active when pressed.
+  - Update CactusMoverGameComponent to use active Dino for the collisions check.
+11. Sound
+  - Find sound
+  - Use SoundPlayerGameComponent
+12. Game Over
+
+
+
