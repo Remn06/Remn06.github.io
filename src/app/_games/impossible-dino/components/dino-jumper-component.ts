@@ -1,8 +1,9 @@
-import { GameComponent } from '../../../business/game-components/core/base/game-component';
-import { Expose } from 'class-transformer';
-import { Vector2 } from '../../../business/common/vector2';
-import { Timer } from '../../../business/common/timer';
-import { Input } from '../../../business/input/input';
+import {GameComponent} from '../../../business/game-components/core/base/game-component';
+import {Expose} from 'class-transformer';
+import {Vector2} from '../../../business/common/vector2';
+import {Timer} from '../../../business/common/timer';
+import {Input} from '../../../business/input/input';
+import {MouseButtonType, MouseInputEvent} from '../../../business/input/dto/mouse-input-event';
 
 export class DinoJumperComponent extends GameComponent {
 	name: string = DinoJumperComponent.name;
@@ -23,7 +24,14 @@ export class DinoJumperComponent extends GameComponent {
 	}
 
 	update(): void {
-		if (Input.getKey('ArrowUp') === true && this.isJumping === false) {
+
+		const isKeyPressed = Input.getKey('ArrowUp') === true || Input.getKey('Space') === true;
+
+		const mouseEvents = Input.getMouseDown();
+
+		const isLeftMousePressed = mouseEvents.some((event: MouseInputEvent) => event.button === MouseButtonType.left);
+
+		if ((isKeyPressed || isLeftMousePressed) && this.isJumping === false) {
 			this.isJumping = true;
 			this.initialY = this.gameObject.transform.localPosition.y;
 			this.startTime = Timer.getTime();
