@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = [[module.i, ".background {\n  background-color: #000000;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9EOi9FZ29ya2EvUHJvamVjdHMvUmVtbjA2L1JlbW4wNi5naXRodWIuaW8vUmVtbkVuZ2luZS9zcmMvc3R5bGVzLmxlc3MiLCJzcmMvc3R5bGVzLmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSx5QkFBQTtBQ0NGIiwiZmlsZSI6InNyYy9zdHlsZXMubGVzcyIsInNvdXJjZXNDb250ZW50IjpbIi5iYWNrZ3JvdW5kIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogUkdCQSggMCwgMCwgMCwgMSk7XG59XG4iLCIuYmFja2dyb3VuZCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMwMDAwMDA7XG59XG4iXX0= */", '', '']]
+module.exports = [[module.i, ".background {\n  background-color: #000000;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9EOi9FZ29ya2EvUHJvamVjdHMvUmVtbjA2L1JlbW4wNi5naXRodWIuaW8vc3JjL3N0eWxlcy5sZXNzIiwic3JjL3N0eWxlcy5sZXNzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UseUJBQUE7QUNDRiIsImZpbGUiOiJzcmMvc3R5bGVzLmxlc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFja2dyb3VuZCB7XG4gIGJhY2tncm91bmQtY29sb3I6IFJHQkEoIDAsIDAsIDAsIDEpO1xufVxuIiwiLmJhY2tncm91bmQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwMDAwO1xufVxuIl19 */", '', '']]
 
 /***/ }),
 
@@ -557,7 +557,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Egorka\Projects\Remn06\Remn06.github.io\RemnEngine\src\styles.less */"./src/styles.less");
+module.exports = __webpack_require__(/*! D:\Egorka\Projects\Remn06\Remn06.github.io\src\styles.less */"./src/styles.less");
 
 
 /***/ })
