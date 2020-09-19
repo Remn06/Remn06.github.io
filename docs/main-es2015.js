@@ -117,7 +117,7 @@ class CactiProducerComponent extends _business_game_components_core_base_game_co
     createCactus() {
         return _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_5__["GameObjectFactory"].createGameObject(this.gameObject, 'Cactus', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_6__["TransformFactory"].createChildTransform(this.gameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_3__["Vector2"](_business_screen_game_screen__WEBPACK_IMPORTED_MODULE_10__["GameScreen"].getDefaultScreen().width + 12, -23), 23, 46, 0), [
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [
-                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('backgroundImage', 'assets/_games/impossible-dino/img/cactus.png'),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('backgroundImage', 'assets/games/impossibleDino/img/cactus.png'),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('cssStyle', '')
             ], true)
         ], true);
@@ -413,7 +413,7 @@ class ImpossibleDinoData {
             TransformFactory.createTransform(new Vector2(700, 400), 1024, 768, 0),
             [
                 ComponentFactory.createComponent(HtmlRendererGameComponent, [
-                    new NameValuePair('backgroundImage', 'assets/_games/impossible-dino/img/oscilograph-background.png'),
+                    new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/oscilograph-background.png'),
                     new NameValuePair('cssStyle', ''),
                 ], true),
                 ComponentFactory.createComponent(GeometryComponent, [])
@@ -2254,7 +2254,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import { JiraData } from '../../_games/_enviance/data/jira-data';
 class HardcodedGameData {
     static getData() {
         return new _game_structure_game_data__WEBPACK_IMPORTED_MODULE_3__["GameData"]([

@@ -56,7 +56,7 @@ export class CactiProducerComponent extends GameComponent {
 			TransformFactory.createChildTransform(this.gameObject.transform, new Vector2(GameScreen.getDefaultScreen().width + 12, -23), 23, 46, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
-					new NameValuePair('backgroundImage', 'assets/_games/impossible-dino/img/cactus.png'),
+					new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/cactus.png'),
 					new NameValuePair('cssStyle', '')
 				], true)
 			],

@@ -32,7 +32,7 @@ export class ImpossibleDinoData {
 			TransformFactory.createTransform(new Vector2(700, 400), 1024, 768, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
-					new NameValuePair('backgroundImage', 'assets/_games/impossible-dino/img/oscilograph-background.png'),
+					new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/oscilograph-background.png'),
 					new NameValuePair('cssStyle', ''),
 				], true),
 				ComponentFactory.createComponent(GeometryComponent, [])
