@@ -1,4 +1,5 @@
 import { GameObject } from '../game-structure/game-object';
+import { GameComponent } from '../game-components/core/base/game-component';
 
 export class GameObjectCollection {
 
@@ -72,4 +73,18 @@ export class GameObjectCollection {
 		}
 		return null;
 	}
+
+	public static getAllComponents(componentName: string, gameObject: GameObject): GameComponent[] {
+		let result: GameComponent[] = [];
+		const component = gameObject.getComponent(componentName);
+		if (component !== null) {
+			result.push(component);
+		}
+		for (let i = 0; i < gameObject.children.length; i++) {
+			const childComponents = GameObjectCollection.getAllComponents(componentName, gameObject.children[i]);
+			result = result.concat(childComponents);
+		}
+		return result;
+	}
+
 }

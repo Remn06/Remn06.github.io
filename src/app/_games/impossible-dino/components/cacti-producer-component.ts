@@ -11,6 +11,8 @@ import {
 import { NameValuePair } from '../../../business/common/name-value-pair';
 import { GameScreen } from '../../../business/screen/game-screen';
 import { Expose } from 'class-transformer';
+import { CollisionGameComponent } from '../../../business/game-components/core/collision-game-component';
+import { Rect } from '../../../business/common/rect';
 
 export class CactiProducerComponent extends GameComponent {
 	name: string = CactiProducerComponent.name;
@@ -58,7 +60,10 @@ export class CactiProducerComponent extends GameComponent {
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/cactus.png'),
 					new NameValuePair('cssStyle', '')
-				], true)
+				], true),
+				ComponentFactory.createComponent(CollisionGameComponent, [
+					new NameValuePair('collisions', [new Rect(0, 8, 5, 13), new Rect(5, 0, 5, 32), new Rect(10, 4, 5, 11)])
+				])
 			],
 			true
 		);

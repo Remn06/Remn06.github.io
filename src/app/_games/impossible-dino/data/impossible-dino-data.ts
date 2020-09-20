@@ -13,6 +13,8 @@ import { GroundShifterComponent } from '../components/ground-shifter-component';
 import { DinoJumperComponent } from '../components/dino-jumper-component';
 import { GeometryComponent } from '../components/oscil/geometry-component';
 import { CactiProducerComponent } from '../components/cacti-producer-component';
+import { CollisionGameComponent } from '../../../business/game-components/core/collision-game-component';
+import { Rect } from '../../../business/common/rect';
 
 export class ImpossibleDinoData {
 	public static getData(): GameObject {
@@ -130,6 +132,9 @@ export class ImpossibleDinoData {
 				ComponentFactory.createComponent(DinoJumperComponent, [
 					new NameValuePair('durationOfJump', 0.32), // 0.25
 					new NameValuePair('jumpHeight', 85), // 85
+				]),
+				ComponentFactory.createComponent(CollisionGameComponent, [
+					new NameValuePair('collisions', [new Rect(20, 0, 20, 15), new Rect(0, 15, 27, 20), new Rect(10, 36, 14, 6)])
 				])
 			],
 			true

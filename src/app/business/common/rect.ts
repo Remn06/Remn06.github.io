@@ -57,4 +57,14 @@ export class Rect {
 			rect.isInsideXY(this.left, this.bottom) ||
 			rect.isInsideXY(this.right, this.bottom);
 	}
+
+	public shift(x: number, y: number): Rect {
+		this.left = this.left + x;
+		this.top = this.top + y;
+		return this;
+	}
+
+	public clone(): Rect {
+		return new Rect(this.left, this.top, this.width, this.height);
+	}
 }
