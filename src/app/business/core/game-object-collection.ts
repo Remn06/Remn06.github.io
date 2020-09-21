@@ -77,7 +77,7 @@ export class GameObjectCollection {
 	public static getAllComponents(componentName: string, gameObject: GameObject): GameComponent[] {
 		let result: GameComponent[] = [];
 		const component = gameObject.getComponent(componentName);
-		if (component !== null) {
+		if (component != null) {
 			result.push(component);
 		}
 		for (let i = 0; i < gameObject.children.length; i++) {

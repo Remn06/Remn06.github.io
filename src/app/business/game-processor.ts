@@ -9,7 +9,6 @@ export class GameProcessor {
 
 		rootGameObject.update();
 
-
 		TransformCalculateSystem.instance().update();
 
 		CollisionsProcessor.checkCollisions(rootGameObject);

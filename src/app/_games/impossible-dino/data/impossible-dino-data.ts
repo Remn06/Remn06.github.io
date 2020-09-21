@@ -77,6 +77,7 @@ export class ImpossibleDinoData {
 			],
 			true
 		);
+
 		const cloud3 = GameObjectFactory.createGameObject(
 			rootGameObject,
 			'Cloud3',
@@ -134,7 +135,7 @@ export class ImpossibleDinoData {
 					new NameValuePair('jumpHeight', 85), // 85
 				]),
 				ComponentFactory.createComponent(CollisionGameComponent, [
-					new NameValuePair('collisions', [new Rect(20, 0, 20, 15), new Rect(0, 15, 27, 20), new Rect(10, 36, 14, 6)])
+					new NameValuePair('meshCollider', [new Rect(20, 0, 20, 15), new Rect(0, 15, 27, 20), new Rect(10, 36, 14, 6)])
 				])
 			],
 			true

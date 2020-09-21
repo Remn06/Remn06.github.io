@@ -37,8 +37,8 @@ export class GameObject {
 	constructor() {
 	}
 
-	public getComponent(componentName: string): GameComponent {
-		return this.components.find((c) => c.name === componentName);
+	public getComponent<T = GameComponent>(componentName: string = null): T {
+		return this.components.find((c) => c.name === componentName) as unknown as T;
 	}
 
 	start(): void {

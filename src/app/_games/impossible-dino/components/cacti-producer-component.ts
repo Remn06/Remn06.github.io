@@ -62,7 +62,7 @@ export class CactiProducerComponent extends GameComponent {
 					new NameValuePair('cssStyle', '')
 				], true),
 				ComponentFactory.createComponent(CollisionGameComponent, [
-					new NameValuePair('collisions', [new Rect(0, 8, 5, 13), new Rect(5, 0, 5, 32), new Rect(10, 4, 5, 11)])
+					new NameValuePair('meshCollider', [new Rect(0, 8, 5, 13), new Rect(5, 0, 5, 32), new Rect(10, 4, 5, 11)])
 				])
 			],
 			true
