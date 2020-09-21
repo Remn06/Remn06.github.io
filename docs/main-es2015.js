@@ -79,6 +79,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _business_screen_game_screen__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../business/screen/game-screen */ "./src/app/business/screen/game-screen.ts");
 /* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
 /* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
+/* harmony import */ var _business_common_rect__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../business/common/rect */ "./src/app/business/common/rect.ts");
+
+
 
 
 
@@ -119,7 +123,10 @@ class CactiProducerComponent extends _business_game_components_core_base_game_co
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('backgroundImage', 'assets/games/impossibleDino/img/cactus.png'),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('cssStyle', '')
-            ], true)
+            ], true),
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_12__["CollisionGameComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](0, 8, 5, 13), new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](5, 0, 5, 32), new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](10, 4, 5, 11)])
+            ])
         ], true);
     }
 }
@@ -398,6 +405,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ground_shifter_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/ground-shifter-component */ "./src/app/_games/impossible-dino/components/ground-shifter-component.ts");
 /* harmony import */ var _components_dino_jumper_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/dino-jumper-component */ "./src/app/_games/impossible-dino/components/dino-jumper-component.ts");
 /* harmony import */ var _components_cacti_producer_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/cacti-producer-component */ "./src/app/_games/impossible-dino/components/cacti-producer-component.ts");
+/* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
+/* harmony import */ var _business_common_rect__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../business/common/rect */ "./src/app/business/common/rect.ts");
+
+
 
 
 
@@ -484,6 +495,9 @@ class ImpossibleDinoData {
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_dino_jumper_component__WEBPACK_IMPORTED_MODULE_9__["DinoJumperComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('durationOfJump', 0.32),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('jumpHeight', 85),
+            ]),
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_11__["CollisionGameComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](20, 0, 20, 15), new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](0, 15, 27, 20), new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](10, 36, 14, 6)])
             ])
         ], true);
         return rootGameObject;
@@ -724,8 +738,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
 /* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_1__);
 
+var Rect_1;
 
-let Rect = class Rect {
+let Rect = Rect_1 = class Rect {
     constructor(left, top, width, height) {
         this.left = left;
         this.top = top;
@@ -760,6 +775,14 @@ let Rect = class Rect {
             rect.isInsideXY(this.left, this.bottom) ||
             rect.isInsideXY(this.right, this.bottom);
     }
+    shift(x, y) {
+        this.left = this.left + x;
+        this.top = this.top + y;
+        return this;
+    }
+    clone() {
+        return new Rect_1(this.left, this.top, this.width, this.height);
+    }
 };
 Rect.ctorParameters = () => [
     { type: Number },
@@ -783,7 +806,7 @@ tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Expose"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
 ], Rect.prototype, "height", void 0);
-Rect = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+Rect = Rect_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Exclude"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Number, Number, Number, Number])
 ], Rect);
@@ -1138,6 +1161,18 @@ class GameObjectCollection {
         }
         return null;
     }
+    static getAllComponents(componentName, gameObject) {
+        let result = [];
+        const component = gameObject.getComponent(componentName);
+        if (component != null) {
+            result.push(component);
+        }
+        for (let i = 0; i < gameObject.children.length; i++) {
+            const childComponents = GameObjectCollection.getAllComponents(componentName, gameObject.children[i]);
+            result = result.concat(childComponents);
+        }
+        return result;
+    }
 }
 
 
@@ -1439,6 +1474,80 @@ tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 GameComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Exclude"])()
 ], GameComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/business/game-components/core/collision-game-component.ts":
+/*!***************************************************************************!*\
+  !*** ./src/app/business/game-components/core/collision-game-component.ts ***!
+  \***************************************************************************/
+/*! exports provided: CollisionGameComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CollisionGameComponent", function() { return CollisionGameComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _base_game_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./base/game-component */ "./src/app/business/game-components/core/base/game-component.ts");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./html-renderer-game-component/html-renderer-game-component */ "./src/app/business/game-components/core/html-renderer-game-component/html-renderer-game-component.ts");
+
+var CollisionGameComponent_1;
+
+
+
+let CollisionGameComponent = CollisionGameComponent_1 = class CollisionGameComponent extends _base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"] {
+    constructor() {
+        super(...arguments);
+        this.name = CollisionGameComponent_1.name;
+        this.meshCollider = [];
+        this.collisions = [];
+    }
+    start() {
+    }
+    draw() {
+    }
+    update() {
+        if (this.collisions.length > 0) {
+            const renderer = this.gameObject.getComponent(_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_3__["HtmlRendererGameComponent"].name);
+            if (renderer != null) {
+                renderer.addAdditionalCss(' background-color: #F00');
+            }
+        }
+    }
+    destroy() {
+    }
+    collideWith(component) {
+        const shiftX = this.gameObject.transform.position.x - this.gameObject.transform.width / 2;
+        const shiftY = this.gameObject.transform.position.y - this.gameObject.transform.height / 2;
+        const shiftComponentX = component.gameObject.transform.position.x - component.gameObject.transform.width / 2;
+        const shiftComponentY = component.gameObject.transform.position.y - component.gameObject.transform.height / 2;
+        for (let i = 0; i < this.meshCollider.length; i++) {
+            const firstRect = this.meshCollider[i];
+            const firstRectGlobal = firstRect.clone().shift(shiftX, shiftY);
+            for (let p = 0; p < component.meshCollider.length; p++) {
+                const secondRect = component.meshCollider[p];
+                const secondRectGlobal = secondRect.clone().shift(shiftComponentX, shiftComponentY);
+                if (firstRectGlobal.intersects(secondRectGlobal)) {
+                    this.collisions.push(component);
+                    component.collisions.push(this);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(class_transformer__WEBPACK_IMPORTED_MODULE_2__["Expose"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Array)
+], CollisionGameComponent.prototype, "meshCollider", void 0);
+CollisionGameComponent = CollisionGameComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(class_transformer__WEBPACK_IMPORTED_MODULE_2__["Exclude"])()
+], CollisionGameComponent);
 
 
 
@@ -2512,7 +2621,7 @@ let GameObject = GameObject_1 = class GameObject {
         this.children = [];
         this.parent = null;
     }
-    getComponent(componentName) {
+    getComponent(componentName = null) {
         return this.components.find((c) => c.name === componentName);
     }
     start() {
@@ -2943,8 +3052,23 @@ Input.inputAdapters = [];
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CollisionsProcessor", function() { return CollisionsProcessor; });
+/* harmony import */ var _game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
+/* harmony import */ var _core_game_object_collection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/game-object-collection */ "./src/app/business/core/game-object-collection.ts");
+
+
 class CollisionsProcessor {
     static checkCollisions(rootGameObject) {
+        const components = _core_game_object_collection__WEBPACK_IMPORTED_MODULE_1__["GameObjectCollection"].getAllComponents(_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_0__["CollisionGameComponent"].name, rootGameObject);
+        for (let i = 0; i < components.length; i++) {
+            components[i].collisions.length = 0;
+        }
+        for (let i = 0; i < components.length; i++) {
+            const firstComponent = components[i];
+            for (let p = i + 1; p < components.length; p++) {
+                const secondComponent = components[p];
+                firstComponent.collideWith(secondComponent);
+            }
+        }
     }
 }
 
