@@ -74,14 +74,14 @@ export class GameObjectCollection {
 		return null;
 	}
 
-	public static getAllComponents(componentName: string, gameObject: GameObject): GameComponent[] {
-		let result: GameComponent[] = [];
-		const component = gameObject.getComponent(componentName);
+	public static getAllComponents<T = GameComponent>(componentName: string, gameObject: GameObject): T[] {
+		let result: T[] = [];
+		const component = gameObject.getComponent<T>(componentName);
 		if (component != null) {
 			result.push(component);
 		}
 		for (let i = 0; i < gameObject.children.length; i++) {
-			const childComponents = GameObjectCollection.getAllComponents(componentName, gameObject.children[i]);
+			const childComponents = GameObjectCollection.getAllComponents<T>(componentName, gameObject.children[i]);
 			result = result.concat(childComponents);
 		}
 		return result;

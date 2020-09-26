@@ -1,15 +1,14 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { GameObjectRenderInfo } from '../../business/game-components/core/html-renderer-game-component/game-object-render-info';
 import { Subscription } from 'rxjs';
 import { HtmlRendererService } from './html-renderer.service';
-import { GameManager } from '../../business/game-manager';
 
 @Component({
   selector: 'app-html-renderer',
   templateUrl: './html-renderer.component.html',
   styleUrls: ['./html-renderer.component.less']
 })
-export class HtmlRendererComponent implements OnInit {
+export class HtmlRendererComponent implements OnInit, OnDestroy {
 
 	gameObjectsRenderInfos: GameObjectRenderInfo[] = [];
 

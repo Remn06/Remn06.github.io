@@ -3,18 +3,18 @@ import { GameObjectFactory } from '../../../business/core/factory/game-object-fa
 import { TransformFactory } from '../../../business/core/factory/transform-factory';
 import { Vector2 } from '../../../business/common/vector2';
 import { ComponentFactory } from '../../../business/core/factory/component-factory';
-import {
-	HtmlRendererGameComponent
-} from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
+import { HtmlRendererGameComponent } from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
 import { NameValuePair } from '../../../business/common/name-value-pair';
 import { CloudShifterComponent } from '../components/cloud-shifter-component';
 import { AnimateGameComponent } from '../../../business/game-components/core/animate-game-component/animate-game-component';
 import { GroundShifterComponent } from '../components/ground-shifter-component';
 import { DinoJumperComponent } from '../components/dino-jumper-component';
-import { GeometryComponent } from '../components/oscil/geometry-component';
 import { CactiProducerComponent } from '../components/cacti-producer-component';
 import { CollisionGameComponent } from '../../../business/game-components/core/collision-game-component';
 import { Rect } from '../../../business/common/rect';
+import { SvgRendererGameComponent } from '../../../business/game-components/svg-renderer-game-component/svg-renderer-game-component';
+import { SvgElementType } from '../../../business/game-components/svg-renderer-game-component/svg-element-type';
+import { SvgPathElement, SvgPathElementType } from '../../../business/game-components/svg-renderer-game-component/svg-path-element';
 
 export class ImpossibleDinoData {
 	public static getData(): GameObject {
@@ -140,6 +140,61 @@ export class ImpossibleDinoData {
 			],
 			true
 
+		);
+
+		const svgObj = GameObjectFactory.createGameObject(
+			rootGameObject,
+			'svgLine',
+			TransformFactory.createTransform(new Vector2(0, 0), 100, 100, 45),
+			[
+				ComponentFactory.createComponent(SvgRendererGameComponent, [
+					new NameValuePair('type', SvgElementType.Line),
+					new NameValuePair('x', 0),
+					new NameValuePair('y', 0),
+					new NameValuePair('x1', 100),
+					new NameValuePair('y1', 0),
+					new NameValuePair('stroke', '#0F0'),
+				])
+			],
+			true
+		);
+		const svgCircleObj = GameObjectFactory.createGameObject(
+			rootGameObject,
+			'svgCircleObj',
+			TransformFactory.createTransform(new Vector2(0, 0), 100, 100, 45),
+			[
+				ComponentFactory.createComponent(SvgRendererGameComponent, [
+					new NameValuePair('type', SvgElementType.Circle),
+					new NameValuePair('x', 0),
+					new NameValuePair('y', 0),
+					new NameValuePair('r', 100),
+					new NameValuePair('stroke', '#0FF'),
+					new NameValuePair('strokeWidth', '3'),
+					new NameValuePair('strokeDasharray', '10 5')
+				])
+			],
+			true
+		);
+
+		const svgPathObj = GameObjectFactory.createGameObject(
+			rootGameObject,
+			'svgPathObj',
+			TransformFactory.createTransform(new Vector2(0, 0), 100, 100, 10),
+			[
+				ComponentFactory.createComponent(SvgRendererGameComponent, [
+					new NameValuePair('type', SvgElementType.Path),
+					new NameValuePair('x', 0),
+					new NameValuePair('y', 0),
+					new NameValuePair('pathElements', [
+						new SvgPathElement(SvgPathElementType.MoveTo, 0, 0),
+						new SvgPathElement(SvgPathElementType.LineTo, 30, 0),
+						new SvgPathElement(SvgPathElementType.LineTo, 30, 40),
+					]),
+					new NameValuePair('stroke', '#F00'),
+					new NameValuePair('strokeWidth', '1')
+				])
+			],
+			true
 		);
 
 		return rootGameObject;

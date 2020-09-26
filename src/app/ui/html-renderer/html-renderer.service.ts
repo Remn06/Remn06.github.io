@@ -15,7 +15,7 @@ export class HtmlRendererService implements OnDestroy {
 	private gameCalculatedSubscription: Subscription;
 
 	constructor() {
-		GameEventManager.events().subscribe((eventMessage) => {
+		this.gameCalculatedSubscription = GameEventManager.events().subscribe((eventMessage) => {
 			this.processEvent(eventMessage);
 		});
 	}

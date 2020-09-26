@@ -15,8 +15,8 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class AppComponent implements OnInit {
 
-	width = '100px';
-	height = '100px';
+	public width = 100;
+	public height = 100;
 
 	constructor(@Inject(DOCUMENT) private document: Document, private http: HttpClient) {
 	}
@@ -29,8 +29,8 @@ export class AppComponent implements OnInit {
 		screen.width = window.innerWidth - margin;
 		screen.height = window.innerHeight - margin;
 
-		this.width = `${window.innerWidth - margin}px`;
-		this.height = `${window.innerHeight - margin}px`;
+		this.width = window.innerWidth - margin;
+		this.height = window.innerHeight - margin;
 	}
 
 	ngOnInit() {

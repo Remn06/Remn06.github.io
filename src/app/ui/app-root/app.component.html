@@ -1,5 +1,6 @@
-<div id="gameArea" class="gameArea" [ngStyle]="{'width': width, 'height': height}">
+<div id="gameArea" class="gameArea" [ngStyle]="{'width': width + 'px', 'height': height + 'px'}">
 	<app-html-renderer></app-html-renderer>
+	<app-svg-renderer data-width="{{width}}" data-height="{{height}}"></app-svg-renderer>
 </div>
 
 <router-outlet></router-outlet>
