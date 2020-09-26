@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"gameArea\" class=\"gameArea\" [ngStyle]=\"{'width': width, 'height': height}\">\n\t<app-html-renderer></app-html-renderer>\n</div>\n\n<router-outlet></router-outlet>\n"
+module.exports = "<div id=\"gameArea\" class=\"gameArea\" [ngStyle]=\"{'width': width + 'px', 'height': height + 'px'}\">\n\t<app-html-renderer></app-html-renderer>\n\t<app-svg-renderer data-width=\"{{width}}\" data-height=\"{{height}}\"></app-svg-renderer>\n</div>\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -30,6 +30,17 @@ module.exports = "<div class=\"game-object\"\n\t [ngClass]=\"gameObjectRenderInf
 /***/ (function(module, exports) {
 
 module.exports = "<app-game-object\n\t*ngFor=\"let renderInfo of gameObjectsRenderInfos; trackBy: id\"\n\t[gameObjectRenderInfo]=\"renderInfo\">\n</app-game-object>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/ui/svg-renderer/svg-renderer.component.html":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/ui/svg-renderer/svg-renderer.component.html ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<svg [attr.viewBox]=\"viewBoxValue\" xmlns=\"http://www.w3.org/2000/svg\" [innerHtml]=\"svgElements\">\n</svg>\n"
 
 /***/ }),
 
@@ -213,6 +224,109 @@ var CloudShifterComponent = /** @class */ (function (_super) {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
     ], CloudShifterComponent.prototype, "skyHeight", void 0);
     return CloudShifterComponent;
+}(_business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/_games/impossible-dino/components/dino-clock-game-component.ts":
+/*!********************************************************************************!*\
+  !*** ./src/app/_games/impossible-dino/components/dino-clock-game-component.ts ***!
+  \********************************************************************************/
+/*! exports provided: DinoClockGameComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DinoClockGameComponent", function() { return DinoClockGameComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../business/game-components/core/base/game-component */ "./src/app/business/game-components/core/base/game-component.ts");
+/* harmony import */ var _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../business/core/factory/game-object-factory */ "./src/app/business/core/factory/game-object-factory.ts");
+/* harmony import */ var _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../business/core/factory/transform-factory */ "./src/app/business/core/factory/transform-factory.ts");
+/* harmony import */ var _business_common_vector2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../business/common/vector2 */ "./src/app/business/common/vector2.ts");
+/* harmony import */ var _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../business/core/factory/component-factory */ "./src/app/business/core/factory/component-factory.ts");
+/* harmony import */ var _business_game_components_svg_renderer_game_component_svg_renderer_game_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../business/game-components/svg-renderer-game-component/svg-renderer-game-component */ "./src/app/business/game-components/svg-renderer-game-component/svg-renderer-game-component.ts");
+/* harmony import */ var _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../business/common/name-value-pair */ "./src/app/business/common/name-value-pair.ts");
+/* harmony import */ var _business_game_components_svg_renderer_game_component_svg_element_type__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../business/game-components/svg-renderer-game-component/svg-element-type */ "./src/app/business/game-components/svg-renderer-game-component/svg-element-type.ts");
+/* harmony import */ var _business_game_components_user_rotate_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../business/game-components/user/rotate.component */ "./src/app/business/game-components/user/rotate.component.ts");
+/* harmony import */ var _business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../business/game-components/svg-renderer-game-component/svg-path-element */ "./src/app/business/game-components/svg-renderer-game-component/svg-path-element.ts");
+
+
+
+
+
+
+
+
+
+
+
+var DinoClockGameComponent = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](DinoClockGameComponent, _super);
+    function DinoClockGameComponent() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.name = DinoClockGameComponent.name;
+        return _this;
+    }
+    DinoClockGameComponent.prototype.start = function () {
+        var dinoClockCircleObj = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_2__["GameObjectFactory"].createGameObject(this.gameObject, 'DinoClockCircleObj', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_3__["TransformFactory"].createChildTransform(this.gameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_4__["Vector2"](0, 0), 100, 100, 0), [
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_5__["ComponentFactory"].createComponent(_business_game_components_svg_renderer_game_component_svg_renderer_game_component__WEBPACK_IMPORTED_MODULE_6__["SvgRendererGameComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('type', _business_game_components_svg_renderer_game_component_svg_element_type__WEBPACK_IMPORTED_MODULE_8__["SvgElementType"].Circle),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('x', 0),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('y', 0),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('r', 25),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('stroke', '#0FF'),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('strokeWidth', '1'),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('strokeDasharray', '10 5')
+            ])
+        ], true);
+        var dinoClockBigArrow = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_2__["GameObjectFactory"].createGameObject(this.gameObject, 'DinoClockBigArrow', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_3__["TransformFactory"].createChildTransform(this.gameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_4__["Vector2"](0, 0), 100, 100, 10), [
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_5__["ComponentFactory"].createComponent(_business_game_components_svg_renderer_game_component_svg_renderer_game_component__WEBPACK_IMPORTED_MODULE_6__["SvgRendererGameComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('type', _business_game_components_svg_renderer_game_component_svg_element_type__WEBPACK_IMPORTED_MODULE_8__["SvgElementType"].Path),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('x', 0),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('y', 0),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('pathElements', [
+                    new _business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElement"](_business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElementType"].MoveTo, 0, 0),
+                    new _business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElement"](_business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElementType"].LineTo, 25, 0),
+                    new _business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElement"](_business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElementType"].LineTo, 20, -2),
+                    new _business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElement"](_business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElementType"].LineTo, 20, 2),
+                    new _business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElement"](_business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElementType"].LineTo, 25, 0),
+                ]),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('stroke', '#00F'),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('strokeWidth', '1')
+            ]),
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_5__["ComponentFactory"].createComponent(_business_game_components_user_rotate_component__WEBPACK_IMPORTED_MODULE_9__["RotateComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('rotation', 80),
+            ])
+        ], true);
+        var dinoClockSmallArrow = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_2__["GameObjectFactory"].createGameObject(this.gameObject, 'DinoClockSmallArrow', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_3__["TransformFactory"].createChildTransform(this.gameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_4__["Vector2"](0, 0), 100, 100, 10), [
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_5__["ComponentFactory"].createComponent(_business_game_components_svg_renderer_game_component_svg_renderer_game_component__WEBPACK_IMPORTED_MODULE_6__["SvgRendererGameComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('type', _business_game_components_svg_renderer_game_component_svg_element_type__WEBPACK_IMPORTED_MODULE_8__["SvgElementType"].Path),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('x', 0),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('y', 0),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('pathElements', [
+                    new _business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElement"](_business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElementType"].MoveTo, 0, 0),
+                    new _business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElement"](_business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElementType"].LineTo, 20, 0),
+                    new _business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElement"](_business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElementType"].LineTo, 15, -2),
+                    new _business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElement"](_business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElementType"].LineTo, 15, 2),
+                    new _business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElement"](_business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__["SvgPathElementType"].LineTo, 20, 0),
+                ]),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('stroke', '#0F0'),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('strokeWidth', '1')
+            ]),
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_5__["ComponentFactory"].createComponent(_business_game_components_user_rotate_component__WEBPACK_IMPORTED_MODULE_9__["RotateComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('rotation', 40),
+            ])
+        ], true);
+    };
+    DinoClockGameComponent.prototype.draw = function () {
+    };
+    DinoClockGameComponent.prototype.update = function () {
+    };
+    DinoClockGameComponent.prototype.destroy = function () {
+    };
+    return DinoClockGameComponent;
 }(_business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"]));
 
 
@@ -423,6 +537,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_cacti_producer_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/cacti-producer-component */ "./src/app/_games/impossible-dino/components/cacti-producer-component.ts");
 /* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
 /* harmony import */ var _business_common_rect__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../business/common/rect */ "./src/app/business/common/rect.ts");
+/* harmony import */ var _components_dino_clock_game_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/dino-clock-game-component */ "./src/app/_games/impossible-dino/components/dino-clock-game-component.ts");
+
 
 
 
@@ -518,6 +634,11 @@ var ImpossibleDinoData = /** @class */ (function () {
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](20, 0, 20, 15), new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](0, 15, 27, 20), new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](10, 36, 14, 6)])
             ])
         ], true);
+        var svgDinoClockRootObj = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'SvgDinoClockRootObj', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createTransform(new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](30, 30), 100, 100, 0), [
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_dino_clock_game_component__WEBPACK_IMPORTED_MODULE_13__["DinoClockGameComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](20, 0, 20, 15), new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](0, 15, 27, 20), new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](10, 36, 14, 6)])
+            ])
+        ], true);
         return rootGameObject;
     };
     return ImpossibleDinoData;
@@ -578,6 +699,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ui_html_renderer_game_object_game_object_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ui/html-renderer/game-object/game-object.component */ "./src/app/ui/html-renderer/game-object/game-object.component.ts");
 /* harmony import */ var _ui_html_renderer_html_renderer_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ui/html-renderer/html-renderer.component */ "./src/app/ui/html-renderer/html-renderer.component.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _ui_svg_renderer_svg_renderer_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ui/svg-renderer/svg-renderer.component */ "./src/app/ui/svg-renderer/svg-renderer.component.ts");
+
 
 
 
@@ -594,7 +717,8 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _ui_app_root_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
                 _ui_html_renderer_game_object_game_object_component__WEBPACK_IMPORTED_MODULE_5__["GameObjectComponent"],
-                _ui_html_renderer_html_renderer_component__WEBPACK_IMPORTED_MODULE_6__["HtmlRendererComponent"]
+                _ui_html_renderer_html_renderer_component__WEBPACK_IMPORTED_MODULE_6__["HtmlRendererComponent"],
+                _ui_svg_renderer_svg_renderer_component__WEBPACK_IMPORTED_MODULE_8__["SvgRendererComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1806,6 +1930,215 @@ var HtmlRendererGameComponent = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/app/business/game-components/svg-renderer-game-component/svg-element-type.ts":
+/*!******************************************************************************************!*\
+  !*** ./src/app/business/game-components/svg-renderer-game-component/svg-element-type.ts ***!
+  \******************************************************************************************/
+/*! exports provided: SvgElementType */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SvgElementType", function() { return SvgElementType; });
+var SvgElementType;
+(function (SvgElementType) {
+    SvgElementType["Line"] = "Line";
+    SvgElementType["Circle"] = "Circle";
+    SvgElementType["Rect"] = "Rect";
+    SvgElementType["Path"] = "Path";
+})(SvgElementType || (SvgElementType = {}));
+
+
+/***/ }),
+
+/***/ "./src/app/business/game-components/svg-renderer-game-component/svg-path-element.ts":
+/*!******************************************************************************************!*\
+  !*** ./src/app/business/game-components/svg-renderer-game-component/svg-path-element.ts ***!
+  \******************************************************************************************/
+/*! exports provided: SvgPathElementType, SvgPathElement */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SvgPathElementType", function() { return SvgPathElementType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SvgPathElement", function() { return SvgPathElement; });
+var SvgPathElementType;
+(function (SvgPathElementType) {
+    SvgPathElementType["MoveTo"] = "M";
+    SvgPathElementType["MoveToShift"] = "m";
+    SvgPathElementType["LineTo"] = "L";
+    SvgPathElementType["CubicBezierCurve"] = "C";
+    SvgPathElementType["QuadraticBezierCurve"] = "Q";
+    SvgPathElementType["EllipticalArcCurve"] = "A";
+    SvgPathElementType["ClosePath"] = "Z";
+})(SvgPathElementType || (SvgPathElementType = {}));
+var SvgPathElement = /** @class */ (function () {
+    function SvgPathElement(type, x, y) {
+        this.type = type;
+        this.x = x;
+        this.y = y;
+    }
+    SvgPathElement.prototype.toString = function (shiftX, shiftY) {
+        if (shiftX === void 0) { shiftX = 0; }
+        if (shiftY === void 0) { shiftY = 0; }
+        switch (this.type) {
+            case SvgPathElementType.MoveTo:
+                return "M " + (this.x + shiftX) + "," + (this.y + shiftY);
+            case SvgPathElementType.MoveToShift:
+                return "m " + (this.x + shiftX) + "," + (this.y + shiftY);
+            case SvgPathElementType.LineTo:
+                return "L " + (this.x + shiftX) + "," + (this.y + shiftY);
+            default:
+                // implement all types https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
+                throw new Error('Path type is not implemented.');
+        }
+    };
+    SvgPathElement.ctorParameters = function () { return [
+        { type: undefined },
+        { type: Number },
+        { type: Number }
+    ]; };
+    return SvgPathElement;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/business/game-components/svg-renderer-game-component/svg-renderer-game-component.ts":
+/*!*****************************************************************************************************!*\
+  !*** ./src/app/business/game-components/svg-renderer-game-component/svg-renderer-game-component.ts ***!
+  \*****************************************************************************************************/
+/*! exports provided: SvgRendererGameComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SvgRendererGameComponent", function() { return SvgRendererGameComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _core_base_game_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../core/base/game-component */ "./src/app/business/game-components/core/base/game-component.ts");
+/* harmony import */ var _svg_element_type__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./svg-element-type */ "./src/app/business/game-components/svg-renderer-game-component/svg-element-type.ts");
+/* harmony import */ var _common_vector2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/vector2 */ "./src/app/business/common/vector2.ts");
+
+
+
+
+
+var SvgRendererGameComponent = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](SvgRendererGameComponent, _super);
+    function SvgRendererGameComponent() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.name = SvgRendererGameComponent_1.name;
+        _this.stroke = '#000';
+        _this.fill = 'transparent';
+        _this.strokeWidth = 1;
+        _this.strokeDasharray = '0';
+        _this.pathElements = [];
+        return _this;
+    }
+    SvgRendererGameComponent_1 = SvgRendererGameComponent;
+    SvgRendererGameComponent.prototype.start = function () {
+    };
+    SvgRendererGameComponent.prototype.draw = function () {
+        switch (this.type) {
+            case _svg_element_type__WEBPACK_IMPORTED_MODULE_3__["SvgElementType"].Line:
+                var from = this.toGlobal(this.x, this.y);
+                var to = this.toGlobal(this.x1, this.y1);
+                this.svgElement = "<line x1=\"" + from.x + "\" y1=\"" + from.y + "\" x2=\"" + to.x + "\" y2=\"" + to.y + "\" " + this.commonAttributes() + "/>";
+                break;
+            case _svg_element_type__WEBPACK_IMPORTED_MODULE_3__["SvgElementType"].Circle:
+                var cFrom = this.toGlobal(this.x, this.y);
+                this.svgElement = "<Circle cx=\"" + cFrom.x + "\" cy=\"" + cFrom.y + "\" r=\"" + this.r + "\" " + this.commonAttributes() + "/>";
+                break;
+            case _svg_element_type__WEBPACK_IMPORTED_MODULE_3__["SvgElementType"].Rect:
+                var rFrom = this.toGlobal(this.x, this.y);
+                this.svgElement = "<Rect x=\"" + rFrom.x + "\" y=\"" + rFrom.y + "\"\n\t\t\t\t\t\t\t\t\twidth=\"" + this.gameObject.transform.width + " height=\"" + this.gameObject.transform.height + "\"\n\t\t\t\t\t\t\t\t\t" + this.commonAttributes() + "/>";
+                break;
+            case _svg_element_type__WEBPACK_IMPORTED_MODULE_3__["SvgElementType"].Path:
+                this.svgElement = "<Path d=\"" + this.getPath() + "\" " + this.commonAttributes() + "/>";
+                break;
+        }
+    };
+    SvgRendererGameComponent.prototype.update = function () {
+    };
+    SvgRendererGameComponent.prototype.destroy = function () {
+    };
+    SvgRendererGameComponent.prototype.toGlobal = function (x, y) {
+        var globalPosition = this.gameObject.transform.position;
+        return new _common_vector2__WEBPACK_IMPORTED_MODULE_4__["Vector2"](globalPosition.x + x, globalPosition.y + y);
+    };
+    SvgRendererGameComponent.prototype.rotateString = function () {
+        var globalPosition = this.gameObject.transform.position;
+        return this.gameObject.transform.rotation + " " + globalPosition.x + " " + globalPosition.y;
+    };
+    SvgRendererGameComponent.prototype.commonAttributes = function () {
+        return "stroke=\"" + this.stroke + "\" fill=\"" + this.fill + "\"\n\t\t\t\t\t\t\t\t\tstroke-width=\"" + this.strokeWidth + "\" stroke-dasharray='" + this.strokeDasharray + "'\n\t\t\t\t\t\t\t\t\ttransform=\"rotate(" + this.rotateString() + ")\"";
+    };
+    SvgRendererGameComponent.prototype.getPath = function () {
+        var globalPosition = this.gameObject.transform.position;
+        return this.pathElements.map(function (element) { return element.toString(globalPosition.x, globalPosition.y); }).join(' ');
+    };
+    var SvgRendererGameComponent_1;
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], SvgRendererGameComponent.prototype, "name", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], SvgRendererGameComponent.prototype, "type", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+    ], SvgRendererGameComponent.prototype, "x", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+    ], SvgRendererGameComponent.prototype, "y", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+    ], SvgRendererGameComponent.prototype, "x1", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+    ], SvgRendererGameComponent.prototype, "y1", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+    ], SvgRendererGameComponent.prototype, "r", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], SvgRendererGameComponent.prototype, "stroke", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], SvgRendererGameComponent.prototype, "fill", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], SvgRendererGameComponent.prototype, "strokeWidth", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], SvgRendererGameComponent.prototype, "strokeDasharray", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Array)
+    ], SvgRendererGameComponent.prototype, "pathElements", void 0);
+    SvgRendererGameComponent = SvgRendererGameComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Exclude"])()
+    ], SvgRendererGameComponent);
+    return SvgRendererGameComponent;
+}(_core_base_game_component__WEBPACK_IMPORTED_MODULE_2__["GameComponent"]));
+
+
+
+/***/ }),
+
 /***/ "./src/app/business/game-components/user/reset-to-left.component.ts":
 /*!**************************************************************************!*\
   !*** ./src/app/business/game-components/user/reset-to-left.component.ts ***!
@@ -1897,6 +2230,10 @@ var RotateComponent = /** @class */ (function (_super) {
     RotateComponent.prototype.destroy = function () {
     };
     var RotateComponent_1;
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], RotateComponent.prototype, "rotation", void 0);
     RotateComponent = RotateComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Exclude"])()
     ], RotateComponent);
@@ -3379,16 +3716,16 @@ var AppComponent = /** @class */ (function () {
     function AppComponent(document, http) {
         this.document = document;
         this.http = http;
-        this.width = '100px';
-        this.height = '100px';
+        this.width = 100;
+        this.height = 100;
     }
     AppComponent.prototype.onResize = function () {
         var margin = 0;
         var screen = _business_screen_game_screen__WEBPACK_IMPORTED_MODULE_5__["GameScreen"].getDefaultScreen();
         screen.width = window.innerWidth - margin;
         screen.height = window.innerHeight - margin;
-        this.width = window.innerWidth - margin + "px";
-        this.height = window.innerHeight - margin + "px";
+        this.width = window.innerWidth - margin;
+        this.height = window.innerHeight - margin;
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -3594,7 +3931,7 @@ var HtmlRendererService = /** @class */ (function () {
     function HtmlRendererService() {
         var _this = this;
         this.subject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
-        _business_game_event_manager__WEBPACK_IMPORTED_MODULE_4__["GameEventManager"].events().subscribe(function (eventMessage) {
+        this.gameCalculatedSubscription = _business_game_event_manager__WEBPACK_IMPORTED_MODULE_4__["GameEventManager"].events().subscribe(function (eventMessage) {
             _this.processEvent(eventMessage);
         });
     }
@@ -3644,6 +3981,161 @@ var HtmlRendererService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], HtmlRendererService);
     return HtmlRendererService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/ui/svg-renderer/svg-renderer.component.less":
+/*!*************************************************************!*\
+  !*** ./src/app/ui/svg-renderer/svg-renderer.component.less ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VpL3N2Zy1yZW5kZXJlci9zdmctcmVuZGVyZXIuY29tcG9uZW50Lmxlc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/ui/svg-renderer/svg-renderer.component.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/ui/svg-renderer/svg-renderer.component.ts ***!
+  \***********************************************************/
+/*! exports provided: SvgRendererComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SvgRendererComponent", function() { return SvgRendererComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _svg_renderer_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./svg-renderer.service */ "./src/app/ui/svg-renderer/svg-renderer.service.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+
+
+
+
+var SvgRendererComponent = /** @class */ (function () {
+    function SvgRendererComponent(svgRendererService, changeDetectorRef, sanitized) {
+        this.svgRendererService = svgRendererService;
+        this.changeDetectorRef = changeDetectorRef;
+        this.sanitized = sanitized;
+        this.svgElements = '';
+        this.subscription = null;
+    }
+    Object.defineProperty(SvgRendererComponent.prototype, "viewBoxValue", {
+        get: function () {
+            return "0 0 " + this.width + " " + this.height;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    SvgRendererComponent.prototype.ngOnInit = function () {
+        this.subscribeToSvgElements();
+    };
+    SvgRendererComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
+    SvgRendererComponent.prototype.subscribeToSvgElements = function () {
+        var _this = this;
+        this.subscription = this.svgRendererService.getSvgElements().subscribe(function (svgElements) {
+            _this.svgElements = _this.sanitized.bypassSecurityTrustHtml(svgElements.join('\n'));
+            _this.changeDetectorRef.detectChanges();
+        });
+    };
+    SvgRendererComponent.ctorParameters = function () { return [
+        { type: _svg_renderer_service__WEBPACK_IMPORTED_MODULE_2__["SvgRendererService"] },
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
+        { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["DomSanitizer"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+    ], SvgRendererComponent.prototype, "width", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+    ], SvgRendererComponent.prototype, "height", void 0);
+    SvgRendererComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-svg-renderer',
+            template: __webpack_require__(/*! raw-loader!./svg-renderer.component.html */ "./node_modules/raw-loader/index.js!./src/app/ui/svg-renderer/svg-renderer.component.html"),
+            styles: [__webpack_require__(/*! ./svg-renderer.component.less */ "./src/app/ui/svg-renderer/svg-renderer.component.less")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_svg_renderer_service__WEBPACK_IMPORTED_MODULE_2__["SvgRendererService"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["DomSanitizer"]])
+    ], SvgRendererComponent);
+    return SvgRendererComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/ui/svg-renderer/svg-renderer.service.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/ui/svg-renderer/svg-renderer.service.ts ***!
+  \*********************************************************/
+/*! exports provided: SvgRendererService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SvgRendererService", function() { return SvgRendererService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _business_game_event_manager__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../business/game-event-manager */ "./src/app/business/game-event-manager.ts");
+/* harmony import */ var _business_events_event_message__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../business/events/event-message */ "./src/app/business/events/event-message.ts");
+/* harmony import */ var _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../business/core/game-object-collection */ "./src/app/business/core/game-object-collection.ts");
+/* harmony import */ var _business_game_components_svg_renderer_game_component_svg_renderer_game_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../business/game-components/svg-renderer-game-component/svg-renderer-game-component */ "./src/app/business/game-components/svg-renderer-game-component/svg-renderer-game-component.ts");
+
+
+
+
+
+
+
+var SvgRendererService = /** @class */ (function () {
+    function SvgRendererService() {
+        var _this = this;
+        this.subject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
+        this.gameCalculatedSubscription = _business_game_event_manager__WEBPACK_IMPORTED_MODULE_3__["GameEventManager"].events().subscribe(function (eventMessage) {
+            _this.processEvent(eventMessage);
+        });
+    }
+    SvgRendererService.prototype.ngOnDestroy = function () {
+        this.gameCalculatedSubscription.unsubscribe();
+        this.subject.complete();
+    };
+    SvgRendererService.prototype.getSvgElements = function () {
+        return this.subject;
+    };
+    SvgRendererService.prototype.render = function (gameScene) {
+        var allComponents = _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_5__["GameObjectCollection"].getAllComponents(_business_game_components_svg_renderer_game_component_svg_renderer_game_component__WEBPACK_IMPORTED_MODULE_6__["SvgRendererGameComponent"].name, gameScene.rootGameObject);
+        var rendered = allComponents.reduce(function (res, component) {
+            res.push(component.svgElement);
+            return res;
+        }, []);
+        this.subject.next(rendered);
+    };
+    SvgRendererService.prototype.processEvent = function (eventMessage) {
+        switch (eventMessage.type) {
+            case _business_events_event_message__WEBPACK_IMPORTED_MODULE_4__["EventMessageType"].GameUpdate:
+                this.render(eventMessage.data);
+                break;
+            default:
+        }
+    };
+    SvgRendererService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], SvgRendererService);
+    return SvgRendererService;
 }());
 
 
