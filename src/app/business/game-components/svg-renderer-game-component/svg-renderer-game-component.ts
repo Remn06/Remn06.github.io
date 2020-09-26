@@ -98,7 +98,8 @@ export class SvgRendererGameComponent extends GameComponent {
 	}
 
 	private getPath(): string {
-		return this.pathElements.join(' ');
+		const globalPosition = this.gameObject.transform.position;
+		return this.pathElements.map((element) => element.toString(globalPosition.x, globalPosition.y)).join(' ');
 	}
 }
 

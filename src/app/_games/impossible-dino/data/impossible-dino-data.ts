@@ -15,6 +15,8 @@ import { Rect } from '../../../business/common/rect';
 import { SvgRendererGameComponent } from '../../../business/game-components/svg-renderer-game-component/svg-renderer-game-component';
 import { SvgElementType } from '../../../business/game-components/svg-renderer-game-component/svg-element-type';
 import { SvgPathElement, SvgPathElementType } from '../../../business/game-components/svg-renderer-game-component/svg-path-element';
+import { RotateComponent } from '../../../business/game-components/user/rotate.component';
+import { DinoClockGameComponent } from '../components/dino-clock-game-component';
 
 export class ImpossibleDinoData {
 	public static getData(): GameObject {
@@ -23,8 +25,7 @@ export class ImpossibleDinoData {
 			null,
 			'root',
 			TransformFactory.createTransform(new Vector2(0, 0), 0, 0, 0),
-			[
-			],
+			[],
 			true
 		);
 
@@ -139,59 +140,16 @@ export class ImpossibleDinoData {
 				])
 			],
 			true
-
 		);
 
-		const svgObj = GameObjectFactory.createGameObject(
-			rootGameObject,
-			'svgLine',
-			TransformFactory.createTransform(new Vector2(0, 0), 100, 100, 45),
-			[
-				ComponentFactory.createComponent(SvgRendererGameComponent, [
-					new NameValuePair('type', SvgElementType.Line),
-					new NameValuePair('x', 0),
-					new NameValuePair('y', 0),
-					new NameValuePair('x1', 100),
-					new NameValuePair('y1', 0),
-					new NameValuePair('stroke', '#0F0'),
-				])
-			],
-			true
-		);
-		const svgCircleObj = GameObjectFactory.createGameObject(
-			rootGameObject,
-			'svgCircleObj',
-			TransformFactory.createTransform(new Vector2(0, 0), 100, 100, 45),
-			[
-				ComponentFactory.createComponent(SvgRendererGameComponent, [
-					new NameValuePair('type', SvgElementType.Circle),
-					new NameValuePair('x', 0),
-					new NameValuePair('y', 0),
-					new NameValuePair('r', 100),
-					new NameValuePair('stroke', '#0FF'),
-					new NameValuePair('strokeWidth', '3'),
-					new NameValuePair('strokeDasharray', '10 5')
-				])
-			],
-			true
-		);
 
-		const svgPathObj = GameObjectFactory.createGameObject(
+		const svgDinoClockRootObj = GameObjectFactory.createGameObject(
 			rootGameObject,
-			'svgPathObj',
-			TransformFactory.createTransform(new Vector2(0, 0), 100, 100, 10),
+			'SvgDinoClockRootObj',
+			TransformFactory.createTransform(new Vector2(30, 30), 100, 100, 0),
 			[
-				ComponentFactory.createComponent(SvgRendererGameComponent, [
-					new NameValuePair('type', SvgElementType.Path),
-					new NameValuePair('x', 0),
-					new NameValuePair('y', 0),
-					new NameValuePair('pathElements', [
-						new SvgPathElement(SvgPathElementType.MoveTo, 0, 0),
-						new SvgPathElement(SvgPathElementType.LineTo, 30, 0),
-						new SvgPathElement(SvgPathElementType.LineTo, 30, 40),
-					]),
-					new NameValuePair('stroke', '#F00'),
-					new NameValuePair('strokeWidth', '1')
+				ComponentFactory.createComponent(DinoClockGameComponent, [
+					new NameValuePair('meshCollider', [new Rect(20, 0, 20, 15), new Rect(0, 15, 27, 20), new Rect(10, 36, 14, 6)])
 				])
 			],
 			true

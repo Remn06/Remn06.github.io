@@ -1,4 +1,4 @@
-import { Exclude } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 import { GameComponent } from '../core/base/game-component';
 import { Timer } from '../../common/timer';
 import { VMath } from '../../common/v-math';
@@ -8,6 +8,7 @@ export class RotateComponent extends GameComponent {
 
 	public name = RotateComponent.name;
 
+	@Expose()
 	public rotation = 90;
 
 	start(): void {
