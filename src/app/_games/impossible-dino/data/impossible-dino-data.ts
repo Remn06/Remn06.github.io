@@ -13,6 +13,7 @@ import { CactiProducerComponent } from '../components/cacti-producer-component';
 import { CollisionGameComponent } from '../../../business/game-components/core/collision-game-component';
 import { Rect } from '../../../business/common/rect';
 import { DinoClockGameComponent } from '../components/dino-clock-game-component';
+import { DinoScoreCounterComponent } from '../components/dino-score-counter-component';
 
 export class ImpossibleDinoData {
 	public static getData(): GameObject {
@@ -148,6 +149,21 @@ export class ImpossibleDinoData {
 			],
 			true
 		);
+		const dinoScore = GameObjectFactory.createGameObject(
+			svgDinoClockRootObj,
+			'dinoScore',
+			TransformFactory.createLocalTransform(svgDinoClockRootObj.transform, new Vector2(110, 0), 150, 20, 0),
+			[
+				ComponentFactory.createComponent(HtmlRendererGameComponent, [
+					new NameValuePair('cssStyle', 'font-family: \'Tangerine\', serif; font-size: 20px;')
+				], true),
+				ComponentFactory.createComponent(DinoScoreCounterComponent, [
+					new NameValuePair('counterSpeed', 10)
+				])
+			],
+			true
+		);
+
 
 		return rootGameObject;
 	}
