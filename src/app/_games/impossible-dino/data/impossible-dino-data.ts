@@ -12,10 +12,6 @@ import { DinoJumperComponent } from '../components/dino-jumper-component';
 import { CactiProducerComponent } from '../components/cacti-producer-component';
 import { CollisionGameComponent } from '../../../business/game-components/core/collision-game-component';
 import { Rect } from '../../../business/common/rect';
-import { SvgRendererGameComponent } from '../../../business/game-components/svg-renderer-game-component/svg-renderer-game-component';
-import { SvgElementType } from '../../../business/game-components/svg-renderer-game-component/svg-element-type';
-import { SvgPathElement, SvgPathElementType } from '../../../business/game-components/svg-renderer-game-component/svg-path-element';
-import { RotateComponent } from '../../../business/game-components/user/rotate.component';
 import { DinoClockGameComponent } from '../components/dino-clock-game-component';
 
 export class ImpossibleDinoData {
@@ -24,7 +20,7 @@ export class ImpossibleDinoData {
 		const rootGameObject = GameObjectFactory.createGameObject(
 			null,
 			'root',
-			TransformFactory.createTransform(new Vector2(0, 0), 0, 0, 0),
+			TransformFactory.createGlobalTransform(null, new Vector2(0, 0), 0, 0, 0),
 			[],
 			true
 		);
@@ -46,7 +42,7 @@ export class ImpossibleDinoData {
 		const cloud = GameObjectFactory.createGameObject(
 			rootGameObject,
 			'Cloud',
-			TransformFactory.createTransform(new Vector2(400, 170), 46, 13, 0),
+			TransformFactory.createGlobalTransform(rootGameObject.transform, new Vector2(400, 170), 46, 13, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/cloud.png'),
@@ -64,7 +60,7 @@ export class ImpossibleDinoData {
 		const cloud2 = GameObjectFactory.createGameObject(
 			rootGameObject,
 			'Cloud2',
-			TransformFactory.createTransform(new Vector2(500, 150), 46, 13, 0),
+			TransformFactory.createGlobalTransform(rootGameObject.transform, new Vector2(500, 150), 46, 13, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/cloud.png'),
@@ -82,7 +78,7 @@ export class ImpossibleDinoData {
 		const cloud3 = GameObjectFactory.createGameObject(
 			rootGameObject,
 			'Cloud3',
-			TransformFactory.createTransform(new Vector2(700, 130), 46, 13, 0),
+			TransformFactory.createGlobalTransform(rootGameObject.transform, new Vector2(700, 130), 46, 13, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/cloud.png'),
@@ -100,7 +96,7 @@ export class ImpossibleDinoData {
 		const groundHolder = GameObjectFactory.createGameObject(
 			rootGameObject,
 			'GroundHolder',
-			TransformFactory.createTransform(new Vector2(0, 269), 8, 8, 0),
+			TransformFactory.createGlobalTransform(rootGameObject.transform, new Vector2(0, 269), 8, 8, 0),
 			[
 				ComponentFactory.createComponent(GroundShifterComponent, [
 					new NameValuePair('speed', 200),
@@ -118,7 +114,7 @@ export class ImpossibleDinoData {
 		const dino = GameObjectFactory.createGameObject(
 			groundHolder,
 			'Dino',
-			TransformFactory.createChildTransform(groundHolder.transform, new Vector2(50, -19), 40, 43, 0),
+			TransformFactory.createLocalTransform(groundHolder.transform, new Vector2(50, -19), 40, 43, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/dino-step-run.png'),
@@ -146,11 +142,9 @@ export class ImpossibleDinoData {
 		const svgDinoClockRootObj = GameObjectFactory.createGameObject(
 			rootGameObject,
 			'SvgDinoClockRootObj',
-			TransformFactory.createTransform(new Vector2(30, 30), 100, 100, 0),
+			TransformFactory.createGlobalTransform(rootGameObject.transform, new Vector2(30, 30), 100, 100, 0),
 			[
-				ComponentFactory.createComponent(DinoClockGameComponent, [
-					new NameValuePair('meshCollider', [new Rect(20, 0, 20, 15), new Rect(0, 15, 27, 20), new Rect(10, 36, 14, 6)])
-				])
+				ComponentFactory.createComponent(DinoClockGameComponent, [])
 			],
 			true
 		);

@@ -88,7 +88,7 @@ export class GeometryComponent extends GameComponent {
 		return GameObjectFactory.createGameObject(
 			this.gameObject,
 			'Dot',
-			TransformFactory.createChildTransform(this.gameObject.transform, new Vector2(adjustedX, adjustedY), 3, 3, 0),
+			TransformFactory.createLocalTransform(this.gameObject.transform, new Vector2(adjustedX, adjustedY), 3, 3, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('cssStyle', 'background-color: ' + color)

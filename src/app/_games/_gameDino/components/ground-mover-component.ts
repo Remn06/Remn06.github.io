@@ -5,7 +5,9 @@ import { GameObjectFactory } from '../../../business/core/factory/game-object-fa
 import { TransformFactory } from '../../../business/core/factory/transform-factory';
 import { Vector2 } from '../../../business/common/vector2';
 import { ComponentFactory } from '../../../business/core/factory/component-factory';
-import { HtmlRendererGameComponent } from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
+import {
+	HtmlRendererGameComponent
+} from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
 import { NameValuePair } from '../../../business/common/name-value-pair';
 import { GroundRemoveOutOfScreenComponent } from './ground-remove-out-of-screen-component';
 import { Timer } from '../../../business/common/timer';
@@ -64,7 +66,7 @@ export class GroundMoverComponent extends GameComponent  {
 
 		const ground = GameObjectFactory.createGameObject(this.gameObject,
 			'Ground',
-			TransformFactory.createTransform(new Vector2(x + 300, 0), 600, 10, 0),
+			TransformFactory.createGlobalTransform(this.gameObject.transform, new Vector2(x + 300, 0), 600, 10, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', 'assets/_gameDino/img/ground.png'),

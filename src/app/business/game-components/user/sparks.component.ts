@@ -99,7 +99,7 @@ export class SparksComponent extends GameComponent {
 		const gameObject = GameObjectFactory.createGameObject(
 			root,
 			'spark' + index,
-			TransformFactory.createChildTransform(root.transform, position, 5, 5, 0),
+			TransformFactory.createLocalTransform(root.transform, position, 5, 5, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('cssStyle', 'color: #FF0000; font-size: 10px;')

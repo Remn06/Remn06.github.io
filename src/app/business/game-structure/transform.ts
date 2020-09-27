@@ -30,10 +30,10 @@ export class Transform {
 
 	public gameObject: GameObject = null;
 
-	public static instantiate(position: Vector2, rotation: number, width: number, height: number): Transform {
+	public static instantiateGlobal(parent: Transform, globalPosition: Vector2, rotation: number, width: number, height: number): Transform {
 		const t = new Transform();
-		t.positionValue = position;
-		t.localPositionValue = position;
+		t.positionValue = globalPosition;
+		t.localPositionValue = parent == null ? globalPosition : globalPosition.subtract(parent.position);
 		t.rotationValue = rotation;
 		t.localRotationValue = rotation;
 		t.width = width;
@@ -41,7 +41,7 @@ export class Transform {
 		return t;
 	}
 
-	public static instantiateChild(
+	public static instantiateLocal(
 			parent: Transform,
 			localPosition: Vector2,
 			rotation: number,

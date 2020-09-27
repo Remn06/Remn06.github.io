@@ -17,7 +17,7 @@ export class DinoClockGameComponent extends GameComponent {
 		const dinoClockCircleObj = GameObjectFactory.createGameObject(
 			this.gameObject,
 			'DinoClockCircleObj',
-			TransformFactory.createChildTransform(this.gameObject.transform, new Vector2(0, 0), 100, 100, 0),
+			TransformFactory.createLocalTransform(this.gameObject.transform, new Vector2(0, 0), 100, 100, 0),
 			[
 				ComponentFactory.createComponent(SvgRendererGameComponent, [
 					new NameValuePair('type', SvgElementType.Circle),
@@ -35,7 +35,7 @@ export class DinoClockGameComponent extends GameComponent {
 		const dinoClockBigArrow = GameObjectFactory.createGameObject(
 			this.gameObject,
 			'DinoClockBigArrow',
-			TransformFactory.createChildTransform(this.gameObject.transform, new Vector2(0, 0), 100, 100, 10),
+			TransformFactory.createLocalTransform(this.gameObject.transform, new Vector2(0, 0), 100, 100, 10),
 			[
 				ComponentFactory.createComponent(SvgRendererGameComponent, [
 					new NameValuePair('type', SvgElementType.Path),
@@ -61,7 +61,7 @@ export class DinoClockGameComponent extends GameComponent {
 		const dinoClockSmallArrow = GameObjectFactory.createGameObject(
 			this.gameObject,
 			'DinoClockSmallArrow',
-			TransformFactory.createChildTransform(this.gameObject.transform, new Vector2(0, 0), 100, 100, 10),
+			TransformFactory.createLocalTransform(this.gameObject.transform, new Vector2(0, 0), 100, 100, 10),
 			[
 				ComponentFactory.createComponent(SvgRendererGameComponent, [
 					new NameValuePair('type', SvgElementType.Path),

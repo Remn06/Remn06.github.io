@@ -5,7 +5,9 @@ import { GameObjectFactory } from '../../../business/core/factory/game-object-fa
 import { TransformFactory } from '../../../business/core/factory/transform-factory';
 import { Vector2 } from '../../../business/common/vector2';
 import { ComponentFactory } from '../../../business/core/factory/component-factory';
-import { HtmlRendererGameComponent } from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
+import {
+	HtmlRendererGameComponent
+} from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
 import { NameValuePair } from '../../../business/common/name-value-pair';
 import { GroundRemoveOutOfScreenComponent } from './ground-remove-out-of-screen-component';
 import { Timer } from '../../../business/common/timer';
@@ -115,7 +117,9 @@ export class CactusMoverGameComponent extends GameComponent  {
 	private createObstacleGameObject(obstacleInfo: IObstacleInfo, x: number): GameObject {
 		const obstacle = GameObjectFactory.createGameObject(this.gameObject,
 			obstacleInfo.name,
-			TransformFactory.createTransform(new Vector2(x, 0 - (obstacleInfo.height / 2)), obstacleInfo.width, obstacleInfo.height, 0),
+			TransformFactory.createGlobalTransform(
+				this.gameObject.transform,
+				new Vector2(x, 0 - (obstacleInfo.height / 2)), obstacleInfo.width, obstacleInfo.height, 0),
 			[
 				ComponentFactory.createComponent(AnimateGameComponent, [
 					new NameValuePair('slideWidth', obstacleInfo.slideWidth),

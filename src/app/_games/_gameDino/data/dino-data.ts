@@ -3,7 +3,9 @@ import { GameObjectFactory } from '../../../business/core/factory/game-object-fa
 import { TransformFactory } from '../../../business/core/factory/transform-factory';
 import { Vector2 } from '../../../business/common/vector2';
 import { ComponentFactory } from '../../../business/core/factory/component-factory';
-import { HtmlRendererGameComponent } from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
+import {
+	HtmlRendererGameComponent
+} from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
 import { NameValuePair } from '../../../business/common/name-value-pair';
 import { StartButtonGameComponent } from '../components/start-button-game-component';
 import { CenterPositionGameComponent } from '../components/center-position-game-component';
@@ -22,13 +24,13 @@ export class DinoData {
 		const rootGameObject = GameObjectFactory.createGameObject(
 			null,
 			'root',
-			TransformFactory.createTransform(new Vector2(0, 0), 0, 0, 0),
+			TransformFactory.createGlobalTransform(null, new Vector2(0, 0), 0, 0, 0),
 			[],
 			true
 		);
 
 		GameObjectFactory.createGameObject(rootGameObject, 'Start Button',
-			TransformFactory.createTransform(new Vector2(100, 25), 34, 30, 0),
+			TransformFactory.createGlobalTransform(rootGameObject.transform, new Vector2(100, 25), 34, 30, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('cssStyle', ''),
@@ -47,7 +49,7 @@ export class DinoData {
 		const dynamicObjects = GameObjectFactory.createGameObject(
 			rootGameObject,
 			'DynamicObjects',
-			TransformFactory.createChildTransform(rootGameObject.transform, Vector2.zero, 0, 0, 0),
+			TransformFactory.createLocalTransform(rootGameObject.transform, Vector2.zero, 0, 0, 0),
 			[
 				ComponentFactory.createComponent(DinoChangerGameComponent, [], true)
 			],
@@ -56,7 +58,7 @@ export class DinoData {
 		dynamicObjects.paused = true;
 
 		GameObjectFactory.createGameObject(dynamicObjects, 'Score',
-			TransformFactory.createTransform(new Vector2(100, 25), 200, 30, 0),
+			TransformFactory.createGlobalTransform(dynamicObjects.transform, new Vector2(100, 25), 200, 30, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('cssStyle', 'font-family: monospace; font-weight: bold; font-size: 20px; color: gray;')
@@ -72,7 +74,7 @@ export class DinoData {
 		);
 
 		const cloud1 = GameObjectFactory.createGameObject(dynamicObjects, 'Cloud1',
-			TransformFactory.createChildTransform(rootGameObject.transform, Vector2.zero, 50, 50, 0),
+			TransformFactory.createLocalTransform(rootGameObject.transform, Vector2.zero, 50, 50, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', `assets/_gameDino/img/cloud.png`)
@@ -85,7 +87,7 @@ export class DinoData {
 		);
 
 		const cloud2 = GameObjectFactory.createGameObject(dynamicObjects, 'Cloud2',
-			TransformFactory.createChildTransform(rootGameObject.transform, Vector2.zero, 50, 50, 0),
+			TransformFactory.createLocalTransform(rootGameObject.transform, Vector2.zero, 50, 50, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', `assets/_gameDino/img/cloud.png`)
@@ -98,7 +100,7 @@ export class DinoData {
 		);
 
 		const cloud3 = GameObjectFactory.createGameObject(dynamicObjects, 'Cloud3',
-			TransformFactory.createChildTransform(rootGameObject.transform, Vector2.zero, 50, 50, 0),
+			TransformFactory.createLocalTransform(rootGameObject.transform, Vector2.zero, 50, 50, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', `assets/_gameDino/img/cloud.png`)
@@ -111,7 +113,7 @@ export class DinoData {
 		);
 
 		const dino = GameObjectFactory.createGameObject(dynamicObjects, 'Dino',
-			TransformFactory.createTransform(new Vector2(50, 200), 50, 50, 0),
+			TransformFactory.createGlobalTransform(dynamicObjects.transform, new Vector2(50, 200), 50, 50, 0),
 			[
 				ComponentFactory.createComponent(AnimateGameComponent, [
 					new NameValuePair('slideWidth', 50),
@@ -136,7 +138,7 @@ export class DinoData {
 		);
 
 		const dinoBend = GameObjectFactory.createGameObject(dynamicObjects, 'Dino Bend',
-			TransformFactory.createTransform(new Vector2(55, 210), 55, 26, 0),
+			TransformFactory.createGlobalTransform(dynamicObjects.transform, new Vector2(55, 210), 55, 26, 0),
 			[
 				ComponentFactory.createComponent(AnimateGameComponent, [
 					new NameValuePair('slideWidth', 55),
@@ -158,7 +160,7 @@ export class DinoData {
 		);
 
 		const groundMover = GameObjectFactory.createGameObject(dynamicObjects, 'GroundMover',
-			TransformFactory.createTransform(new Vector2(0, 222), 0, 0, 0),
+			TransformFactory.createGlobalTransform(dynamicObjects.transform, new Vector2(0, 222), 0, 0, 0),
 			[
 				ComponentFactory.createComponent(GroundMoverComponent, [
 					new NameValuePair('speed', 400),
@@ -173,7 +175,7 @@ export class DinoData {
 		);
 
 		const cactus = GameObjectFactory.createGameObject(dynamicObjects, 'Cactus',
-			TransformFactory.createTransform(new Vector2(0, 222), 0, 0, 0),
+			TransformFactory.createGlobalTransform(dynamicObjects.transform, new Vector2(0, 222), 0, 0, 0),
 			[
 				ComponentFactory.createComponent(CactusMoverGameComponent, [
 					new NameValuePair('speed', 400),

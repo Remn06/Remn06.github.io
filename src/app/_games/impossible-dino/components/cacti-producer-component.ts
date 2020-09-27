@@ -13,6 +13,7 @@ import { GameScreen } from '../../../business/screen/game-screen';
 import { Expose } from 'class-transformer';
 import { CollisionGameComponent } from '../../../business/game-components/core/collision-game-component';
 import { Rect } from '../../../business/common/rect';
+import { GroundShifterComponent } from './ground-shifter-component';
 
 export class CactiProducerComponent extends GameComponent {
 	name: string = CactiProducerComponent.name;
@@ -52,10 +53,14 @@ export class CactiProducerComponent extends GameComponent {
 	}
 
 	private createCactus() {
+		const rootObject = this.gameObject.getComponent<GroundShifterComponent>(GroundShifterComponent.name).getLastGroundObject();
+
 		return GameObjectFactory.createGameObject(
-			this.gameObject,
+			rootObject,
 			'Cactus',
-			TransformFactory.createChildTransform(this.gameObject.transform, new Vector2(GameScreen.getDefaultScreen().width + 12, -23), 23, 46, 0),
+			TransformFactory.createGlobalTransform(
+				rootObject.transform,
+				new Vector2(GameScreen.getDefaultScreen().width + 12, rootObject.transform.position.y - 23), 23, 46, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/cactus.png'),

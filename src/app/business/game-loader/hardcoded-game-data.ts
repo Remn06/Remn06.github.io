@@ -36,7 +36,7 @@ export class HardcodedGameData {
 		const rootGameObject = GameObjectFactory.createGameObject(
 			null,
 			'root',
-			TransformFactory.createTransform(new Vector2(0, 0), 0, 0, 0),
+			TransformFactory.createGlobalTransform(null, new Vector2(0, 0), 0, 0, 0),
 			[],
 			true
 		);
@@ -44,7 +44,7 @@ export class HardcodedGameData {
 		GameObjectFactory.createGameObject(
 			rootGameObject,
 			'Button 1',
-			TransformFactory.createTransform(new Vector2(100, 25), 150, 25, 0),
+			TransformFactory.createGlobalTransform(rootGameObject.transform, new Vector2(100, 25), 150, 25, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('cssStyle', 'color: #FAA; font-size: 14px; padding-top: 5px; text-align: center; cursor: pointer'),
@@ -57,7 +57,7 @@ export class HardcodedGameData {
 
 		const deathStar = GameObjectFactory.createGameObject( rootGameObject,
 			'DeathStar',
-			TransformFactory.createTransform(new Vector2(100, 100), 100, 100, 0),
+			TransformFactory.createGlobalTransform(rootGameObject.transform, new Vector2(100, 100), 100, 100, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', 'assets/img/death-star.png'),
@@ -79,7 +79,7 @@ export class HardcodedGameData {
 		const satellite = GameObjectFactory.createGameObject(
 			deathStar,
 			'Satellite',
-			TransformFactory.createChildTransform(deathStar.transform, new Vector2(0, 70), 30, 30, 180),
+			TransformFactory.createLocalTransform(deathStar.transform, new Vector2(0, 70), 30, 30, 180),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', 'assets/img/cruiser.png')
@@ -94,7 +94,7 @@ export class HardcodedGameData {
 		const SatelliteFire = GameObjectFactory.createGameObject(
 			satellite,
 			'Satellite fire',
-			TransformFactory.createChildTransform(rootGameObject.transform, new Vector2(-15, 0), 2, 2, 0),
+			TransformFactory.createLocalTransform(rootGameObject.transform, new Vector2(-15, 0), 2, 2, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 				], true),
@@ -138,7 +138,7 @@ export class HardcodedGameData {
 		return GameObjectFactory.createGameObject(
 			rootGameObject,
 			'mosaic-silver',
-			TransformFactory.createChildTransform(rootGameObject.transform, new Vector2(x, y), 50, 50, 0),
+			TransformFactory.createLocalTransform(rootGameObject.transform, new Vector2(x, y), 50, 50, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', 'assets/img/mosaic-silver.png')
@@ -152,7 +152,7 @@ export class HardcodedGameData {
 		const starUnit = GameObjectFactory.createGameObject(
 			rootGameObject,
 			'Star Unit',
-			TransformFactory.createChildTransform(rootGameObject.transform, mosaic.transform.localPosition.clone(), 77, 77, 45),
+			TransformFactory.createLocalTransform(rootGameObject.transform, mosaic.transform.localPosition.clone(), 77, 77, 45),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', `${image}`)
@@ -173,7 +173,7 @@ export class HardcodedGameData {
 		const starUnitFire = GameObjectFactory.createGameObject(
 			starUnit,
 			'Star Unit fire',
-			TransformFactory.createChildTransform(rootGameObject.transform, new Vector2(0, 0), 2, 2, 0),
+			TransformFactory.createLocalTransform(rootGameObject.transform, new Vector2(0, 0), 2, 2, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 				], true),

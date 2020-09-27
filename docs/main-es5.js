@@ -1301,10 +1301,10 @@ __webpack_require__.r(__webpack_exports__);
 var TransformFactory = /** @class */ (function () {
     function TransformFactory() {
     }
-    TransformFactory.createTransform = function (position, width, height, rotation) {
+    TransformFactory.createGlobalTransform = function (position, width, height, rotation) {
         return _game_structure_transform__WEBPACK_IMPORTED_MODULE_0__["Transform"].instantiate(position, rotation, width, height);
     };
-    TransformFactory.createChildTransform = function (parent, localPosition, width, height, rotation) {
+    TransformFactory.createLocalTransform = function (parent, localPosition, width, height, rotation) {
         return _game_structure_transform__WEBPACK_IMPORTED_MODULE_0__["Transform"].instantiateChild(parent, localPosition, rotation, width, height);
     };
     return TransformFactory;
@@ -3336,7 +3336,7 @@ var Transform = /** @class */ (function () {
         t.height = height;
         return t;
     };
-    Transform.instantiateChild = function (parent, localPosition, rotation, width, height) {
+    Transform.instantiateLocal = function (parent, localPosition, rotation, width, height) {
         var t = new Transform_1();
         t.positionValue = parent.position.add(localPosition);
         t.localPositionValue = localPosition;

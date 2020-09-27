@@ -3,12 +3,13 @@ import { Vector2 } from '../../../business/common/vector2';
 import { Timer } from '../../../business/common/timer';
 import { GameScreen } from '../../../business/screen/game-screen';
 import { Expose } from 'class-transformer';
-import { VMath } from '../../../business/common/v-math';
 import { GameObject } from '../../../business/game-structure/game-object';
 import { GameObjectFactory } from '../../../business/core/factory/game-object-factory';
 import { TransformFactory } from '../../../business/core/factory/transform-factory';
 import { ComponentFactory } from '../../../business/core/factory/component-factory';
-import { HtmlRendererGameComponent } from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
+import {
+	HtmlRendererGameComponent
+} from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
 import { NameValuePair } from '../../../business/common/name-value-pair';
 import { GameObjectCollection } from '../../../business/core/game-object-collection';
 
@@ -22,6 +23,7 @@ export class GroundShifterComponent extends GameComponent {
 	margin: number;
 
 	private groundWidth = 550;
+	private groundObjects: GameObject[] = [];
 
 	start(): void {
 		this.createGround();
@@ -31,29 +33,39 @@ export class GroundShifterComponent extends GameComponent {
 	}
 
 	update(): void {
-		const children = this.gameObject.children.slice();
-		for (let i = 0; i < children.length; i++) {
-			if (children[i].name === 'Dino') {
-				continue;
+		const shift = this.speed * Timer.delta;
+		const resGroundObjects = [];
+
+		for (let i = 0; i < this.groundObjects.length; i++) {
+			if (!this.shiftGroundAndRemove(this.groundObjects[i], shift)) {
+				resGroundObjects.push(this.groundObjects[i]);
 			}
-			this.shiftGround(children[i]);
 		}
 
-		if (this.gameObject.children.length === 0) {
-			this.createGroundGameObject(this.groundWidth / 2);
+		if (resGroundObjects.length === 0) {
+			resGroundObjects.push(this.createGroundGameObject(this.groundWidth / 2));
 		}
-		while (this.gameObject.children[this.gameObject.children.length - 1].transform.toRect().right < GameScreen.getDefaultScreen().width) {
-			this.createGroundGameObject(this.gameObject.children[this.gameObject.children.length - 1].transform.localPosition.x + this.groundWidth);
+
+		while (resGroundObjects[resGroundObjects.length - 1].transform.toRect().right < GameScreen.getDefaultScreen().width) {
+			resGroundObjects.push(
+				this.createGroundGameObject(
+					resGroundObjects[resGroundObjects.length - 1].transform.localPosition.x + this.groundWidth)
+			);
 		}
+		this.groundObjects = resGroundObjects;
 	}
 
 	destroy(): void {
 	}
 
+	public getLastGroundObject(): GameObject {
+		return this.groundObjects[this.groundObjects.length - 1];
+	}
+
 	private createGround(): void {
 		const groundNumber = Math.ceil(GameScreen.getDefaultScreen().width / this.groundWidth);
 		for (let i = 0; i < groundNumber; i++) {
-			this.createGroundGameObject(this.groundWidth / 2 + this.groundWidth * i);
+			this.groundObjects.push(this.createGroundGameObject(this.groundWidth / 2 + this.groundWidth * i));
 		}
 	}
 
@@ -61,7 +73,7 @@ export class GroundShifterComponent extends GameComponent {
 		return GameObjectFactory.createGameObject(
 			this.gameObject,
 			'Ground',
-			TransformFactory.createChildTransform(this.gameObject.transform, new Vector2(x, 0), 550, 8, 0),
+			TransformFactory.createLocalTransform(this.gameObject.transform, new Vector2(x, 0), 550, 8, 0),
 			[
 				ComponentFactory.createComponent(HtmlRendererGameComponent, [
 					new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/ground.png'),
@@ -72,16 +84,17 @@ export class GroundShifterComponent extends GameComponent {
 		);
 	}
 
-	private shiftGround(groundObject: GameObject): void {
+	private shiftGroundAndRemove(groundObject: GameObject, shift: number): boolean {
 		const position = groundObject.transform.localPosition;
-		const newPosition = new Vector2(position.x - this.speed * Timer.delta, position.y);
+		const newPosition = new Vector2(position.x - shift, position.y);
 		const groundWidth = groundObject.transform.width;
 
 		groundObject.transform.localPosition = newPosition;
 
 		if (newPosition.x <= (0 - groundWidth / 2) ) {
 			GameObjectCollection.remove(groundObject);
+			return true;
 		}
-
+		return false;
 	}
 }
