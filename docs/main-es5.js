@@ -92,6 +92,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
 /* harmony import */ var _business_common_rect__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../business/common/rect */ "./src/app/business/common/rect.ts");
+/* harmony import */ var _ground_shifter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./ground-shifter-component */ "./src/app/_games/impossible-dino/components/ground-shifter-component.ts");
+
 
 
 
@@ -132,7 +134,8 @@ var CactiProducerComponent = /** @class */ (function (_super) {
         this.nextCactusTime = _business_common_timer__WEBPACK_IMPORTED_MODULE_2__["Timer"].getTime() + this.frequency + shiftInterval * ((sign === 0) ? 1 : -1);
     };
     CactiProducerComponent.prototype.createCactus = function () {
-        return _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_5__["GameObjectFactory"].createGameObject(this.gameObject, 'Cactus', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_6__["TransformFactory"].createChildTransform(this.gameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_3__["Vector2"](_business_screen_game_screen__WEBPACK_IMPORTED_MODULE_10__["GameScreen"].getDefaultScreen().width + 12, -23), 23, 46, 0), [
+        var rootObject = this.gameObject.getComponent(_ground_shifter_component__WEBPACK_IMPORTED_MODULE_14__["GroundShifterComponent"].name).getLastGroundObject();
+        return _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_5__["GameObjectFactory"].createGameObject(rootObject, 'Cactus', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_6__["TransformFactory"].createGlobalTransform(rootObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_3__["Vector2"](_business_screen_game_screen__WEBPACK_IMPORTED_MODULE_10__["GameScreen"].getDefaultScreen().width + 12, rootObject.transform.position.y - 23), 23, 46, 0), [
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('backgroundImage', 'assets/games/impossibleDino/img/cactus.png'),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('cssStyle', '')
@@ -270,7 +273,7 @@ var DinoClockGameComponent = /** @class */ (function (_super) {
         return _this;
     }
     DinoClockGameComponent.prototype.start = function () {
-        var dinoClockCircleObj = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_2__["GameObjectFactory"].createGameObject(this.gameObject, 'DinoClockCircleObj', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_3__["TransformFactory"].createChildTransform(this.gameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_4__["Vector2"](0, 0), 100, 100, 0), [
+        var dinoClockCircleObj = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_2__["GameObjectFactory"].createGameObject(this.gameObject, 'DinoClockCircleObj', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_3__["TransformFactory"].createLocalTransform(this.gameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_4__["Vector2"](0, 0), 100, 100, 0), [
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_5__["ComponentFactory"].createComponent(_business_game_components_svg_renderer_game_component_svg_renderer_game_component__WEBPACK_IMPORTED_MODULE_6__["SvgRendererGameComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('type', _business_game_components_svg_renderer_game_component_svg_element_type__WEBPACK_IMPORTED_MODULE_8__["SvgElementType"].Circle),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('x', 0),
@@ -281,7 +284,7 @@ var DinoClockGameComponent = /** @class */ (function (_super) {
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('strokeDasharray', '10 5')
             ])
         ], true);
-        var dinoClockBigArrow = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_2__["GameObjectFactory"].createGameObject(this.gameObject, 'DinoClockBigArrow', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_3__["TransformFactory"].createChildTransform(this.gameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_4__["Vector2"](0, 0), 100, 100, 10), [
+        var dinoClockBigArrow = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_2__["GameObjectFactory"].createGameObject(this.gameObject, 'DinoClockBigArrow', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_3__["TransformFactory"].createLocalTransform(this.gameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_4__["Vector2"](0, 0), 100, 100, 10), [
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_5__["ComponentFactory"].createComponent(_business_game_components_svg_renderer_game_component_svg_renderer_game_component__WEBPACK_IMPORTED_MODULE_6__["SvgRendererGameComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('type', _business_game_components_svg_renderer_game_component_svg_element_type__WEBPACK_IMPORTED_MODULE_8__["SvgElementType"].Path),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('x', 0),
@@ -300,7 +303,7 @@ var DinoClockGameComponent = /** @class */ (function (_super) {
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('rotation', 80),
             ])
         ], true);
-        var dinoClockSmallArrow = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_2__["GameObjectFactory"].createGameObject(this.gameObject, 'DinoClockSmallArrow', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_3__["TransformFactory"].createChildTransform(this.gameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_4__["Vector2"](0, 0), 100, 100, 10), [
+        var dinoClockSmallArrow = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_2__["GameObjectFactory"].createGameObject(this.gameObject, 'DinoClockSmallArrow', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_3__["TransformFactory"].createLocalTransform(this.gameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_4__["Vector2"](0, 0), 100, 100, 10), [
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_5__["ComponentFactory"].createComponent(_business_game_components_svg_renderer_game_component_svg_renderer_game_component__WEBPACK_IMPORTED_MODULE_6__["SvgRendererGameComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('type', _business_game_components_svg_renderer_game_component_svg_element_type__WEBPACK_IMPORTED_MODULE_8__["SvgElementType"].Path),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_7__["NameValuePair"]('x', 0),
@@ -411,6 +414,67 @@ var DinoJumperComponent = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/app/_games/impossible-dino/components/dino-score-counter-component.ts":
+/*!***********************************************************************************!*\
+  !*** ./src/app/_games/impossible-dino/components/dino-score-counter-component.ts ***!
+  \***********************************************************************************/
+/*! exports provided: DinoScoreCounterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DinoScoreCounterComponent", function() { return DinoScoreCounterComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../business/game-components/core/base/game-component */ "./src/app/business/game-components/core/base/game-component.ts");
+/* harmony import */ var _business_common_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../business/common/timer */ "./src/app/business/common/timer.ts");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../business/core/game-object-collection */ "./src/app/business/core/game-object-collection.ts");
+/* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
+
+
+
+
+
+
+var DinoScoreCounterComponent = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](DinoScoreCounterComponent, _super);
+    function DinoScoreCounterComponent() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.name = DinoScoreCounterComponent.name;
+        _this.score = 0;
+        _this.hiScore = 0;
+        return _this;
+    }
+    DinoScoreCounterComponent.prototype.start = function () {
+        var dino = _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_4__["GameObjectCollection"].findDescendantByName('Dino', _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_4__["GameObjectCollection"].root(this.gameObject));
+        this.dinoColliderComponent = dino.getComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_5__["CollisionGameComponent"].name);
+    };
+    DinoScoreCounterComponent.prototype.draw = function () {
+        this.gameObject.text = 'HI: ' + Math.ceil(this.hiScore) + ' : ' + Math.ceil(this.score);
+    };
+    DinoScoreCounterComponent.prototype.update = function () {
+        this.score = this.score + this.counterSpeed * _business_common_timer__WEBPACK_IMPORTED_MODULE_2__["Timer"].delta;
+        if (this.dinoColliderComponent.collisions.length > 0) {
+            this.score = 0;
+        }
+        if (this.score > this.hiScore) {
+            this.hiScore = this.score;
+        }
+    };
+    DinoScoreCounterComponent.prototype.destroy = function () {
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_3__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+    ], DinoScoreCounterComponent.prototype, "counterSpeed", void 0);
+    return DinoScoreCounterComponent;
+}(_business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"]));
+
+
+
+/***/ }),
+
 /***/ "./src/app/_games/impossible-dino/components/ground-shifter-component.ts":
 /*!*******************************************************************************!*\
   !*** ./src/app/_games/impossible-dino/components/ground-shifter-component.ts ***!
@@ -452,6 +516,7 @@ var GroundShifterComponent = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.name = GroundShifterComponent.name;
         _this.groundWidth = 550;
+        _this.groundObjects = [];
         return _this;
     }
     GroundShifterComponent.prototype.start = function () {
@@ -460,44 +525,50 @@ var GroundShifterComponent = /** @class */ (function (_super) {
     GroundShifterComponent.prototype.draw = function () {
     };
     GroundShifterComponent.prototype.update = function () {
-        var children = this.gameObject.children.slice();
-        for (var i = 0; i < children.length; i++) {
-            if (children[i].name === 'Dino') {
-                continue;
+        var shift = this.speed * _business_common_timer__WEBPACK_IMPORTED_MODULE_3__["Timer"].delta;
+        var resGroundObjects = [];
+        for (var i = 0; i < this.groundObjects.length; i++) {
+            if (!this.shiftGroundAndRemove(this.groundObjects[i], shift)) {
+                resGroundObjects.push(this.groundObjects[i]);
             }
-            this.shiftGround(children[i]);
         }
-        if (this.gameObject.children.length === 0) {
-            this.createGroundGameObject(this.groundWidth / 2);
+        if (resGroundObjects.length === 0) {
+            resGroundObjects.push(this.createGroundGameObject(this.groundWidth / 2));
         }
-        while (this.gameObject.children[this.gameObject.children.length - 1].transform.toRect().right < _business_screen_game_screen__WEBPACK_IMPORTED_MODULE_4__["GameScreen"].getDefaultScreen().width) {
-            this.createGroundGameObject(this.gameObject.children[this.gameObject.children.length - 1].transform.localPosition.x + this.groundWidth);
+        while (resGroundObjects[resGroundObjects.length - 1].transform.toRect().right < _business_screen_game_screen__WEBPACK_IMPORTED_MODULE_4__["GameScreen"].getDefaultScreen().width) {
+            resGroundObjects.push(this.createGroundGameObject(resGroundObjects[resGroundObjects.length - 1].transform.localPosition.x + this.groundWidth));
         }
+        this.groundObjects = resGroundObjects;
     };
     GroundShifterComponent.prototype.destroy = function () {
+    };
+    GroundShifterComponent.prototype.getLastGroundObject = function () {
+        return this.groundObjects[this.groundObjects.length - 1];
     };
     GroundShifterComponent.prototype.createGround = function () {
         var groundNumber = Math.ceil(_business_screen_game_screen__WEBPACK_IMPORTED_MODULE_4__["GameScreen"].getDefaultScreen().width / this.groundWidth);
         for (var i = 0; i < groundNumber; i++) {
-            this.createGroundGameObject(this.groundWidth / 2 + this.groundWidth * i);
+            this.groundObjects.push(this.createGroundGameObject(this.groundWidth / 2 + this.groundWidth * i));
         }
     };
     GroundShifterComponent.prototype.createGroundGameObject = function (x) {
-        return _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(this.gameObject, 'Ground', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createChildTransform(this.gameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](x, 0), 550, 8, 0), [
+        return _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(this.gameObject, 'Ground', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createLocalTransform(this.gameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](x, 0), 550, 8, 0), [
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_8__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_9__["HtmlRendererGameComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_10__["NameValuePair"]('backgroundImage', 'assets/games/impossibleDino/img/ground.png'),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_10__["NameValuePair"]('cssStyle', '')
             ], true)
         ], true);
     };
-    GroundShifterComponent.prototype.shiftGround = function (groundObject) {
+    GroundShifterComponent.prototype.shiftGroundAndRemove = function (groundObject, shift) {
         var position = groundObject.transform.localPosition;
-        var newPosition = new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](position.x - this.speed * _business_common_timer__WEBPACK_IMPORTED_MODULE_3__["Timer"].delta, position.y);
+        var newPosition = new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](position.x - shift, position.y);
         var groundWidth = groundObject.transform.width;
         groundObject.transform.localPosition = newPosition;
         if (newPosition.x <= (0 - groundWidth / 2)) {
             _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_11__["GameObjectCollection"].remove(groundObject);
+            return true;
         }
+        return false;
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(class_transformer__WEBPACK_IMPORTED_MODULE_5__["Expose"])(),
@@ -538,6 +609,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
 /* harmony import */ var _business_common_rect__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../business/common/rect */ "./src/app/business/common/rect.ts");
 /* harmony import */ var _components_dino_clock_game_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/dino-clock-game-component */ "./src/app/_games/impossible-dino/components/dino-clock-game-component.ts");
+/* harmony import */ var _components_dino_score_counter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/dino-score-counter-component */ "./src/app/_games/impossible-dino/components/dino-score-counter-component.ts");
+
 
 
 
@@ -556,7 +629,7 @@ var ImpossibleDinoData = /** @class */ (function () {
     function ImpossibleDinoData() {
     }
     ImpossibleDinoData.getData = function () {
-        var rootGameObject = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(null, 'root', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createTransform(new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](0, 0), 0, 0, 0), [], true);
+        var rootGameObject = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(null, 'root', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createGlobalTransform(null, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](0, 0), 0, 0, 0), [], true);
         /*const background = GameObjectFactory.createGameObject(
             rootGameObject,
             'Background',
@@ -570,7 +643,7 @@ var ImpossibleDinoData = /** @class */ (function () {
             ],
             true
         );*/
-        var cloud = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'Cloud', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createTransform(new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](400, 170), 46, 13, 0), [
+        var cloud = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'Cloud', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createGlobalTransform(rootGameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](400, 170), 46, 13, 0), [
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_4__["HtmlRendererGameComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('backgroundImage', 'assets/games/impossibleDino/img/cloud.png'),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('cssStyle', ''),
@@ -581,7 +654,7 @@ var ImpossibleDinoData = /** @class */ (function () {
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('skyHeight', 170)
             ])
         ], true);
-        var cloud2 = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'Cloud2', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createTransform(new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](500, 150), 46, 13, 0), [
+        var cloud2 = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'Cloud2', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createGlobalTransform(rootGameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](500, 150), 46, 13, 0), [
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_4__["HtmlRendererGameComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('backgroundImage', 'assets/games/impossibleDino/img/cloud.png'),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('cssStyle', '')
@@ -592,7 +665,7 @@ var ImpossibleDinoData = /** @class */ (function () {
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('skyHeight', 170)
             ])
         ], true);
-        var cloud3 = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'Cloud3', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createTransform(new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](700, 130), 46, 13, 0), [
+        var cloud3 = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'Cloud3', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createGlobalTransform(rootGameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](700, 130), 46, 13, 0), [
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_4__["HtmlRendererGameComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('backgroundImage', 'assets/games/impossibleDino/img/cloud.png'),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('cssStyle', '')
@@ -603,7 +676,7 @@ var ImpossibleDinoData = /** @class */ (function () {
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('skyHeight', 170)
             ])
         ], true);
-        var groundHolder = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'GroundHolder', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createTransform(new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](0, 269), 8, 8, 0), [
+        var groundHolder = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'GroundHolder', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createGlobalTransform(rootGameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](0, 269), 8, 8, 0), [
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_ground_shifter_component__WEBPACK_IMPORTED_MODULE_8__["GroundShifterComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('speed', 200),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('margin', 100),
@@ -614,7 +687,7 @@ var ImpossibleDinoData = /** @class */ (function () {
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('shiftIntervalTo', 1000)
             ], true)
         ], true);
-        var dino = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(groundHolder, 'Dino', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createChildTransform(groundHolder.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](50, -19), 40, 43, 0), [
+        var dino = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(groundHolder, 'Dino', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createLocalTransform(groundHolder.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](50, -19), 40, 43, 0), [
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_4__["HtmlRendererGameComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('backgroundImage', 'assets/games/impossibleDino/img/dino-step-run.png'),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('cssStyle', '')
@@ -634,9 +707,15 @@ var ImpossibleDinoData = /** @class */ (function () {
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](20, 0, 20, 15), new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](0, 15, 27, 20), new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](10, 36, 14, 6)])
             ])
         ], true);
-        var svgDinoClockRootObj = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'SvgDinoClockRootObj', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createTransform(new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](30, 30), 100, 100, 0), [
-            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_dino_clock_game_component__WEBPACK_IMPORTED_MODULE_13__["DinoClockGameComponent"], [
-                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](20, 0, 20, 15), new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](0, 15, 27, 20), new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](10, 36, 14, 6)])
+        var svgDinoClockRootObj = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'SvgDinoClockRootObj', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createGlobalTransform(rootGameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](30, 30), 100, 100, 0), [
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_dino_clock_game_component__WEBPACK_IMPORTED_MODULE_13__["DinoClockGameComponent"], [])
+        ], true);
+        var dinoScore = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(svgDinoClockRootObj, 'dinoScore', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createLocalTransform(svgDinoClockRootObj.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](110, 0), 150, 20, 0), [
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_4__["HtmlRendererGameComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('cssStyle', 'font-family: \'Tangerine\', serif; font-size: 20px;')
+            ], true),
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_dino_score_counter_component__WEBPACK_IMPORTED_MODULE_14__["DinoScoreCounterComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('counterSpeed', 10)
             ])
         ], true);
         return rootGameObject;
@@ -1301,11 +1380,11 @@ __webpack_require__.r(__webpack_exports__);
 var TransformFactory = /** @class */ (function () {
     function TransformFactory() {
     }
-    TransformFactory.createGlobalTransform = function (position, width, height, rotation) {
-        return _game_structure_transform__WEBPACK_IMPORTED_MODULE_0__["Transform"].instantiate(position, rotation, width, height);
+    TransformFactory.createGlobalTransform = function (parent, globalPosition, width, height, rotation) {
+        return _game_structure_transform__WEBPACK_IMPORTED_MODULE_0__["Transform"].instantiateGlobal(parent, globalPosition, rotation, width, height);
     };
     TransformFactory.createLocalTransform = function (parent, localPosition, width, height, rotation) {
-        return _game_structure_transform__WEBPACK_IMPORTED_MODULE_0__["Transform"].instantiateChild(parent, localPosition, rotation, width, height);
+        return _game_structure_transform__WEBPACK_IMPORTED_MODULE_0__["Transform"].instantiateLocal(parent, localPosition, rotation, width, height);
     };
     return TransformFactory;
 }());
@@ -2513,7 +2592,7 @@ var SparksComponent = /** @class */ (function (_super) {
         var position = this.gameObject.transform.position.add(_common_v_math__WEBPACK_IMPORTED_MODULE_5__["VMath"].multiply(direction, _common_v_math__WEBPACK_IMPORTED_MODULE_5__["VMath"].randIntMaxIncluded(0, this.initScatter)));
         position = position.add(this.shift);
         var root = _core_game_object_collection__WEBPACK_IMPORTED_MODULE_11__["GameObjectCollection"].root(this.gameObject);
-        var gameObject = _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(root, 'spark' + index, _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createChildTransform(root.transform, position, 5, 5, 0), [
+        var gameObject = _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(root, 'spark' + index, _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createLocalTransform(root.transform, position, 5, 5, 0), [
             _core_factory_component_factory__WEBPACK_IMPORTED_MODULE_8__["ComponentFactory"].createComponent(_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_9__["HtmlRendererGameComponent"], [
                 new _common_name_value_pair__WEBPACK_IMPORTED_MODULE_10__["NameValuePair"]('cssStyle', 'color: #FF0000; font-size: 10px;')
             ])
@@ -2900,20 +2979,20 @@ var HardcodedGameData = /** @class */ (function () {
         return new _game_structure_game_scene__WEBPACK_IMPORTED_MODULE_0__["GameScene"]('Main Scene', rootGameObject);
     };
     HardcodedGameData.createStarShipGameObjects = function () {
-        var rootGameObject = _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(null, 'root', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createTransform(new _common_vector2__WEBPACK_IMPORTED_MODULE_1__["Vector2"](0, 0), 0, 0, 0), [], true);
-        _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(rootGameObject, 'Button 1', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createTransform(new _common_vector2__WEBPACK_IMPORTED_MODULE_1__["Vector2"](100, 25), 150, 25, 0), [
+        var rootGameObject = _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(null, 'root', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createGlobalTransform(null, new _common_vector2__WEBPACK_IMPORTED_MODULE_1__["Vector2"](0, 0), 0, 0, 0), [], true);
+        _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(rootGameObject, 'Button 1', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createGlobalTransform(rootGameObject.transform, new _common_vector2__WEBPACK_IMPORTED_MODULE_1__["Vector2"](100, 25), 150, 25, 0), [
             _core_factory_component_factory__WEBPACK_IMPORTED_MODULE_4__["ComponentFactory"].createComponent(_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [
                 new _common_name_value_pair__WEBPACK_IMPORTED_MODULE_2__["NameValuePair"]('cssStyle', 'color: #FAA; font-size: 14px; padding-top: 5px; text-align: center; cursor: pointer'),
                 new _common_name_value_pair__WEBPACK_IMPORTED_MODULE_2__["NameValuePair"]('backgroundImage', 'assets/img/button-one.png')
             ], true)
         ], true, 'BUTTON ONE!!!');
-        var deathStar = _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(rootGameObject, 'DeathStar', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createTransform(new _common_vector2__WEBPACK_IMPORTED_MODULE_1__["Vector2"](100, 100), 100, 100, 0), [
+        var deathStar = _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(rootGameObject, 'DeathStar', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createGlobalTransform(rootGameObject.transform, new _common_vector2__WEBPACK_IMPORTED_MODULE_1__["Vector2"](100, 100), 100, 100, 0), [
             _core_factory_component_factory__WEBPACK_IMPORTED_MODULE_4__["ComponentFactory"].createComponent(_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [
                 new _common_name_value_pair__WEBPACK_IMPORTED_MODULE_2__["NameValuePair"]('backgroundImage', 'assets/img/death-star.png'),
                 new _common_name_value_pair__WEBPACK_IMPORTED_MODULE_2__["NameValuePair"]('cssStyle', 'color: white; font-size: 40px;')
             ], true),
         ], true);
-        var satellite = _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(deathStar, 'Satellite', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createChildTransform(deathStar.transform, new _common_vector2__WEBPACK_IMPORTED_MODULE_1__["Vector2"](0, 70), 30, 30, 180), [
+        var satellite = _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(deathStar, 'Satellite', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createLocalTransform(deathStar.transform, new _common_vector2__WEBPACK_IMPORTED_MODULE_1__["Vector2"](0, 70), 30, 30, 180), [
             _core_factory_component_factory__WEBPACK_IMPORTED_MODULE_4__["ComponentFactory"].createComponent(_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [
                 new _common_name_value_pair__WEBPACK_IMPORTED_MODULE_2__["NameValuePair"]('backgroundImage', 'assets/img/cruiser.png')
             ], true),
@@ -2921,7 +3000,7 @@ var HardcodedGameData = /** @class */ (function () {
                 new _common_name_value_pair__WEBPACK_IMPORTED_MODULE_2__["NameValuePair"]('rotation', 90)
             ], true),
         ], true);
-        var SatelliteFire = _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(satellite, 'Satellite fire', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createChildTransform(rootGameObject.transform, new _common_vector2__WEBPACK_IMPORTED_MODULE_1__["Vector2"](-15, 0), 2, 2, 0), [
+        var SatelliteFire = _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(satellite, 'Satellite fire', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createLocalTransform(rootGameObject.transform, new _common_vector2__WEBPACK_IMPORTED_MODULE_1__["Vector2"](-15, 0), 2, 2, 0), [
             _core_factory_component_factory__WEBPACK_IMPORTED_MODULE_4__["ComponentFactory"].createComponent(_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [], true),
             _core_factory_component_factory__WEBPACK_IMPORTED_MODULE_4__["ComponentFactory"].createComponent(_game_components_user_sparks_component__WEBPACK_IMPORTED_MODULE_5__["SparksComponent"], [
                 new _common_name_value_pair__WEBPACK_IMPORTED_MODULE_2__["NameValuePair"]('active', true),
@@ -2952,14 +3031,14 @@ var HardcodedGameData = /** @class */ (function () {
         return rootGameObject;
     };
     HardcodedGameData.createMosaic = function (x, y, rootGameObject) {
-        return _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(rootGameObject, 'mosaic-silver', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createChildTransform(rootGameObject.transform, new _common_vector2__WEBPACK_IMPORTED_MODULE_1__["Vector2"](x, y), 50, 50, 0), [
+        return _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(rootGameObject, 'mosaic-silver', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createLocalTransform(rootGameObject.transform, new _common_vector2__WEBPACK_IMPORTED_MODULE_1__["Vector2"](x, y), 50, 50, 0), [
             _core_factory_component_factory__WEBPACK_IMPORTED_MODULE_4__["ComponentFactory"].createComponent(_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [
                 new _common_name_value_pair__WEBPACK_IMPORTED_MODULE_2__["NameValuePair"]('backgroundImage', 'assets/img/mosaic-silver.png')
             ], true)
         ], true);
     };
     HardcodedGameData.createStarUnit = function (rootGameObject, mosaic, image, rotateSpeed) {
-        var starUnit = _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(rootGameObject, 'Star Unit', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createChildTransform(rootGameObject.transform, mosaic.transform.localPosition.clone(), 77, 77, 45), [
+        var starUnit = _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(rootGameObject, 'Star Unit', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createLocalTransform(rootGameObject.transform, mosaic.transform.localPosition.clone(), 77, 77, 45), [
             _core_factory_component_factory__WEBPACK_IMPORTED_MODULE_4__["ComponentFactory"].createComponent(_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [
                 new _common_name_value_pair__WEBPACK_IMPORTED_MODULE_2__["NameValuePair"]('backgroundImage', "" + image)
             ], true),
@@ -2969,7 +3048,7 @@ var HardcodedGameData = /** @class */ (function () {
                 new _common_name_value_pair__WEBPACK_IMPORTED_MODULE_2__["NameValuePair"]('rotateSpeed', rotateSpeed)
             ], true)
         ], true);
-        var starUnitFire = _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(starUnit, 'Star Unit fire', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createChildTransform(rootGameObject.transform, new _common_vector2__WEBPACK_IMPORTED_MODULE_1__["Vector2"](0, 0), 2, 2, 0), [
+        var starUnitFire = _core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_6__["GameObjectFactory"].createGameObject(starUnit, 'Star Unit fire', _core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_7__["TransformFactory"].createLocalTransform(rootGameObject.transform, new _common_vector2__WEBPACK_IMPORTED_MODULE_1__["Vector2"](0, 0), 2, 2, 0), [
             _core_factory_component_factory__WEBPACK_IMPORTED_MODULE_4__["ComponentFactory"].createComponent(_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [], true),
             _core_factory_component_factory__WEBPACK_IMPORTED_MODULE_4__["ComponentFactory"].createComponent(_game_components_user_sparks_component__WEBPACK_IMPORTED_MODULE_5__["SparksComponent"], [
                 new _common_name_value_pair__WEBPACK_IMPORTED_MODULE_2__["NameValuePair"]('active', true),
@@ -3153,7 +3232,6 @@ var GameObject = /** @class */ (function () {
     }
     GameObject_1 = GameObject;
     GameObject.prototype.getComponent = function (componentName) {
-        if (componentName === void 0) { componentName = null; }
         return this.components.find(function (c) { return c.name === componentName; });
     };
     GameObject.prototype.start = function () {
@@ -3326,10 +3404,10 @@ var Transform = /** @class */ (function () {
         this.gameObject = null;
     }
     Transform_1 = Transform;
-    Transform.instantiate = function (position, rotation, width, height) {
+    Transform.instantiateGlobal = function (parent, globalPosition, rotation, width, height) {
         var t = new Transform_1();
-        t.positionValue = position;
-        t.localPositionValue = position;
+        t.positionValue = globalPosition;
+        t.localPositionValue = parent == null ? globalPosition : globalPosition.subtract(parent.position);
         t.rotationValue = rotation;
         t.localRotationValue = rotation;
         t.width = width;
