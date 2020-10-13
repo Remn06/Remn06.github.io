@@ -54,25 +54,46 @@ export class CactiProducerComponent extends GameComponent {
 
 	private createCactus() {
 		const rootObject = this.gameObject.getComponent<GroundShifterComponent>(GroundShifterComponent.name).getLastGroundObject();
+		const cactusType = VMath.randIntMaxIncluded(0, 1);
+		if(cactusType === 0) {
 
-		return GameObjectFactory.createGameObject(
-			rootObject,
-			'Cactus',
-			TransformFactory.createGlobalTransform(
-				rootObject.transform,
-				new Vector2(GameScreen.getDefaultScreen().width + 12, rootObject.transform.position.y - 23), 23, 46, 0),
-			[
-				ComponentFactory.createComponent(HtmlRendererGameComponent, [
-					new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/cactus.png'),
-					new NameValuePair('cssStyle', '')
-				], true),
-				ComponentFactory.createComponent(CollisionGameComponent, [
-					new NameValuePair('meshCollider', [new Rect(0, 8, 5, 13), new Rect(5, 0, 5, 32), new Rect(10, 4, 5, 11)])
-				])
-			],
-			true
-		);
+			return GameObjectFactory.createGameObject(
+				rootObject,
+				'Cactus',
+				TransformFactory.createGlobalTransform(
+					rootObject.transform,
+					new Vector2(GameScreen.getDefaultScreen().width + 12, rootObject.transform.position.y - 23), 23, 46, 0),
+				[
+					ComponentFactory.createComponent(HtmlRendererGameComponent, [
+						new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/cactus.png'),
+						new NameValuePair('cssStyle', '')
+					], true),
+					ComponentFactory.createComponent(CollisionGameComponent, [
+						new NameValuePair('meshCollider', [new Rect(0, 8, 5, 13), new Rect(5, 0, 5, 32), new Rect(10, 4, 5, 11)])
+					])
+				],
+				true
+			);
+		} else {
 
+			return GameObjectFactory.createGameObject(
+				rootObject,
+				'SmallCactus',
+				TransformFactory.createGlobalTransform(
+					rootObject.transform,
+					new Vector2(GameScreen.getDefaultScreen().width + 16, rootObject.transform.position.y - 16), 32, 32, 0),
+				[
+					ComponentFactory.createComponent(HtmlRendererGameComponent, [
+						new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/small-cactus.png'),
+						new NameValuePair('cssStyle', '')
+					], true),
+					ComponentFactory.createComponent(CollisionGameComponent, [
+						new NameValuePair('meshCollider', [])
+					])
+				],
+				true
+			);
+		}
 	}
 
 }
