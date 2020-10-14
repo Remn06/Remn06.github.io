@@ -93,6 +93,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
 /* harmony import */ var _business_common_rect__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../business/common/rect */ "./src/app/business/common/rect.ts");
 /* harmony import */ var _ground_shifter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./ground-shifter-component */ "./src/app/_games/impossible-dino/components/ground-shifter-component.ts");
+/* harmony import */ var _cactus_explosion_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./cactus-explosion-component */ "./src/app/_games/impossible-dino/components/cactus-explosion-component.ts");
+
 
 
 
@@ -112,9 +114,10 @@ var CactiProducerComponent = /** @class */ (function (_super) {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](CactiProducerComponent, _super);
     function CactiProducerComponent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.name = CactiProducerComponent.name;
+        _this.name = CactiProducerComponent_1.name;
         return _this;
     }
+    CactiProducerComponent_1 = CactiProducerComponent;
     CactiProducerComponent.prototype.start = function () {
         this.calcNextCactusTime();
     };
@@ -148,17 +151,21 @@ var CactiProducerComponent = /** @class */ (function (_super) {
             ], true);
         }
         else {
-            return _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_5__["GameObjectFactory"].createGameObject(rootObject, 'SmallCactus', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_6__["TransformFactory"].createGlobalTransform(rootObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_3__["Vector2"](_business_screen_game_screen__WEBPACK_IMPORTED_MODULE_10__["GameScreen"].getDefaultScreen().width + 16, rootObject.transform.position.y - 16), 32, 32, 0), [
+            return _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_5__["GameObjectFactory"].createGameObject(rootObject, 'SmallCactus', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_6__["TransformFactory"].createGlobalTransform(rootObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_3__["Vector2"](_business_screen_game_screen__WEBPACK_IMPORTED_MODULE_10__["GameScreen"].getDefaultScreen().width + 16, rootObject.transform.position.y - 16), 36, 43, 0), [
                 _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [
                     new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('backgroundImage', 'assets/games/impossibleDino/img/small-cactus.png'),
                     new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('cssStyle', '')
                 ], true),
                 _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_12__["CollisionGameComponent"], [
-                    new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('meshCollider', [])
+                    new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](0, 7, 10, 12), new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](9, 0, 15, 44), new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](24, 12, 11, 21)])
+                ]),
+                _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_cactus_explosion_component__WEBPACK_IMPORTED_MODULE_15__["CactusExplosionComponent"], [
+                    new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('image', 'small-cactus')
                 ])
             ], true);
         }
     };
+    var CactiProducerComponent_1;
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(class_transformer__WEBPACK_IMPORTED_MODULE_11__["Expose"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
@@ -171,7 +178,110 @@ var CactiProducerComponent = /** @class */ (function (_super) {
         Object(class_transformer__WEBPACK_IMPORTED_MODULE_11__["Expose"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
     ], CactiProducerComponent.prototype, "shiftIntervalTo", void 0);
+    CactiProducerComponent = CactiProducerComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_11__["Exclude"])()
+    ], CactiProducerComponent);
     return CactiProducerComponent;
+}(_business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/_games/impossible-dino/components/cactus-explosion-component.ts":
+/*!*********************************************************************************!*\
+  !*** ./src/app/_games/impossible-dino/components/cactus-explosion-component.ts ***!
+  \*********************************************************************************/
+/*! exports provided: CactusExplosionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CactusExplosionComponent", function() { return CactusExplosionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../business/game-components/core/base/game-component */ "./src/app/business/game-components/core/base/game-component.ts");
+/* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../business/core/factory/game-object-factory */ "./src/app/business/core/factory/game-object-factory.ts");
+/* harmony import */ var _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../business/core/factory/transform-factory */ "./src/app/business/core/factory/transform-factory.ts");
+/* harmony import */ var _business_common_vector2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../business/common/vector2 */ "./src/app/business/common/vector2.ts");
+/* harmony import */ var _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../business/core/factory/component-factory */ "./src/app/business/core/factory/component-factory.ts");
+/* harmony import */ var _business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component */ "./src/app/business/game-components/core/html-renderer-game-component/html-renderer-game-component.ts");
+/* harmony import */ var _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../business/common/name-value-pair */ "./src/app/business/common/name-value-pair.ts");
+/* harmony import */ var _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../business/core/game-object-collection */ "./src/app/business/core/game-object-collection.ts");
+/* harmony import */ var _drop_cactus_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./drop-cactus-component */ "./src/app/_games/impossible-dino/components/drop-cactus-component.ts");
+
+
+
+
+
+
+
+
+
+
+
+
+var CactusExplosionComponent = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](CactusExplosionComponent, _super);
+    function CactusExplosionComponent() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.name = CactusExplosionComponent_1.name;
+        return _this;
+    }
+    CactusExplosionComponent_1 = CactusExplosionComponent;
+    CactusExplosionComponent.prototype.start = function () {
+        this.collisionComponent = this.gameObject.getComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_2__["CollisionGameComponent"].name);
+    };
+    CactusExplosionComponent.prototype.draw = function () {
+    };
+    CactusExplosionComponent.prototype.update = function () {
+        if (this.collisionComponent.collisions.length > 0) {
+            this.explode();
+        }
+    };
+    CactusExplosionComponent.prototype.destroy = function () {
+    };
+    CactusExplosionComponent.prototype.explode = function () {
+        var position = this.gameObject.transform.localPosition;
+        var width = this.gameObject.transform.width;
+        var height = this.gameObject.transform.height;
+        var x1 = position.x - width / 4;
+        var y1 = position.y - height / 4;
+        var x2 = position.x + width / 4;
+        var y2 = position.y - height / 4;
+        var x3 = position.x - width / 4;
+        var y3 = position.y + height / 4;
+        var x4 = position.x + width / 4;
+        var y4 = position.y + height / 4;
+        this.createPieceOfCactus(this.image + '-piece-1', x1, y1, width / 2, height / 2);
+        this.createPieceOfCactus(this.image + '-piece-2', x2, y2, width / 2, height / 2);
+        this.createPieceOfCactus(this.image + '-piece-3', x3, y3, width / 2, height / 2);
+        this.createPieceOfCactus(this.image + '-piece-4', x4, y4, width / 2, height / 2);
+        _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_10__["GameObjectCollection"].remove(this.gameObject);
+    };
+    CactusExplosionComponent.prototype.createPieceOfCactus = function (imageName, x, y, width, height) {
+        return _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_4__["GameObjectFactory"].createGameObject(this.gameObject.parent, 'PieceOfCactus', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_5__["TransformFactory"].createLocalTransform(this.gameObject.parent.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_6__["Vector2"](x, y), width, height, 0), [
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('backgroundImage', 'assets/games/impossibleDino/img/' + imageName + '.png'),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('cssStyle', '')
+            ], true),
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_drop_cactus_component__WEBPACK_IMPORTED_MODULE_11__["DropCactusComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('direction', new _business_common_vector2__WEBPACK_IMPORTED_MODULE_6__["Vector2"](1, -1)),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('force', 1000)
+            ], true)
+        ], true);
+    };
+    var CactusExplosionComponent_1;
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_3__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], CactusExplosionComponent.prototype, "image", void 0);
+    CactusExplosionComponent = CactusExplosionComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_3__["Exclude"])()
+    ], CactusExplosionComponent);
+    return CactusExplosionComponent;
 }(_business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"]));
 
 
@@ -207,9 +317,10 @@ var CloudShifterComponent = /** @class */ (function (_super) {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](CloudShifterComponent, _super);
     function CloudShifterComponent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.name = CloudShifterComponent.name;
+        _this.name = CloudShifterComponent_1.name;
         return _this;
     }
+    CloudShifterComponent_1 = CloudShifterComponent;
     CloudShifterComponent.prototype.start = function () {
     };
     CloudShifterComponent.prototype.draw = function () {
@@ -228,6 +339,7 @@ var CloudShifterComponent = /** @class */ (function (_super) {
     };
     CloudShifterComponent.prototype.destroy = function () {
     };
+    var CloudShifterComponent_1;
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(class_transformer__WEBPACK_IMPORTED_MODULE_5__["Expose"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
@@ -240,6 +352,9 @@ var CloudShifterComponent = /** @class */ (function (_super) {
         Object(class_transformer__WEBPACK_IMPORTED_MODULE_5__["Expose"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
     ], CloudShifterComponent.prototype, "skyHeight", void 0);
+    CloudShifterComponent = CloudShifterComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_5__["Exclude"])()
+    ], CloudShifterComponent);
     return CloudShifterComponent;
 }(_business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"]));
 
@@ -268,6 +383,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _business_game_components_svg_renderer_game_component_svg_element_type__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../business/game-components/svg-renderer-game-component/svg-element-type */ "./src/app/business/game-components/svg-renderer-game-component/svg-element-type.ts");
 /* harmony import */ var _business_game_components_user_rotate_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../business/game-components/user/rotate.component */ "./src/app/business/game-components/user/rotate.component.ts");
 /* harmony import */ var _business_game_components_svg_renderer_game_component_svg_path_element__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../business/game-components/svg-renderer-game-component/svg-path-element */ "./src/app/business/game-components/svg-renderer-game-component/svg-path-element.ts");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_11__);
+
 
 
 
@@ -283,9 +401,10 @@ var DinoClockGameComponent = /** @class */ (function (_super) {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](DinoClockGameComponent, _super);
     function DinoClockGameComponent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.name = DinoClockGameComponent.name;
+        _this.name = DinoClockGameComponent_1.name;
         return _this;
     }
+    DinoClockGameComponent_1 = DinoClockGameComponent;
     DinoClockGameComponent.prototype.start = function () {
         var dinoClockCircleObj = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_2__["GameObjectFactory"].createGameObject(this.gameObject, 'DinoClockCircleObj', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_3__["TransformFactory"].createLocalTransform(this.gameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_4__["Vector2"](0, 0), 100, 100, 0), [
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_5__["ComponentFactory"].createComponent(_business_game_components_svg_renderer_game_component_svg_renderer_game_component__WEBPACK_IMPORTED_MODULE_6__["SvgRendererGameComponent"], [
@@ -343,6 +462,10 @@ var DinoClockGameComponent = /** @class */ (function (_super) {
     };
     DinoClockGameComponent.prototype.destroy = function () {
     };
+    var DinoClockGameComponent_1;
+    DinoClockGameComponent = DinoClockGameComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_11__["Exclude"])()
+    ], DinoClockGameComponent);
     return DinoClockGameComponent;
 }(_business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"]));
 
@@ -379,10 +502,11 @@ var DinoJumperComponent = /** @class */ (function (_super) {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](DinoJumperComponent, _super);
     function DinoJumperComponent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.name = DinoJumperComponent.name;
+        _this.name = DinoJumperComponent_1.name;
         _this.isJumping = false;
         return _this;
     }
+    DinoJumperComponent_1 = DinoJumperComponent;
     DinoJumperComponent.prototype.start = function () {
     };
     DinoJumperComponent.prototype.draw = function () {
@@ -413,6 +537,7 @@ var DinoJumperComponent = /** @class */ (function (_super) {
     };
     DinoJumperComponent.prototype.destroy = function () {
     };
+    var DinoJumperComponent_1;
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(class_transformer__WEBPACK_IMPORTED_MODULE_2__["Expose"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
@@ -421,6 +546,9 @@ var DinoJumperComponent = /** @class */ (function (_super) {
         Object(class_transformer__WEBPACK_IMPORTED_MODULE_2__["Expose"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
     ], DinoJumperComponent.prototype, "jumpHeight", void 0);
+    DinoJumperComponent = DinoJumperComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_2__["Exclude"])()
+    ], DinoJumperComponent);
     return DinoJumperComponent;
 }(_business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"]));
 
@@ -455,11 +583,12 @@ var DinoScoreCounterComponent = /** @class */ (function (_super) {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](DinoScoreCounterComponent, _super);
     function DinoScoreCounterComponent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.name = DinoScoreCounterComponent.name;
+        _this.name = DinoScoreCounterComponent_1.name;
         _this.score = 0;
         _this.hiScore = 0;
         return _this;
     }
+    DinoScoreCounterComponent_1 = DinoScoreCounterComponent;
     DinoScoreCounterComponent.prototype.start = function () {
         var dino = _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_4__["GameObjectCollection"].findDescendantByName('Dino', _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_4__["GameObjectCollection"].root(this.gameObject));
         this.dinoColliderComponent = dino.getComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_5__["CollisionGameComponent"].name);
@@ -478,11 +607,79 @@ var DinoScoreCounterComponent = /** @class */ (function (_super) {
     };
     DinoScoreCounterComponent.prototype.destroy = function () {
     };
+    var DinoScoreCounterComponent_1;
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(class_transformer__WEBPACK_IMPORTED_MODULE_3__["Expose"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
     ], DinoScoreCounterComponent.prototype, "counterSpeed", void 0);
+    DinoScoreCounterComponent = DinoScoreCounterComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_3__["Exclude"])()
+    ], DinoScoreCounterComponent);
     return DinoScoreCounterComponent;
+}(_business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/_games/impossible-dino/components/drop-cactus-component.ts":
+/*!****************************************************************************!*\
+  !*** ./src/app/_games/impossible-dino/components/drop-cactus-component.ts ***!
+  \****************************************************************************/
+/*! exports provided: DropCactusComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DropCactusComponent", function() { return DropCactusComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../business/game-components/core/base/game-component */ "./src/app/business/game-components/core/base/game-component.ts");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _business_common_vector2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../business/common/vector2 */ "./src/app/business/common/vector2.ts");
+/* harmony import */ var _business_common_v_math__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../business/common/v-math */ "./src/app/business/common/v-math.ts");
+/* harmony import */ var _business_common_timer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../business/common/timer */ "./src/app/business/common/timer.ts");
+
+
+
+
+
+
+var DropCactusComponent = /** @class */ (function (_super) {
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](DropCactusComponent, _super);
+    function DropCactusComponent() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.name = DropCactusComponent_1.name;
+        return _this;
+    }
+    DropCactusComponent_1 = DropCactusComponent;
+    DropCactusComponent.prototype.start = function () {
+        this.liveTimer = 0;
+    };
+    DropCactusComponent.prototype.draw = function () {
+    };
+    DropCactusComponent.prototype.update = function () {
+        this.liveTimer++;
+        var position = this.gameObject.transform.localPosition;
+        var newPos = position.add(_business_common_v_math__WEBPACK_IMPORTED_MODULE_4__["VMath"].multiply(this.direction, this.force * _business_common_timer__WEBPACK_IMPORTED_MODULE_5__["Timer"].delta));
+        newPos.y = newPos.y + ((9.8 * 9.8) * (this.liveTimer * _business_common_timer__WEBPACK_IMPORTED_MODULE_5__["Timer"].delta));
+        this.gameObject.transform.localPosition = newPos;
+    };
+    DropCactusComponent.prototype.destroy = function () {
+    };
+    var DropCactusComponent_1;
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_2__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _business_common_vector2__WEBPACK_IMPORTED_MODULE_3__["Vector2"])
+    ], DropCactusComponent.prototype, "direction", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_2__["Expose"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+    ], DropCactusComponent.prototype, "force", void 0);
+    DropCactusComponent = DropCactusComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_2__["Exclude"])()
+    ], DropCactusComponent);
+    return DropCactusComponent;
 }(_business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"]));
 
 
@@ -528,11 +725,12 @@ var GroundShifterComponent = /** @class */ (function (_super) {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](GroundShifterComponent, _super);
     function GroundShifterComponent() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.name = GroundShifterComponent.name;
+        _this.name = GroundShifterComponent_1.name;
         _this.groundWidth = 550;
         _this.groundObjects = [];
         return _this;
     }
+    GroundShifterComponent_1 = GroundShifterComponent;
     GroundShifterComponent.prototype.start = function () {
         this.createGround();
     };
@@ -584,6 +782,7 @@ var GroundShifterComponent = /** @class */ (function (_super) {
         }
         return false;
     };
+    var GroundShifterComponent_1;
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(class_transformer__WEBPACK_IMPORTED_MODULE_5__["Expose"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
@@ -592,6 +791,9 @@ var GroundShifterComponent = /** @class */ (function (_super) {
         Object(class_transformer__WEBPACK_IMPORTED_MODULE_5__["Expose"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
     ], GroundShifterComponent.prototype, "margin", void 0);
+    GroundShifterComponent = GroundShifterComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(class_transformer__WEBPACK_IMPORTED_MODULE_5__["Exclude"])()
+    ], GroundShifterComponent);
     return GroundShifterComponent;
 }(_business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"]));
 

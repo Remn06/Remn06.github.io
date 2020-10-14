@@ -1,10 +1,11 @@
 import {GameComponent} from '../../../business/game-components/core/base/game-component';
-import {Expose} from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 import {Vector2} from '../../../business/common/vector2';
 import {Timer} from '../../../business/common/timer';
 import {Input} from '../../../business/input/input';
 import {MouseButtonType, MouseInputEvent} from '../../../business/input/dto/mouse-input-event';
 
+@Exclude()
 export class DinoJumperComponent extends GameComponent {
 	name: string = DinoJumperComponent.name;
 

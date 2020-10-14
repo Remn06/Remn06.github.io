@@ -8,7 +8,9 @@ import { NameValuePair } from '../../../business/common/name-value-pair';
 import { SvgElementType } from '../../../business/game-components/svg-renderer-game-component/svg-element-type';
 import { RotateComponent } from '../../../business/game-components/user/rotate.component';
 import { SvgPathElement, SvgPathElementType } from '../../../business/game-components/svg-renderer-game-component/svg-path-element';
+import { Exclude } from 'class-transformer';
 
+@Exclude()
 export class DinoClockGameComponent extends GameComponent {
 	name: string = DinoClockGameComponent.name;
 

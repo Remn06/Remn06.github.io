@@ -2,7 +2,7 @@ import { GameComponent } from '../../../business/game-components/core/base/game-
 import { Vector2 } from '../../../business/common/vector2';
 import { Timer } from '../../../business/common/timer';
 import { GameScreen } from '../../../business/screen/game-screen';
-import { Expose } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 import { GameObject } from '../../../business/game-structure/game-object';
 import { GameObjectFactory } from '../../../business/core/factory/game-object-factory';
 import { TransformFactory } from '../../../business/core/factory/transform-factory';
@@ -13,6 +13,7 @@ import {
 import { NameValuePair } from '../../../business/common/name-value-pair';
 import { GameObjectCollection } from '../../../business/core/game-object-collection';
 
+@Exclude()
 export class GroundShifterComponent extends GameComponent {
 	name: string = GroundShifterComponent.name;
 

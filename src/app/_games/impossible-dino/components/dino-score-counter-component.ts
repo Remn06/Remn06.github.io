@@ -1,9 +1,10 @@
 import { GameComponent } from '../../../business/game-components/core/base/game-component';
 import { Timer } from '../../../business/common/timer';
-import { Expose } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 import { GameObjectCollection } from '../../../business/core/game-object-collection';
 import { CollisionGameComponent } from '../../../business/game-components/core/collision-game-component';
 
+@Exclude()
 export class DinoScoreCounterComponent extends GameComponent {
 	name: string = DinoScoreCounterComponent.name;
 

@@ -10,11 +10,13 @@ import {
 } from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
 import { NameValuePair } from '../../../business/common/name-value-pair';
 import { GameScreen } from '../../../business/screen/game-screen';
-import { Expose } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 import { CollisionGameComponent } from '../../../business/game-components/core/collision-game-component';
 import { Rect } from '../../../business/common/rect';
 import { GroundShifterComponent } from './ground-shifter-component';
+import { CactusExplosionComponent } from './cactus-explosion-component';
 
+@Exclude()
 export class CactiProducerComponent extends GameComponent {
 	name: string = CactiProducerComponent.name;
 
@@ -81,18 +83,22 @@ export class CactiProducerComponent extends GameComponent {
 				'SmallCactus',
 				TransformFactory.createGlobalTransform(
 					rootObject.transform,
-					new Vector2(GameScreen.getDefaultScreen().width + 16, rootObject.transform.position.y - 16), 32, 32, 0),
+					new Vector2(GameScreen.getDefaultScreen().width + 16, rootObject.transform.position.y - 16), 36, 43, 0),
 				[
 					ComponentFactory.createComponent(HtmlRendererGameComponent, [
 						new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/small-cactus.png'),
 						new NameValuePair('cssStyle', '')
 					], true),
 					ComponentFactory.createComponent(CollisionGameComponent, [
-						new NameValuePair('meshCollider', [])
+						new NameValuePair('meshCollider', [new Rect(0, 7, 10, 12), new Rect(9, 0, 15, 44), new Rect(24, 12, 11, 21)])
+					]),
+					ComponentFactory.createComponent(CactusExplosionComponent, [
+						new NameValuePair('image', 'small-cactus')
 					])
 				],
 				true
 			);
+
 		}
 	}
 
