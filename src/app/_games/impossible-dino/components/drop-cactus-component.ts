@@ -14,6 +14,9 @@ export class DropCactusComponent extends GameComponent {
 	@Expose()
 	force: number;
 
+	@Expose()
+	rotationDegrees: number;
+
 	private liveTimer;
 
 	start() {
@@ -24,11 +27,14 @@ export class DropCactusComponent extends GameComponent {
 	}
 
 	update() {
-		this.liveTimer++;
+		this.liveTimer = this.liveTimer + 0.1;
 		const position = this.gameObject.transform.localPosition;
 		const newPos = position.add(VMath.multiply(this.direction, this.force * Timer.delta));
 		newPos.y = newPos.y + ((9.8 * 9.8) * (this.liveTimer * Timer.delta));
 		this.gameObject.transform.localPosition = newPos;
+		let localRotation = this.gameObject.transform.localRotation;
+		localRotation = localRotation + this.rotationDegrees * Timer.delta;
+		this.gameObject.transform.localRotation = localRotation;
 	}
 
 	destroy() {

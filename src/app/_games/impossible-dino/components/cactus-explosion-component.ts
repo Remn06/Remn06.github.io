@@ -9,6 +9,7 @@ import { HtmlRendererGameComponent } from '../../../business/game-components/cor
 import { NameValuePair } from '../../../business/common/name-value-pair';
 import { GameObjectCollection } from '../../../business/core/game-object-collection';
 import { DropCactusComponent } from './drop-cactus-component';
+import { VMath } from '../../../business/common/v-math';
 
 @Exclude()
 export class CactusExplosionComponent extends GameComponent {
@@ -54,6 +55,14 @@ export class CactusExplosionComponent extends GameComponent {
 		GameObjectCollection.remove(this.gameObject);
 	}
 	private createPieceOfCactus(imageName: string, x: number, y: number, width: number, height: number) {
+
+		const randomDegrees = VMath.randIntMaxExcluded(35, 90);
+		const direction = VMath.rotate(new Vector2(0, -1), randomDegrees);
+		const force = VMath.randIntMaxIncluded(400, 600);
+		let rotationDegrees = VMath.randIntMaxIncluded(35, 90);
+		const rotationSign = VMath.randIntMaxIncluded(0, 1)
+		rotationDegrees = rotationDegrees * ((rotationSign === 0) ? 1 : -1);
+
 		return GameObjectFactory.createGameObject(
 			this.gameObject.parent,
 			'PieceOfCactus',
@@ -66,8 +75,9 @@ export class CactusExplosionComponent extends GameComponent {
 					new NameValuePair('cssStyle', '')
 				], true),
 				ComponentFactory.createComponent(DropCactusComponent, [
-					new NameValuePair('direction', new Vector2(1, -1)),
-					new NameValuePair('force', 1000)
+					new NameValuePair('direction', direction),
+					new NameValuePair('force', force),
+					new NameValuePair('rotationDegrees', rotationDegrees)
 				], true)
 			],
 			true
