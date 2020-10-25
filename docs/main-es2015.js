@@ -145,6 +145,9 @@ let CactiProducerComponent = CactiProducerComponent_1 = class CactiProducerCompo
                 ], true),
                 _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_12__["CollisionGameComponent"], [
                     new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](0, 8, 5, 13), new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](5, 0, 5, 32), new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](10, 4, 5, 11)])
+                ]),
+                _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_cactus_explosion_component__WEBPACK_IMPORTED_MODULE_15__["CactusExplosionComponent"], [
+                    new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('image', 'small-cactus')
                 ])
             ], true);
         }
@@ -545,6 +548,77 @@ DinoJumperComponent = DinoJumperComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__
 
 /***/ }),
 
+/***/ "./src/app/_games/impossible-dino/components/dino-lives-component.ts":
+/*!***************************************************************************!*\
+  !*** ./src/app/_games/impossible-dino/components/dino-lives-component.ts ***!
+  \***************************************************************************/
+/*! exports provided: DinoLivesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DinoLivesComponent", function() { return DinoLivesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../business/game-components/core/base/game-component */ "./src/app/business/game-components/core/base/game-component.ts");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
+/* harmony import */ var _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../business/core/factory/game-object-factory */ "./src/app/business/core/factory/game-object-factory.ts");
+/* harmony import */ var _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../business/core/factory/transform-factory */ "./src/app/business/core/factory/transform-factory.ts");
+/* harmony import */ var _business_common_vector2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../business/common/vector2 */ "./src/app/business/common/vector2.ts");
+/* harmony import */ var _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../business/core/game-object-collection */ "./src/app/business/core/game-object-collection.ts");
+/* harmony import */ var _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../business/core/factory/component-factory */ "./src/app/business/core/factory/component-factory.ts");
+/* harmony import */ var _business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component */ "./src/app/business/game-components/core/html-renderer-game-component/html-renderer-game-component.ts");
+/* harmony import */ var _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../business/common/name-value-pair */ "./src/app/business/common/name-value-pair.ts");
+
+var DinoLivesComponent_1;
+
+
+
+
+
+
+
+
+
+
+let DinoLivesComponent = DinoLivesComponent_1 = class DinoLivesComponent extends _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"] {
+    constructor() {
+        super(...arguments);
+        this.name = DinoLivesComponent_1.name;
+    }
+    start() {
+        const rootGameObject = _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_7__["GameObjectCollection"].root(this.gameObject);
+        this.collisionComponent = this.gameObject.getComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_3__["CollisionGameComponent"].name);
+        this.livesGameObject = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_4__["GameObjectFactory"].createGameObject(rootGameObject, 'LivesGameObject', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_5__["TransformFactory"].createLocalTransform(rootGameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_6__["Vector2"](100, 100), 100, 25, 0), [
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_8__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_9__["HtmlRendererGameComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_10__["NameValuePair"]('cssStyle', '')
+            ], true)
+        ], true, '');
+    }
+    draw() {
+    }
+    update() {
+        if (this.collisionComponent.collisions.length > 0) {
+            this.lives--;
+        }
+        this.livesGameObject.text = 'lives: ' + this.lives;
+    }
+    destroy() {
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(class_transformer__WEBPACK_IMPORTED_MODULE_2__["Expose"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+], DinoLivesComponent.prototype, "lives", void 0);
+DinoLivesComponent = DinoLivesComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(class_transformer__WEBPACK_IMPORTED_MODULE_2__["Exclude"])()
+], DinoLivesComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/_games/impossible-dino/components/dino-score-counter-component.ts":
 /*!***********************************************************************************!*\
   !*** ./src/app/_games/impossible-dino/components/dino-score-counter-component.ts ***!
@@ -810,6 +884,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _business_common_rect__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../business/common/rect */ "./src/app/business/common/rect.ts");
 /* harmony import */ var _components_dino_clock_game_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/dino-clock-game-component */ "./src/app/_games/impossible-dino/components/dino-clock-game-component.ts");
 /* harmony import */ var _components_dino_score_counter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/dino-score-counter-component */ "./src/app/_games/impossible-dino/components/dino-score-counter-component.ts");
+/* harmony import */ var _components_dino_lives_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/dino-lives-component */ "./src/app/_games/impossible-dino/components/dino-lives-component.ts");
+
 
 
 
@@ -903,6 +979,9 @@ class ImpossibleDinoData {
             ]),
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_11__["CollisionGameComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](20, 0, 20, 15), new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](0, 15, 27, 20), new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](10, 36, 14, 6)])
+            ]),
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_dino_lives_component__WEBPACK_IMPORTED_MODULE_15__["DinoLivesComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('lives', 3)
             ])
         ], true);
         const svgDinoClockRootObj = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'SvgDinoClockRootObj', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createGlobalTransform(rootGameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](30, 30), 100, 100, 0), [
@@ -3732,7 +3811,7 @@ class GameScreen {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".gameMenuBlock {\n  position: relative;\n  width: 150px;\n  height: 50px;\n  margin: 120px auto;\n  z-index: 2;\n}\n.gameMenuButton {\n  width: 150px;\n  height: 50px;\n  background-color: green;\n  color: white;\n}\n.gameArea {\n  border: 0 solid red;\n  min-width: 400px;\n  min-height: 400px;\n  position: absolute;\n  left: 0;\n  top: 0;\n  z-index: 1;\n  background-color: #FFF;\n  overflow: hidden;\n  background-size: cover;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdWkvYXBwLXJvb3QvRDovRWdvcmthL1Byb2plY3RzL1JlbW4wNi9SZW1uMDYuZ2l0aHViLmlvL3NyYy9hcHAvdWkvYXBwLXJvb3QvYXBwLmNvbXBvbmVudC5sZXNzIiwic3JjL2FwcC91aS9hcHAtcm9vdC9hcHAuY29tcG9uZW50Lmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBQTtFQUNBLFlBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0FDQ0Y7QURFQTtFQUNFLFlBQUE7RUFDQSxZQUFBO0VBQ0EsdUJBQUE7RUFDQSxZQUFBO0FDQUY7QURHQTtFQUNFLG1CQUFBO0VBQ0EsZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0VBQ0EsT0FBQTtFQUNBLE1BQUE7RUFDQSxVQUFBO0VBRUEsc0JBQUE7RUFDQSxnQkFBQTtFQUNBLHNCQUFBO0FDRkYiLCJmaWxlIjoic3JjL2FwcC91aS9hcHAtcm9vdC9hcHAuY29tcG9uZW50Lmxlc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZ2FtZU1lbnVCbG9jayB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgd2lkdGg6IDE1MHB4O1xuICBoZWlnaHQ6IDUwcHg7XG4gIG1hcmdpbjogMTIwcHggYXV0bztcbiAgei1pbmRleDogMjtcbn1cblxuLmdhbWVNZW51QnV0dG9uIHtcbiAgd2lkdGg6IDE1MHB4O1xuICBoZWlnaHQ6IDUwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6IGdyZWVuO1xuICBjb2xvcjogd2hpdGU7XG59XG5cbi5nYW1lQXJlYSB7XG4gIGJvcmRlcjogMCBzb2xpZCByZWQ7XG4gIG1pbi13aWR0aDogNDAwcHg7XG4gIG1pbi1oZWlnaHQ6IDQwMHB4O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgei1pbmRleDogMTtcbiAgLy8gYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiLi4vLi4vLi4vYXNzZXRzL2ltZy9iYWNrZ3JvdW5kLXNwYWNlLmpwZ1wiKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0ZGRjtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgYmFja2dyb3VuZC1zaXplOiBjb3Zlcjtcbn1cbiIsIi5nYW1lTWVudUJsb2NrIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogMTUwcHg7XG4gIGhlaWdodDogNTBweDtcbiAgbWFyZ2luOiAxMjBweCBhdXRvO1xuICB6LWluZGV4OiAyO1xufVxuLmdhbWVNZW51QnV0dG9uIHtcbiAgd2lkdGg6IDE1MHB4O1xuICBoZWlnaHQ6IDUwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6IGdyZWVuO1xuICBjb2xvcjogd2hpdGU7XG59XG4uZ2FtZUFyZWEge1xuICBib3JkZXI6IDAgc29saWQgcmVkO1xuICBtaW4td2lkdGg6IDQwMHB4O1xuICBtaW4taGVpZ2h0OiA0MDBweDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHotaW5kZXg6IDE7XG4gIGJhY2tncm91bmQtY29sb3I6ICNGRkY7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG59XG4iXX0= */"
+module.exports = ".gameMenuBlock {\n  position: relative;\n  width: 150px;\n  height: 50px;\n  margin: 120px auto;\n  z-index: 2;\n}\n.gameMenuButton {\n  width: 150px;\n  height: 50px;\n  background-color: green;\n  color: white;\n}\n.gameArea {\n  border: 0 solid red;\n  min-width: 400px;\n  min-height: 400px;\n  position: absolute;\n  left: 0;\n  top: 0;\n  z-index: 1;\n  background-color: #FFF;\n  overflow: hidden;\n  background-size: cover;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdWkvYXBwLXJvb3QvQzovVXNlcnMvdml0YWwvLnJvb3QvcHJvamVjdHMvZ2l0aHViL0dpbm5lcjA2L1JlbW4wNi5naXRodWIuaW8vc3JjL2FwcC91aS9hcHAtcm9vdC9hcHAuY29tcG9uZW50Lmxlc3MiLCJzcmMvYXBwL3VpL2FwcC1yb290L2FwcC5jb21wb25lbnQubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFBO0VBQ0EsWUFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7QUNDRjtBREVBO0VBQ0UsWUFBQTtFQUNBLFlBQUE7RUFDQSx1QkFBQTtFQUNBLFlBQUE7QUNBRjtBREdBO0VBQ0UsbUJBQUE7RUFDQSxnQkFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxPQUFBO0VBQ0EsTUFBQTtFQUNBLFVBQUE7RUFFQSxzQkFBQTtFQUNBLGdCQUFBO0VBQ0Esc0JBQUE7QUNGRiIsImZpbGUiOiJzcmMvYXBwL3VpL2FwcC1yb290L2FwcC5jb21wb25lbnQubGVzcyIsInNvdXJjZXNDb250ZW50IjpbIi5nYW1lTWVudUJsb2NrIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogMTUwcHg7XG4gIGhlaWdodDogNTBweDtcbiAgbWFyZ2luOiAxMjBweCBhdXRvO1xuICB6LWluZGV4OiAyO1xufVxuXG4uZ2FtZU1lbnVCdXR0b24ge1xuICB3aWR0aDogMTUwcHg7XG4gIGhlaWdodDogNTBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogZ3JlZW47XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuLmdhbWVBcmVhIHtcbiAgYm9yZGVyOiAwIHNvbGlkIHJlZDtcbiAgbWluLXdpZHRoOiA0MDBweDtcbiAgbWluLWhlaWdodDogNDAwcHg7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB6LWluZGV4OiAxO1xuICAvLyBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvaW1nL2JhY2tncm91bmQtc3BhY2UuanBnXCIpO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRkZGO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xufVxuIiwiLmdhbWVNZW51QmxvY2sge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHdpZHRoOiAxNTBweDtcbiAgaGVpZ2h0OiA1MHB4O1xuICBtYXJnaW46IDEyMHB4IGF1dG87XG4gIHotaW5kZXg6IDI7XG59XG4uZ2FtZU1lbnVCdXR0b24ge1xuICB3aWR0aDogMTUwcHg7XG4gIGhlaWdodDogNTBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogZ3JlZW47XG4gIGNvbG9yOiB3aGl0ZTtcbn1cbi5nYW1lQXJlYSB7XG4gIGJvcmRlcjogMCBzb2xpZCByZWQ7XG4gIG1pbi13aWR0aDogNDAwcHg7XG4gIG1pbi1oZWlnaHQ6IDQwMHB4O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgei1pbmRleDogMTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0ZGRjtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgYmFja2dyb3VuZC1zaXplOiBjb3Zlcjtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -3822,7 +3901,7 @@ AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".game-object {\n  position: absolute;\n  background-size: cover;\n  -webkit-transform: rotate(0);\n          transform: rotate(0);\n  box-sizing: border-box;\n}\n.star-ship {\n  background-image: url('cruiser.png');\n}\n.bullet {\n  background-image: url('bullet.png');\n}\n.asteroid {\n  background-image: url('asteroid-icon-v2.png');\n}\n.half-transparent {\n  opacity: 0.5;\n}\n.score-indicator {\n  color: red;\n  font-weight: bold;\n  font-size: 21px;\n}\n.lives-indicator {\n  position: relative;\n}\n.lives-indicator-element {\n  position: absolute;\n  background-size: cover;\n  -webkit-transform: rotate(-90deg);\n          transform: rotate(-90deg);\n  background-image: url('cruiser.png');\n  width: 25px;\n  height: 25px;\n  top: 0;\n  left: 0;\n}\n.game-over-text {\n  color: red;\n  font-weight: bold;\n  font-size: 100px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdWkvaHRtbC1yZW5kZXJlci9nYW1lLW9iamVjdC9EOi9FZ29ya2EvUHJvamVjdHMvUmVtbjA2L1JlbW4wNi5naXRodWIuaW8vc3JjL2FwcC91aS9odG1sLXJlbmRlcmVyL2dhbWUtb2JqZWN0L2dhbWUtb2JqZWN0LmNvbXBvbmVudC5sZXNzIiwic3JjL2FwcC91aS9odG1sLXJlbmRlcmVyL2dhbWUtb2JqZWN0L2dhbWUtb2JqZWN0LmNvbXBvbmVudC5sZXNzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Msa0JBQUE7RUFDQSxzQkFBQTtFQUNBLDRCQUFBO1VBQUEsb0JBQUE7RUFDQSxzQkFBQTtBQ0NEO0FERUE7RUFDQyxvQ0FBQTtBQ0FEO0FER0E7RUFDQyxtQ0FBQTtBQ0REO0FESUE7RUFDQyw2Q0FBQTtBQ0ZEO0FES0E7RUFDQyxZQUFBO0FDSEQ7QURNQTtFQUNDLFVBQUE7RUFDQSxpQkFBQTtFQUNBLGVBQUE7QUNKRDtBRE9BO0VBQ0Msa0JBQUE7QUNMRDtBRFFBO0VBQ0Msa0JBQUE7RUFDQSxzQkFBQTtFQUNBLGlDQUFBO1VBQUEseUJBQUE7RUFDQSxvQ0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsTUFBQTtFQUNBLE9BQUE7QUNORDtBRFNBO0VBQ0MsVUFBQTtFQUNBLGlCQUFBO0VBQ0EsZ0JBQUE7QUNQRCIsImZpbGUiOiJzcmMvYXBwL3VpL2h0bWwtcmVuZGVyZXIvZ2FtZS1vYmplY3QvZ2FtZS1vYmplY3QuY29tcG9uZW50Lmxlc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZ2FtZS1vYmplY3Qge1xuXHRwb3NpdGlvbjogYWJzb2x1dGU7XG5cdGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG5cdHRyYW5zZm9ybTogcm90YXRlKDApO1xuXHRib3gtc2l6aW5nOiBib3JkZXItYm94O1xufVxuXG4uc3Rhci1zaGlwIHtcblx0YmFja2dyb3VuZC1pbWFnZTogdXJsKFwiLi9pbWcvY3J1aXNlci5wbmdcIik7XG59XG5cbi5idWxsZXQge1xuXHRiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuL2ltZy9idWxsZXQucG5nXCIpO1xufVxuXG4uYXN0ZXJvaWQge1xuXHRiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuL2ltZy9hc3Rlcm9pZC1pY29uLXYyLnBuZ1wiKTtcbn1cblxuLmhhbGYtdHJhbnNwYXJlbnQge1xuXHRvcGFjaXR5OiAwLjU7XG59XG5cbi5zY29yZS1pbmRpY2F0b3Ige1xuXHRjb2xvcjogcmVkO1xuXHRmb250LXdlaWdodDogYm9sZDtcblx0Zm9udC1zaXplOiAyMXB4O1xufVxuXG4ubGl2ZXMtaW5kaWNhdG9yIHtcblx0cG9zaXRpb246IHJlbGF0aXZlO1xufVxuXG4ubGl2ZXMtaW5kaWNhdG9yLWVsZW1lbnQge1xuXHRwb3NpdGlvbjogYWJzb2x1dGU7XG5cdGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG5cdHRyYW5zZm9ybTogcm90YXRlKC05MGRlZyk7XG5cdGJhY2tncm91bmQtaW1hZ2U6IHVybChcIi4vaW1nL2NydWlzZXIucG5nXCIpO1xuXHR3aWR0aDogMjVweDtcblx0aGVpZ2h0OiAyNXB4O1xuXHR0b3A6IDA7XG5cdGxlZnQ6IDA7XG59XG5cbi5nYW1lLW92ZXItdGV4dCB7XG5cdGNvbG9yOiByZWQ7XG5cdGZvbnQtd2VpZ2h0OiBib2xkO1xuXHRmb250LXNpemU6IDEwMHB4O1xufVxuXG5cblxuIiwiLmdhbWUtb2JqZWN0IHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xuICB0cmFuc2Zvcm06IHJvdGF0ZSgwKTtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cbi5zdGFyLXNoaXAge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuL2ltZy9jcnVpc2VyLnBuZ1wiKTtcbn1cbi5idWxsZXQge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuL2ltZy9idWxsZXQucG5nXCIpO1xufVxuLmFzdGVyb2lkIHtcbiAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiLi9pbWcvYXN0ZXJvaWQtaWNvbi12Mi5wbmdcIik7XG59XG4uaGFsZi10cmFuc3BhcmVudCB7XG4gIG9wYWNpdHk6IDAuNTtcbn1cbi5zY29yZS1pbmRpY2F0b3Ige1xuICBjb2xvcjogcmVkO1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgZm9udC1zaXplOiAyMXB4O1xufVxuLmxpdmVzLWluZGljYXRvciB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbn1cbi5saXZlcy1pbmRpY2F0b3ItZWxlbWVudCB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcbiAgdHJhbnNmb3JtOiByb3RhdGUoLTkwZGVnKTtcbiAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiLi9pbWcvY3J1aXNlci5wbmdcIik7XG4gIHdpZHRoOiAyNXB4O1xuICBoZWlnaHQ6IDI1cHg7XG4gIHRvcDogMDtcbiAgbGVmdDogMDtcbn1cbi5nYW1lLW92ZXItdGV4dCB7XG4gIGNvbG9yOiByZWQ7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBmb250LXNpemU6IDEwMHB4O1xufVxuIl19 */"
+module.exports = ".game-object {\n  position: absolute;\n  background-size: cover;\n  -webkit-transform: rotate(0);\n          transform: rotate(0);\n  box-sizing: border-box;\n}\n.star-ship {\n  background-image: url('cruiser.png');\n}\n.bullet {\n  background-image: url('bullet.png');\n}\n.asteroid {\n  background-image: url('asteroid-icon-v2.png');\n}\n.half-transparent {\n  opacity: 0.5;\n}\n.score-indicator {\n  color: red;\n  font-weight: bold;\n  font-size: 21px;\n}\n.lives-indicator {\n  position: relative;\n}\n.lives-indicator-element {\n  position: absolute;\n  background-size: cover;\n  -webkit-transform: rotate(-90deg);\n          transform: rotate(-90deg);\n  background-image: url('cruiser.png');\n  width: 25px;\n  height: 25px;\n  top: 0;\n  left: 0;\n}\n.game-over-text {\n  color: red;\n  font-weight: bold;\n  font-size: 100px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdWkvaHRtbC1yZW5kZXJlci9nYW1lLW9iamVjdC9DOi9Vc2Vycy92aXRhbC8ucm9vdC9wcm9qZWN0cy9naXRodWIvR2lubmVyMDYvUmVtbjA2LmdpdGh1Yi5pby9zcmMvYXBwL3VpL2h0bWwtcmVuZGVyZXIvZ2FtZS1vYmplY3QvZ2FtZS1vYmplY3QuY29tcG9uZW50Lmxlc3MiLCJzcmMvYXBwL3VpL2h0bWwtcmVuZGVyZXIvZ2FtZS1vYmplY3QvZ2FtZS1vYmplY3QuY29tcG9uZW50Lmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDQyxrQkFBQTtFQUNBLHNCQUFBO0VBQ0EsNEJBQUE7VUFBQSxvQkFBQTtFQUNBLHNCQUFBO0FDQ0Q7QURFQTtFQUNDLG9DQUFBO0FDQUQ7QURHQTtFQUNDLG1DQUFBO0FDREQ7QURJQTtFQUNDLDZDQUFBO0FDRkQ7QURLQTtFQUNDLFlBQUE7QUNIRDtBRE1BO0VBQ0MsVUFBQTtFQUNBLGlCQUFBO0VBQ0EsZUFBQTtBQ0pEO0FET0E7RUFDQyxrQkFBQTtBQ0xEO0FEUUE7RUFDQyxrQkFBQTtFQUNBLHNCQUFBO0VBQ0EsaUNBQUE7VUFBQSx5QkFBQTtFQUNBLG9DQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxNQUFBO0VBQ0EsT0FBQTtBQ05EO0FEU0E7RUFDQyxVQUFBO0VBQ0EsaUJBQUE7RUFDQSxnQkFBQTtBQ1BEIiwiZmlsZSI6InNyYy9hcHAvdWkvaHRtbC1yZW5kZXJlci9nYW1lLW9iamVjdC9nYW1lLW9iamVjdC5jb21wb25lbnQubGVzcyIsInNvdXJjZXNDb250ZW50IjpbIi5nYW1lLW9iamVjdCB7XG5cdHBvc2l0aW9uOiBhYnNvbHV0ZTtcblx0YmFja2dyb3VuZC1zaXplOiBjb3Zlcjtcblx0dHJhbnNmb3JtOiByb3RhdGUoMCk7XG5cdGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi5zdGFyLXNoaXAge1xuXHRiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuL2ltZy9jcnVpc2VyLnBuZ1wiKTtcbn1cblxuLmJ1bGxldCB7XG5cdGJhY2tncm91bmQtaW1hZ2U6IHVybChcIi4vaW1nL2J1bGxldC5wbmdcIik7XG59XG5cbi5hc3Rlcm9pZCB7XG5cdGJhY2tncm91bmQtaW1hZ2U6IHVybChcIi4vaW1nL2FzdGVyb2lkLWljb24tdjIucG5nXCIpO1xufVxuXG4uaGFsZi10cmFuc3BhcmVudCB7XG5cdG9wYWNpdHk6IDAuNTtcbn1cblxuLnNjb3JlLWluZGljYXRvciB7XG5cdGNvbG9yOiByZWQ7XG5cdGZvbnQtd2VpZ2h0OiBib2xkO1xuXHRmb250LXNpemU6IDIxcHg7XG59XG5cbi5saXZlcy1pbmRpY2F0b3Ige1xuXHRwb3NpdGlvbjogcmVsYXRpdmU7XG59XG5cbi5saXZlcy1pbmRpY2F0b3ItZWxlbWVudCB7XG5cdHBvc2l0aW9uOiBhYnNvbHV0ZTtcblx0YmFja2dyb3VuZC1zaXplOiBjb3Zlcjtcblx0dHJhbnNmb3JtOiByb3RhdGUoLTkwZGVnKTtcblx0YmFja2dyb3VuZC1pbWFnZTogdXJsKFwiLi9pbWcvY3J1aXNlci5wbmdcIik7XG5cdHdpZHRoOiAyNXB4O1xuXHRoZWlnaHQ6IDI1cHg7XG5cdHRvcDogMDtcblx0bGVmdDogMDtcbn1cblxuLmdhbWUtb3Zlci10ZXh0IHtcblx0Y29sb3I6IHJlZDtcblx0Zm9udC13ZWlnaHQ6IGJvbGQ7XG5cdGZvbnQtc2l6ZTogMTAwcHg7XG59XG5cblxuXG4iLCIuZ2FtZS1vYmplY3Qge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG4gIHRyYW5zZm9ybTogcm90YXRlKDApO1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xufVxuLnN0YXItc2hpcCB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybChcIi4vaW1nL2NydWlzZXIucG5nXCIpO1xufVxuLmJ1bGxldCB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybChcIi4vaW1nL2J1bGxldC5wbmdcIik7XG59XG4uYXN0ZXJvaWQge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuL2ltZy9hc3Rlcm9pZC1pY29uLXYyLnBuZ1wiKTtcbn1cbi5oYWxmLXRyYW5zcGFyZW50IHtcbiAgb3BhY2l0eTogMC41O1xufVxuLnNjb3JlLWluZGljYXRvciB7XG4gIGNvbG9yOiByZWQ7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBmb250LXNpemU6IDIxcHg7XG59XG4ubGl2ZXMtaW5kaWNhdG9yIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuLmxpdmVzLWluZGljYXRvci1lbGVtZW50IHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xuICB0cmFuc2Zvcm06IHJvdGF0ZSgtOTBkZWcpO1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuL2ltZy9jcnVpc2VyLnBuZ1wiKTtcbiAgd2lkdGg6IDI1cHg7XG4gIGhlaWdodDogMjVweDtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xufVxuLmdhbWUtb3Zlci10ZXh0IHtcbiAgY29sb3I6IHJlZDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIGZvbnQtc2l6ZTogMTAwcHg7XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -4239,7 +4318,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Egorka\Projects\Remn06\Remn06.github.io\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\vital\.root\projects\github\Ginner06\Remn06.github.io\src\main.ts */"./src/main.ts");
 
 
 /***/ })

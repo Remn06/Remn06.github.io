@@ -57,7 +57,7 @@ export class CactiProducerComponent extends GameComponent {
 	private createCactus() {
 		const rootObject = this.gameObject.getComponent<GroundShifterComponent>(GroundShifterComponent.name).getLastGroundObject();
 		const cactusType = VMath.randIntMaxIncluded(0, 1);
-		if(cactusType === 0) {
+		if (cactusType === 0) {
 
 			return GameObjectFactory.createGameObject(
 				rootObject,
@@ -72,6 +72,9 @@ export class CactiProducerComponent extends GameComponent {
 					], true),
 					ComponentFactory.createComponent(CollisionGameComponent, [
 						new NameValuePair('meshCollider', [new Rect(0, 8, 5, 13), new Rect(5, 0, 5, 32), new Rect(10, 4, 5, 11)])
+					]),
+					ComponentFactory.createComponent(CactusExplosionComponent, [
+							new NameValuePair('image', 'small-cactus')
 					])
 				],
 				true

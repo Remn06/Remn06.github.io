@@ -14,6 +14,7 @@ import { CollisionGameComponent } from '../../../business/game-components/core/c
 import { Rect } from '../../../business/common/rect';
 import { DinoClockGameComponent } from '../components/dino-clock-game-component';
 import { DinoScoreCounterComponent } from '../components/dino-score-counter-component';
+import { DinoLivesComponent } from '../components/dino-lives-component';
 
 export class ImpossibleDinoData {
 	public static getData(): GameObject {
@@ -134,6 +135,9 @@ export class ImpossibleDinoData {
 				]),
 				ComponentFactory.createComponent(CollisionGameComponent, [
 					new NameValuePair('meshCollider', [new Rect(20, 0, 20, 15), new Rect(0, 15, 27, 20), new Rect(10, 36, 14, 6)])
+				]),
+				ComponentFactory.createComponent(DinoLivesComponent, [
+					new NameValuePair('lives', 3)
 				])
 			],
 			true
@@ -163,6 +167,7 @@ export class ImpossibleDinoData {
 			],
 			true
 		);
+
 
 
 		return rootGameObject;

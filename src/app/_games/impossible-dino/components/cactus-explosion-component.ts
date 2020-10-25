@@ -28,7 +28,7 @@ export class CactusExplosionComponent extends GameComponent {
 	}
 
 	update() {
-		if(this.collisionComponent.collisions.length > 0) {
+		if (this.collisionComponent.collisions.length > 0) {
 			this.explode();
 		}
 	}
