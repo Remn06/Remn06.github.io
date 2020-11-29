@@ -20,7 +20,7 @@ export class Timer {
 
 
 	public static initialize() {
-		Timer.initialTimerValue = Timer.getTime();
+		Timer.initialTimerValue = Timer.getRealTime();
 		// Timer.lastTimerValue = Timer.initialTimerValue;
 		// Timer.callTime = Timer.initialTimerValue;
 		Timer.start();
@@ -36,7 +36,7 @@ export class Timer {
 	}
 
 	public static set divider(value: number) {
-		if (!isNumber(value) || value <= 0) {
+		if (!isNumber(value) || value < 0) {
 			Logger.warn(`Timer's divider value is invalid: ${value}`);
 			return;
 		}
@@ -49,12 +49,12 @@ export class Timer {
 
 	// delta have to be in secs.
 	public static get delta(): number {
-		return (Timer.callTime - Timer.lastTimerValue) / 1000;
+		return ((Timer.callTime * Timer.divider) - (Timer.lastTimerValue * Timer.divider)) / 1000;
 	}
 
 	public static start(): void {
 		Timer.isStarted = true;
-		Timer.lastTimerValue = Timer.getTime();
+		Timer.lastTimerValue = Timer.getRealTime();
 		Timer.callTime = Timer.initialTimerValue;
 	}
 
@@ -63,17 +63,18 @@ export class Timer {
 	}
 
 	public static getTime(): number {
+		return Date.now() * Timer.divider;
+	}
+
+	private static getRealTime(): number {
 		return Date.now();
 	}
 
 	private static intervalCallback(): void {
 		Timer.callsNumber++;
-		if (Timer.callTime % Timer.divider !== 0) {
-			return;
-		}
 
 		Timer.lastTimerValue = Timer.callTime;
-		Timer.callTime = Timer.getTime();
+		Timer.callTime = Timer.getRealTime();
 		this.timerEvent.next();
 	}
 }

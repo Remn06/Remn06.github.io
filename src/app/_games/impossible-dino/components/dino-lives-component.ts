@@ -9,6 +9,7 @@ import { GameObjectCollection } from '../../../business/core/game-object-collect
 import { ComponentFactory } from '../../../business/core/factory/component-factory';
 import { HtmlRendererGameComponent } from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
 import { NameValuePair } from '../../../business/common/name-value-pair';
+import { Timer } from '../../../business/common/timer';
 
 @Exclude()
 export class DinoLivesComponent extends GameComponent {
@@ -45,6 +46,9 @@ export class DinoLivesComponent extends GameComponent {
 	update() {
 		if (this.collisionComponent.collisions.length > 0) {
 			this.lives--;
+			if (this.lives === 0) {
+				Timer.divider = 0;
+			}
 		}
 		this.livesGameObject.text = 'lives: ' + this.lives;
 	}

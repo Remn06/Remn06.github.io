@@ -23,6 +23,8 @@ export class GroundShifterComponent extends GameComponent {
 	@Expose()
 	margin: number;
 
+	public currentShift = 0;
+
 	private groundWidth = 550;
 	private groundObjects: GameObject[] = [];
 
@@ -35,6 +37,7 @@ export class GroundShifterComponent extends GameComponent {
 
 	update(): void {
 		const shift = this.speed * Timer.delta;
+		this.currentShift += shift;
 		const resGroundObjects = [];
 
 		for (let i = 0; i < this.groundObjects.length; i++) {

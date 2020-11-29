@@ -105,9 +105,9 @@ export class ImpossibleDinoData {
 					new NameValuePair('margin', 100),
 				]),
 				ComponentFactory.createComponent(CactiProducerComponent, [
-					new NameValuePair('frequency', 1500),
-					new NameValuePair('shiftIntervalFrom', 500),
-					new NameValuePair('shiftIntervalTo', 1000)
+					new NameValuePair('frequency', 300),
+					new NameValuePair('shiftIntervalFrom', 20),
+					new NameValuePair('shiftIntervalTo', 200)
 				], true)
 			],
 			true

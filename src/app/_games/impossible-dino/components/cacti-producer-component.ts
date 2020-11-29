@@ -1,5 +1,4 @@
 import { GameComponent } from '../../../business/game-components/core/base/game-component';
-import { Timer } from '../../../business/common/timer';
 import { Vector2 } from '../../../business/common/vector2';
 import { VMath } from '../../../business/common/v-math';
 import { GameObjectFactory } from '../../../business/core/factory/game-object-factory';
@@ -29,9 +28,11 @@ export class CactiProducerComponent extends GameComponent {
 	@Expose()
 	public shiftIntervalTo: number;
 
-	private nextCactusTime: number;
+	private nextCactusShift: number;
+	private shifterComponent: GroundShifterComponent;
 
 	start(): void {
+		this.shifterComponent = this.gameObject.getComponent<GroundShifterComponent>(GroundShifterComponent.name);
 		this.calcNextCactusTime();
 	}
 
@@ -39,7 +40,7 @@ export class CactiProducerComponent extends GameComponent {
 	}
 
 	update(): void {
-		if (Timer.getTime() >= this.nextCactusTime) {
+		if (this.shifterComponent.currentShift  >= this.nextCactusShift) {
 			this.createCactus();
 			this.calcNextCactusTime();
 		}
@@ -51,7 +52,7 @@ export class CactiProducerComponent extends GameComponent {
 	private calcNextCactusTime() {
 		const shiftInterval = VMath.randIntMaxIncluded(this.shiftIntervalFrom, this.shiftIntervalTo);
 		const sign = VMath.randIntMaxIncluded(0, 1);
-		this.nextCactusTime = Timer.getTime() + this.frequency + shiftInterval * ((sign === 0) ? 1 : -1);
+		this.nextCactusShift = this.shifterComponent.currentShift + this.frequency + shiftInterval * ((sign === 0) ? 1 : -1);
 	}
 
 	private createCactus() {

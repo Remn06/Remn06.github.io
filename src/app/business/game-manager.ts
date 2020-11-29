@@ -22,7 +22,6 @@ export class GameManager {
 	}
 
 	public load(): void {
-
 		this.gameData = GameLoader.load();
 		this.currentScene = this.gameData.scenes[0];
 		this.setTimer();
@@ -36,6 +35,8 @@ export class GameManager {
 	}
 
 	private setTimer(): void {
+		Timer.divider = 1;
+
 		if (this.timerSubscription) {
 			this.timerSubscription.unsubscribe();
 		}
