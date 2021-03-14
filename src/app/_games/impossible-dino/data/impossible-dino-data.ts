@@ -9,7 +9,7 @@ import { CloudShifterComponent } from '../components/cloud-shifter-component';
 import { AnimateGameComponent } from '../../../business/game-components/core/animate-game-component/animate-game-component';
 import { GroundShifterComponent } from '../components/ground-shifter-component';
 import { DinoJumperComponent } from '../components/dino-jumper-component';
-import { CactiProducerComponent } from '../components/cacti-producer-component';
+import { GameElementProducerComponent } from '../components/game-element-producer-component';
 import { CollisionGameComponent } from '../../../business/game-components/core/collision-game-component';
 import { Rect } from '../../../business/common/rect';
 import { DinoClockGameComponent } from '../components/dino-clock-game-component';
@@ -104,10 +104,11 @@ export class ImpossibleDinoData {
 					new NameValuePair('speed', 200),
 					new NameValuePair('margin', 100),
 				]),
-				ComponentFactory.createComponent(CactiProducerComponent, [
+				ComponentFactory.createComponent(GameElementProducerComponent, [
 					new NameValuePair('frequency', 300),
 					new NameValuePair('shiftIntervalFrom', 20),
-					new NameValuePair('shiftIntervalTo', 200)
+					new NameValuePair('shiftIntervalTo', 200),
+					new NameValuePair('bonusInterval', 3000)
 				], true)
 			],
 			true

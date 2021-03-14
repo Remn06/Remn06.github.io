@@ -10,6 +10,8 @@ import { ComponentFactory } from '../../../business/core/factory/component-facto
 import { HtmlRendererGameComponent } from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
 import { NameValuePair } from '../../../business/common/name-value-pair';
 import { Timer } from '../../../business/common/timer';
+import { GameScreen } from '../../../business/screen/game-screen';
+import { DropCactusComponent } from './drop-cactus-component';
 
 @Exclude()
 export class DinoLivesComponent extends GameComponent {
@@ -19,6 +21,8 @@ export class DinoLivesComponent extends GameComponent {
 	lives: number;
 
 	livesGameObject: GameObject;
+
+	private livesGameObjects: GameObject[] = [];
 
 	private collisionComponent;
 
@@ -38,21 +42,53 @@ export class DinoLivesComponent extends GameComponent {
 			true,
 			''
 		);
+		this.setLives(this.lives);
 	}
 
 	draw() {
 	}
 
 	update() {
+		const gameScreen = GameScreen.getDefaultScreen();
+		const width = gameScreen.width;
+		this.livesGameObject.transform.localPosition = new Vector2(width - 100, 25);
+
+
 		if (this.collisionComponent.collisions.length > 0) {
-			this.lives--;
+			this.setLives(this.lives - 1)
 			if (this.lives === 0) {
 				Timer.divider = 0;
 			}
 		}
-		this.livesGameObject.text = 'lives: ' + this.lives;
 	}
 
 	destroy() {
+	}
+
+	public setLives(lives: number) {
+		this.lives = lives;
+		let heartWidth = 30;
+		let heartHeight = 30;
+		for(let i = 0; i < this.livesGameObjects.length; i++) {
+			GameObjectCollection.remove(this.livesGameObjects[i]);
+		}
+		this.livesGameObjects.length = 0;
+		for(let i = 0; i < this.lives; i++) {
+			let heartGameObject = GameObjectFactory.createGameObject(
+				this.livesGameObject,
+				'LiveHeart',
+				TransformFactory.createLocalTransform(
+					this.livesGameObject.transform,
+					new Vector2(i * (heartWidth + 5), 0), heartWidth, heartHeight, 0),
+				[
+					ComponentFactory.createComponent(HtmlRendererGameComponent, [
+						new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/heart.png'),
+						new NameValuePair('cssStyle', '')
+					], true)
+				],
+				true
+			);
+			this.livesGameObjects.push(heartGameObject);
+		}
 	}
 }

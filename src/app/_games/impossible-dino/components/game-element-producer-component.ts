@@ -14,10 +14,11 @@ import { CollisionGameComponent } from '../../../business/game-components/core/c
 import { Rect } from '../../../business/common/rect';
 import { GroundShifterComponent } from './ground-shifter-component';
 import { CactusExplosionComponent } from './cactus-explosion-component';
+import { AnimateGameComponent } from '../../../business/game-components/core/animate-game-component/animate-game-component';
 
 @Exclude()
-export class CactiProducerComponent extends GameComponent {
-	name: string = CactiProducerComponent.name;
+export class GameElementProducerComponent extends GameComponent {
+	name: string = GameElementProducerComponent.name;
 
 	@Expose()
 	public frequency: number;
@@ -28,21 +29,32 @@ export class CactiProducerComponent extends GameComponent {
 	@Expose()
 	public shiftIntervalTo: number;
 
+	@Expose()
+	public bonusInterval: number;
+
+	private nextBonusTime: number;
+
 	private nextCactusShift: number;
+
 	private shifterComponent: GroundShifterComponent;
 
 	start(): void {
 		this.shifterComponent = this.gameObject.getComponent<GroundShifterComponent>(GroundShifterComponent.name);
 		this.calcNextCactusTime();
+		this.calcNextBonusTime();
 	}
 
 	draw(): void {
 	}
 
 	update(): void {
-		if (this.shifterComponent.currentShift  >= this.nextCactusShift) {
+		if (this.shifterComponent.currentShift >= this.nextCactusShift) {
 			this.createCactus();
 			this.calcNextCactusTime();
+		}
+		if (this.shifterComponent.currentShift >= this.nextBonusTime) {
+			this.createBonus();
+			this.calcNextBonusTime();
 		}
 	}
 
@@ -75,7 +87,7 @@ export class CactiProducerComponent extends GameComponent {
 						new NameValuePair('meshCollider', [new Rect(0, 8, 5, 13), new Rect(5, 0, 5, 32), new Rect(10, 4, 5, 11)])
 					]),
 					ComponentFactory.createComponent(CactusExplosionComponent, [
-							new NameValuePair('image', 'small-cactus')
+							new NameValuePair('image', 'cactus')
 					])
 				],
 				true
@@ -106,4 +118,38 @@ export class CactiProducerComponent extends GameComponent {
 		}
 	}
 
+	private calcNextBonusTime() {
+		this.nextBonusTime = this.shifterComponent.currentShift + this.bonusInterval;
+	}
+
+	private createBonus () {
+		const rootObject =
+			this.gameObject.getComponent<GroundShifterComponent>(GroundShifterComponent.name).getLastGroundObject();
+		const bonusYShift = 20;
+
+		GameObjectFactory.createGameObject(
+			rootObject,
+			'Bonus',
+			TransformFactory.createGlobalTransform(
+				rootObject.transform,
+				new Vector2(
+					GameScreen.getDefaultScreen().width + 11,
+					rootObject.transform.position.y - 2.5 - bonusYShift),
+				22, 5, 0),
+			[
+				ComponentFactory.createComponent(HtmlRendererGameComponent, [
+					new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/helmetAnimation.png'),
+					new NameValuePair('cssStyle', '')
+				], true),
+				ComponentFactory.createComponent(AnimateGameComponent, [
+						new NameValuePair('slideWidth', 22),
+						new NameValuePair('slideHeight', 5),
+						new NameValuePair('slidesInARow', 11),
+						new NameValuePair('slidesCount', 22),
+						new NameValuePair('animationSpeed', 30)
+				]),
+			],
+			true
+		);
+	}
 }
