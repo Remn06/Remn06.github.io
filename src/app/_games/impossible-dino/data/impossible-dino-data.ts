@@ -3,7 +3,9 @@ import { GameObjectFactory } from '../../../business/core/factory/game-object-fa
 import { TransformFactory } from '../../../business/core/factory/transform-factory';
 import { Vector2 } from '../../../business/common/vector2';
 import { ComponentFactory } from '../../../business/core/factory/component-factory';
-import { HtmlRendererGameComponent } from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
+import {
+	HtmlRendererGameComponent
+} from '../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component';
 import { NameValuePair } from '../../../business/common/name-value-pair';
 import { CloudShifterComponent } from '../components/cloud-shifter-component';
 import { AnimateGameComponent } from '../../../business/game-components/core/animate-game-component/animate-game-component';
@@ -15,6 +17,9 @@ import { Rect } from '../../../business/common/rect';
 import { DinoClockGameComponent } from '../components/dino-clock-game-component';
 import { DinoScoreCounterComponent } from '../components/dino-score-counter-component';
 import { DinoLivesComponent } from '../components/dino-lives-component';
+import { MathScoreCounterComponent } from '../components/math/math-score-counter-component';
+import { MathProducerComponent } from '../components/math/math-producer-component';
+import { MathQuestionComponent } from '../components/math/math-question-component';
 
 export class ImpossibleDinoData {
 	public static getData(): GameObject {
@@ -104,7 +109,12 @@ export class ImpossibleDinoData {
 					new NameValuePair('speed', 200),
 					new NameValuePair('margin', 100),
 				]),
-				ComponentFactory.createComponent(GameElementProducerComponent, [
+				/*ComponentFactory.createComponent(CactiProducerComponent, [
+					new NameValuePair('frequency', 300),
+					new NameValuePair('shiftIntervalFrom', 20),
+					new NameValuePair('shiftIntervalTo', 200)
+				], true),*/
+				ComponentFactory.createComponent(MathProducerComponent, [
 					new NameValuePair('frequency', 300),
 					new NameValuePair('shiftIntervalFrom', 20),
 					new NameValuePair('shiftIntervalTo', 200),
@@ -138,7 +148,7 @@ export class ImpossibleDinoData {
 					new NameValuePair('meshCollider', [new Rect(20, 0, 20, 15), new Rect(0, 15, 27, 20), new Rect(10, 36, 14, 6)])
 				]),
 				ComponentFactory.createComponent(DinoLivesComponent, [
-					new NameValuePair('lives', 3)
+					new NameValuePair('lives', 3000)
 				])
 			],
 			true
@@ -164,6 +174,33 @@ export class ImpossibleDinoData {
 				], true),
 				ComponentFactory.createComponent(DinoScoreCounterComponent, [
 					new NameValuePair('counterSpeed', 10)
+				])
+			],
+			true
+		);
+
+		const mathScore = GameObjectFactory.createGameObject(
+			rootGameObject,
+			'mathScore',
+			TransformFactory.createLocalTransform(rootGameObject.transform, new Vector2(250, 30), 150, 20, 0),
+			[
+				ComponentFactory.createComponent(HtmlRendererGameComponent, [
+					new NameValuePair('cssStyle', 'font-family: \'Tangerine\', serif; font-size: 20px;')
+				], true),
+				ComponentFactory.createComponent(MathScoreCounterComponent, [])
+			],
+			true
+		);
+
+		const mathQuestion = GameObjectFactory.createGameObject(
+			rootGameObject,
+			'mathQuestion',
+			TransformFactory.createLocalTransform(rootGameObject.transform, new Vector2(450, 30), 300, 20, 0),
+			[
+				ComponentFactory.createComponent(HtmlRendererGameComponent, [
+					new NameValuePair('cssStyle', 'font-family: \'Tangerine\', serif; font-size: 20px; font-weight: bold;')
+				], true),
+				ComponentFactory.createComponent(MathQuestionComponent, [
 				])
 			],
 			true

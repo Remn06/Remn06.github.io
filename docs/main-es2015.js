@@ -67,231 +67,6 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
-/***/ "./src/app/_games/impossible-dino/components/cacti-producer-component.ts":
-/*!*******************************************************************************!*\
-  !*** ./src/app/_games/impossible-dino/components/cacti-producer-component.ts ***!
-  \*******************************************************************************/
-/*! exports provided: CactiProducerComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CactiProducerComponent", function() { return CactiProducerComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../business/game-components/core/base/game-component */ "./src/app/business/game-components/core/base/game-component.ts");
-/* harmony import */ var _business_common_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../business/common/timer */ "./src/app/business/common/timer.ts");
-/* harmony import */ var _business_common_vector2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../business/common/vector2 */ "./src/app/business/common/vector2.ts");
-/* harmony import */ var _business_common_v_math__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../business/common/v-math */ "./src/app/business/common/v-math.ts");
-/* harmony import */ var _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../business/core/factory/game-object-factory */ "./src/app/business/core/factory/game-object-factory.ts");
-/* harmony import */ var _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../business/core/factory/transform-factory */ "./src/app/business/core/factory/transform-factory.ts");
-/* harmony import */ var _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../business/core/factory/component-factory */ "./src/app/business/core/factory/component-factory.ts");
-/* harmony import */ var _business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component */ "./src/app/business/game-components/core/html-renderer-game-component/html-renderer-game-component.ts");
-/* harmony import */ var _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../business/common/name-value-pair */ "./src/app/business/common/name-value-pair.ts");
-/* harmony import */ var _business_screen_game_screen__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../business/screen/game-screen */ "./src/app/business/screen/game-screen.ts");
-/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
-/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
-/* harmony import */ var _business_common_rect__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../business/common/rect */ "./src/app/business/common/rect.ts");
-/* harmony import */ var _ground_shifter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./ground-shifter-component */ "./src/app/_games/impossible-dino/components/ground-shifter-component.ts");
-/* harmony import */ var _cactus_explosion_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./cactus-explosion-component */ "./src/app/_games/impossible-dino/components/cactus-explosion-component.ts");
-
-var CactiProducerComponent_1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let CactiProducerComponent = CactiProducerComponent_1 = class CactiProducerComponent extends _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"] {
-    constructor() {
-        super(...arguments);
-        this.name = CactiProducerComponent_1.name;
-    }
-    start() {
-        this.calcNextCactusTime();
-    }
-    draw() {
-    }
-    update() {
-        if (_business_common_timer__WEBPACK_IMPORTED_MODULE_2__["Timer"].getTime() >= this.nextCactusTime) {
-            this.createCactus();
-            this.calcNextCactusTime();
-        }
-    }
-    destroy() {
-    }
-    calcNextCactusTime() {
-        const shiftInterval = _business_common_v_math__WEBPACK_IMPORTED_MODULE_4__["VMath"].randIntMaxIncluded(this.shiftIntervalFrom, this.shiftIntervalTo);
-        const sign = _business_common_v_math__WEBPACK_IMPORTED_MODULE_4__["VMath"].randIntMaxIncluded(0, 1);
-        this.nextCactusTime = _business_common_timer__WEBPACK_IMPORTED_MODULE_2__["Timer"].getTime() + this.frequency + shiftInterval * ((sign === 0) ? 1 : -1);
-    }
-    createCactus() {
-        const rootObject = this.gameObject.getComponent(_ground_shifter_component__WEBPACK_IMPORTED_MODULE_14__["GroundShifterComponent"].name).getLastGroundObject();
-        const cactusType = _business_common_v_math__WEBPACK_IMPORTED_MODULE_4__["VMath"].randIntMaxIncluded(0, 1);
-        if (cactusType === 0) {
-            return _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_5__["GameObjectFactory"].createGameObject(rootObject, 'Cactus', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_6__["TransformFactory"].createGlobalTransform(rootObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_3__["Vector2"](_business_screen_game_screen__WEBPACK_IMPORTED_MODULE_10__["GameScreen"].getDefaultScreen().width + 12, rootObject.transform.position.y - 23), 23, 46, 0), [
-                _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [
-                    new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('backgroundImage', 'assets/games/impossibleDino/img/cactus.png'),
-                    new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('cssStyle', '')
-                ], true),
-                _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_12__["CollisionGameComponent"], [
-                    new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](0, 8, 5, 13), new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](5, 0, 5, 32), new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](10, 4, 5, 11)])
-                ]),
-                _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_cactus_explosion_component__WEBPACK_IMPORTED_MODULE_15__["CactusExplosionComponent"], [
-                    new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('image', 'small-cactus')
-                ])
-            ], true);
-        }
-        else {
-            return _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_5__["GameObjectFactory"].createGameObject(rootObject, 'SmallCactus', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_6__["TransformFactory"].createGlobalTransform(rootObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_3__["Vector2"](_business_screen_game_screen__WEBPACK_IMPORTED_MODULE_10__["GameScreen"].getDefaultScreen().width + 16, rootObject.transform.position.y - 16), 36, 43, 0), [
-                _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [
-                    new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('backgroundImage', 'assets/games/impossibleDino/img/small-cactus.png'),
-                    new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('cssStyle', '')
-                ], true),
-                _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_12__["CollisionGameComponent"], [
-                    new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](0, 7, 10, 12), new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](9, 0, 15, 44), new _business_common_rect__WEBPACK_IMPORTED_MODULE_13__["Rect"](24, 12, 11, 21)])
-                ]),
-                _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_cactus_explosion_component__WEBPACK_IMPORTED_MODULE_15__["CactusExplosionComponent"], [
-                    new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('image', 'small-cactus')
-                ])
-            ], true);
-        }
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(class_transformer__WEBPACK_IMPORTED_MODULE_11__["Expose"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
-], CactiProducerComponent.prototype, "frequency", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(class_transformer__WEBPACK_IMPORTED_MODULE_11__["Expose"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
-], CactiProducerComponent.prototype, "shiftIntervalFrom", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(class_transformer__WEBPACK_IMPORTED_MODULE_11__["Expose"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
-], CactiProducerComponent.prototype, "shiftIntervalTo", void 0);
-CactiProducerComponent = CactiProducerComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(class_transformer__WEBPACK_IMPORTED_MODULE_11__["Exclude"])()
-], CactiProducerComponent);
-
-
-
-/***/ }),
-
-/***/ "./src/app/_games/impossible-dino/components/cactus-explosion-component.ts":
-/*!*********************************************************************************!*\
-  !*** ./src/app/_games/impossible-dino/components/cactus-explosion-component.ts ***!
-  \*********************************************************************************/
-/*! exports provided: CactusExplosionComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CactusExplosionComponent", function() { return CactusExplosionComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../business/game-components/core/base/game-component */ "./src/app/business/game-components/core/base/game-component.ts");
-/* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
-/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
-/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../business/core/factory/game-object-factory */ "./src/app/business/core/factory/game-object-factory.ts");
-/* harmony import */ var _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../business/core/factory/transform-factory */ "./src/app/business/core/factory/transform-factory.ts");
-/* harmony import */ var _business_common_vector2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../business/common/vector2 */ "./src/app/business/common/vector2.ts");
-/* harmony import */ var _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../business/core/factory/component-factory */ "./src/app/business/core/factory/component-factory.ts");
-/* harmony import */ var _business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component */ "./src/app/business/game-components/core/html-renderer-game-component/html-renderer-game-component.ts");
-/* harmony import */ var _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../business/common/name-value-pair */ "./src/app/business/common/name-value-pair.ts");
-/* harmony import */ var _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../business/core/game-object-collection */ "./src/app/business/core/game-object-collection.ts");
-/* harmony import */ var _drop_cactus_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./drop-cactus-component */ "./src/app/_games/impossible-dino/components/drop-cactus-component.ts");
-/* harmony import */ var _business_common_v_math__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../business/common/v-math */ "./src/app/business/common/v-math.ts");
-
-var CactusExplosionComponent_1;
-
-
-
-
-
-
-
-
-
-
-
-
-let CactusExplosionComponent = CactusExplosionComponent_1 = class CactusExplosionComponent extends _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"] {
-    constructor() {
-        super(...arguments);
-        this.name = CactusExplosionComponent_1.name;
-    }
-    start() {
-        this.collisionComponent = this.gameObject.getComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_2__["CollisionGameComponent"].name);
-    }
-    draw() {
-    }
-    update() {
-        if (this.collisionComponent.collisions.length > 0) {
-            this.explode();
-        }
-    }
-    destroy() {
-    }
-    explode() {
-        const position = this.gameObject.transform.localPosition;
-        const width = this.gameObject.transform.width;
-        const height = this.gameObject.transform.height;
-        const x1 = position.x - width / 4;
-        const y1 = position.y - height / 4;
-        const x2 = position.x + width / 4;
-        const y2 = position.y - height / 4;
-        const x3 = position.x - width / 4;
-        const y3 = position.y + height / 4;
-        const x4 = position.x + width / 4;
-        const y4 = position.y + height / 4;
-        this.createPieceOfCactus(this.image + '-piece-1', x1, y1, width / 2, height / 2);
-        this.createPieceOfCactus(this.image + '-piece-2', x2, y2, width / 2, height / 2);
-        this.createPieceOfCactus(this.image + '-piece-3', x3, y3, width / 2, height / 2);
-        this.createPieceOfCactus(this.image + '-piece-4', x4, y4, width / 2, height / 2);
-        _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_10__["GameObjectCollection"].remove(this.gameObject);
-    }
-    createPieceOfCactus(imageName, x, y, width, height) {
-        const randomDegrees = _business_common_v_math__WEBPACK_IMPORTED_MODULE_12__["VMath"].randIntMaxExcluded(35, 90);
-        const direction = _business_common_v_math__WEBPACK_IMPORTED_MODULE_12__["VMath"].rotate(new _business_common_vector2__WEBPACK_IMPORTED_MODULE_6__["Vector2"](0, -1), randomDegrees);
-        const force = _business_common_v_math__WEBPACK_IMPORTED_MODULE_12__["VMath"].randIntMaxIncluded(400, 600);
-        let rotationDegrees = _business_common_v_math__WEBPACK_IMPORTED_MODULE_12__["VMath"].randIntMaxIncluded(35, 90);
-        const rotationSign = _business_common_v_math__WEBPACK_IMPORTED_MODULE_12__["VMath"].randIntMaxIncluded(0, 1);
-        rotationDegrees = rotationDegrees * ((rotationSign === 0) ? 1 : -1);
-        return _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_4__["GameObjectFactory"].createGameObject(this.gameObject.parent, 'PieceOfCactus', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_5__["TransformFactory"].createLocalTransform(this.gameObject.parent.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_6__["Vector2"](x, y), width, height, 0), [
-            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_8__["HtmlRendererGameComponent"], [
-                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('backgroundImage', 'assets/games/impossibleDino/img/' + imageName + '.png'),
-                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('cssStyle', '')
-            ], true),
-            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_7__["ComponentFactory"].createComponent(_drop_cactus_component__WEBPACK_IMPORTED_MODULE_11__["DropCactusComponent"], [
-                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('direction', direction),
-                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('force', force),
-                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_9__["NameValuePair"]('rotationDegrees', rotationDegrees)
-            ], true)
-        ], true);
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(class_transformer__WEBPACK_IMPORTED_MODULE_3__["Expose"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], CactusExplosionComponent.prototype, "image", void 0);
-CactusExplosionComponent = CactusExplosionComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(class_transformer__WEBPACK_IMPORTED_MODULE_3__["Exclude"])()
-], CactusExplosionComponent);
-
-
-
-/***/ }),
-
 /***/ "./src/app/_games/impossible-dino/components/cloud-shifter-component.ts":
 /*!******************************************************************************!*\
   !*** ./src/app/_games/impossible-dino/components/cloud-shifter-component.ts ***!
@@ -570,8 +345,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../business/core/factory/component-factory */ "./src/app/business/core/factory/component-factory.ts");
 /* harmony import */ var _business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component */ "./src/app/business/game-components/core/html-renderer-game-component/html-renderer-game-component.ts");
 /* harmony import */ var _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../business/common/name-value-pair */ "./src/app/business/common/name-value-pair.ts");
+/* harmony import */ var _business_common_timer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../business/common/timer */ "./src/app/business/common/timer.ts");
 
 var DinoLivesComponent_1;
+
 
 
 
@@ -601,6 +378,9 @@ let DinoLivesComponent = DinoLivesComponent_1 = class DinoLivesComponent extends
     update() {
         if (this.collisionComponent.collisions.length > 0) {
             this.lives--;
+            if (this.lives === 0) {
+                _business_common_timer__WEBPACK_IMPORTED_MODULE_11__["Timer"].divider = 0;
+            }
         }
         this.livesGameObject.text = 'lives: ' + this.lives;
     }
@@ -681,73 +461,6 @@ DinoScoreCounterComponent = DinoScoreCounterComponent_1 = tslib__WEBPACK_IMPORTE
 
 /***/ }),
 
-/***/ "./src/app/_games/impossible-dino/components/drop-cactus-component.ts":
-/*!****************************************************************************!*\
-  !*** ./src/app/_games/impossible-dino/components/drop-cactus-component.ts ***!
-  \****************************************************************************/
-/*! exports provided: DropCactusComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DropCactusComponent", function() { return DropCactusComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../business/game-components/core/base/game-component */ "./src/app/business/game-components/core/base/game-component.ts");
-/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
-/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _business_common_vector2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../business/common/vector2 */ "./src/app/business/common/vector2.ts");
-/* harmony import */ var _business_common_v_math__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../business/common/v-math */ "./src/app/business/common/v-math.ts");
-/* harmony import */ var _business_common_timer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../business/common/timer */ "./src/app/business/common/timer.ts");
-
-var DropCactusComponent_1;
-
-
-
-
-
-let DropCactusComponent = DropCactusComponent_1 = class DropCactusComponent extends _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"] {
-    constructor() {
-        super(...arguments);
-        this.name = DropCactusComponent_1.name;
-    }
-    start() {
-        this.liveTimer = 0;
-    }
-    draw() {
-    }
-    update() {
-        this.liveTimer = this.liveTimer + 0.1;
-        const position = this.gameObject.transform.localPosition;
-        const newPos = position.add(_business_common_v_math__WEBPACK_IMPORTED_MODULE_4__["VMath"].multiply(this.direction, this.force * _business_common_timer__WEBPACK_IMPORTED_MODULE_5__["Timer"].delta));
-        newPos.y = newPos.y + ((9.8 * 9.8) * (this.liveTimer * _business_common_timer__WEBPACK_IMPORTED_MODULE_5__["Timer"].delta));
-        this.gameObject.transform.localPosition = newPos;
-        let localRotation = this.gameObject.transform.localRotation;
-        localRotation = localRotation + this.rotationDegrees * _business_common_timer__WEBPACK_IMPORTED_MODULE_5__["Timer"].delta;
-        this.gameObject.transform.localRotation = localRotation;
-    }
-    destroy() {
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(class_transformer__WEBPACK_IMPORTED_MODULE_2__["Expose"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _business_common_vector2__WEBPACK_IMPORTED_MODULE_3__["Vector2"])
-], DropCactusComponent.prototype, "direction", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(class_transformer__WEBPACK_IMPORTED_MODULE_2__["Expose"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
-], DropCactusComponent.prototype, "force", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(class_transformer__WEBPACK_IMPORTED_MODULE_2__["Expose"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
-], DropCactusComponent.prototype, "rotationDegrees", void 0);
-DropCactusComponent = DropCactusComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(class_transformer__WEBPACK_IMPORTED_MODULE_2__["Exclude"])()
-], DropCactusComponent);
-
-
-
-/***/ }),
-
 /***/ "./src/app/_games/impossible-dino/components/ground-shifter-component.ts":
 /*!*******************************************************************************!*\
   !*** ./src/app/_games/impossible-dino/components/ground-shifter-component.ts ***!
@@ -788,6 +501,7 @@ let GroundShifterComponent = GroundShifterComponent_1 = class GroundShifterCompo
     constructor() {
         super(...arguments);
         this.name = GroundShifterComponent_1.name;
+        this.currentShift = 0;
         this.groundWidth = 550;
         this.groundObjects = [];
     }
@@ -798,6 +512,7 @@ let GroundShifterComponent = GroundShifterComponent_1 = class GroundShifterCompo
     }
     update() {
         const shift = this.speed * _business_common_timer__WEBPACK_IMPORTED_MODULE_3__["Timer"].delta;
+        this.currentShift += shift;
         const resGroundObjects = [];
         for (let i = 0; i < this.groundObjects.length; i++) {
             if (!this.shiftGroundAndRemove(this.groundObjects[i], shift)) {
@@ -859,6 +574,320 @@ GroundShifterComponent = GroundShifterComponent_1 = tslib__WEBPACK_IMPORTED_MODU
 
 /***/ }),
 
+/***/ "./src/app/_games/impossible-dino/components/math/math-answer-component.ts":
+/*!*********************************************************************************!*\
+  !*** ./src/app/_games/impossible-dino/components/math/math-answer-component.ts ***!
+  \*********************************************************************************/
+/*! exports provided: MathAnswerComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MathAnswerComponent", function() { return MathAnswerComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../business/game-components/core/base/game-component */ "./src/app/business/game-components/core/base/game-component.ts");
+/* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../business/core/game-object-collection */ "./src/app/business/core/game-object-collection.ts");
+/* harmony import */ var _math_question_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./math-question-component */ "./src/app/_games/impossible-dino/components/math/math-question-component.ts");
+
+var MathAnswerComponent_1;
+
+
+
+
+
+let MathAnswerComponent = MathAnswerComponent_1 = class MathAnswerComponent extends _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"] {
+    constructor() {
+        super(...arguments);
+        this.name = MathAnswerComponent_1.name;
+    }
+    start() {
+        this.collisionComponent = this.gameObject.getComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_2__["CollisionGameComponent"].name);
+        this.questionComponent = _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_4__["GameObjectCollection"].findDescendantByName('mathQuestion', _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_4__["GameObjectCollection"].root(this.gameObject))
+            .getComponent(_math_question_component__WEBPACK_IMPORTED_MODULE_5__["MathQuestionComponent"].name);
+    }
+    draw() {
+    }
+    update() {
+        if (this.collisionComponent.collisions.length > 0) {
+            this.questionComponent.answer(this.value);
+            _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_4__["GameObjectCollection"].remove(this.gameObject);
+        }
+    }
+    destroy() {
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(class_transformer__WEBPACK_IMPORTED_MODULE_3__["Expose"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+], MathAnswerComponent.prototype, "value", void 0);
+MathAnswerComponent = MathAnswerComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(class_transformer__WEBPACK_IMPORTED_MODULE_3__["Exclude"])()
+], MathAnswerComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/_games/impossible-dino/components/math/math-producer-component.ts":
+/*!***********************************************************************************!*\
+  !*** ./src/app/_games/impossible-dino/components/math/math-producer-component.ts ***!
+  \***********************************************************************************/
+/*! exports provided: MathProducerComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MathProducerComponent", function() { return MathProducerComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../business/game-components/core/base/game-component */ "./src/app/business/game-components/core/base/game-component.ts");
+/* harmony import */ var _ground_shifter_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ground-shifter-component */ "./src/app/_games/impossible-dino/components/ground-shifter-component.ts");
+/* harmony import */ var _business_common_v_math__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../business/common/v-math */ "./src/app/business/common/v-math.ts");
+/* harmony import */ var _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../business/core/factory/game-object-factory */ "./src/app/business/core/factory/game-object-factory.ts");
+/* harmony import */ var _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../business/core/factory/transform-factory */ "./src/app/business/core/factory/transform-factory.ts");
+/* harmony import */ var _business_common_vector2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../business/common/vector2 */ "./src/app/business/common/vector2.ts");
+/* harmony import */ var _business_screen_game_screen__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../business/screen/game-screen */ "./src/app/business/screen/game-screen.ts");
+/* harmony import */ var _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../business/core/factory/component-factory */ "./src/app/business/core/factory/component-factory.ts");
+/* harmony import */ var _business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component */ "./src/app/business/game-components/core/html-renderer-game-component/html-renderer-game-component.ts");
+/* harmony import */ var _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../business/common/name-value-pair */ "./src/app/business/common/name-value-pair.ts");
+/* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
+/* harmony import */ var _business_common_rect__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../business/common/rect */ "./src/app/business/common/rect.ts");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _math_answer_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./math-answer-component */ "./src/app/_games/impossible-dino/components/math/math-answer-component.ts");
+
+var MathProducerComponent_1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let MathProducerComponent = MathProducerComponent_1 = class MathProducerComponent extends _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_1__["GameComponent"] {
+    constructor() {
+        super(...arguments);
+        this.name = MathProducerComponent_1.name;
+    }
+    start() {
+        this.shifterComponent = this.gameObject.getComponent(_ground_shifter_component__WEBPACK_IMPORTED_MODULE_2__["GroundShifterComponent"].name);
+        this.calcNextCactusTime();
+    }
+    draw() {
+    }
+    update() {
+        if (this.shifterComponent.currentShift >= this.nextCactusShift) {
+            this.createCactus();
+            this.calcNextCactusTime();
+        }
+    }
+    destroy() {
+    }
+    calcNextCactusTime() {
+        const shiftInterval = _business_common_v_math__WEBPACK_IMPORTED_MODULE_3__["VMath"].randIntMaxIncluded(this.shiftIntervalFrom, this.shiftIntervalTo);
+        const sign = _business_common_v_math__WEBPACK_IMPORTED_MODULE_3__["VMath"].randIntMaxIncluded(0, 1);
+        this.nextCactusShift = this.shifterComponent.currentShift + this.frequency + shiftInterval * ((sign === 0) ? 1 : -1);
+    }
+    createCactus() {
+        const rootObject = this.gameObject.getComponent(_ground_shifter_component__WEBPACK_IMPORTED_MODULE_2__["GroundShifterComponent"].name).getLastGroundObject();
+        const answers = ['0', '1', '1/2', '√2/2', '√3/2', '√3/3', '√3', '-1', '--'];
+        const answerIndex = _business_common_v_math__WEBPACK_IMPORTED_MODULE_3__["VMath"].randIntMaxIncluded(0, answers.length - 1);
+        return _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_4__["GameObjectFactory"].createGameObject(rootObject, 'SmallCactus', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_5__["TransformFactory"].createGlobalTransform(rootObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_6__["Vector2"](_business_screen_game_screen__WEBPACK_IMPORTED_MODULE_7__["GameScreen"].getDefaultScreen().width + 16, rootObject.transform.position.y - 16), 36, 43, 0), [
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_8__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_9__["HtmlRendererGameComponent"], [
+                // new NameValuePair('backgroundImage', 'assets/games/impossibleDino/img/small-cactus.png'),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_10__["NameValuePair"]('cssStyle', '')
+            ], true),
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_8__["ComponentFactory"].createComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_11__["CollisionGameComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_10__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](0, 0, 10, 10)])
+            ]),
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_8__["ComponentFactory"].createComponent(_math_answer_component__WEBPACK_IMPORTED_MODULE_14__["MathAnswerComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_10__["NameValuePair"]('value', answers[answerIndex])
+            ])
+        ], true, answers[answerIndex]);
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(class_transformer__WEBPACK_IMPORTED_MODULE_13__["Expose"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+], MathProducerComponent.prototype, "frequency", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(class_transformer__WEBPACK_IMPORTED_MODULE_13__["Expose"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+], MathProducerComponent.prototype, "shiftIntervalFrom", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(class_transformer__WEBPACK_IMPORTED_MODULE_13__["Expose"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+], MathProducerComponent.prototype, "shiftIntervalTo", void 0);
+MathProducerComponent = MathProducerComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(class_transformer__WEBPACK_IMPORTED_MODULE_13__["Exclude"])()
+], MathProducerComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/_games/impossible-dino/components/math/math-question-component.ts":
+/*!***********************************************************************************!*\
+  !*** ./src/app/_games/impossible-dino/components/math/math-question-component.ts ***!
+  \***********************************************************************************/
+/*! exports provided: MathQuestionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MathQuestionComponent", function() { return MathQuestionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../business/game-components/core/base/game-component */ "./src/app/business/game-components/core/base/game-component.ts");
+/* harmony import */ var _business_common_v_math__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../business/common/v-math */ "./src/app/business/common/v-math.ts");
+/* harmony import */ var _business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component */ "./src/app/business/game-components/core/html-renderer-game-component/html-renderer-game-component.ts");
+/* harmony import */ var _business_common_timer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../business/common/timer */ "./src/app/business/common/timer.ts");
+/* harmony import */ var _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../business/core/game-object-collection */ "./src/app/business/core/game-object-collection.ts");
+/* harmony import */ var _math_score_counter_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./math-score-counter-component */ "./src/app/_games/impossible-dino/components/math/math-score-counter-component.ts");
+
+var MathQuestionComponent_1;
+
+
+
+
+
+
+
+var MathQuestion;
+(function (MathQuestion) {
+    MathQuestion["None"] = "None";
+    MathQuestion["WaitingAnswer"] = "WaitingAnswer";
+    MathQuestion["DisplayingCorrect"] = "DisplayingCorrect";
+})(MathQuestion || (MathQuestion = {}));
+const answersMap = new Map([
+    ['sin(0°)', '0'], ['sin(30°)', '1/2'], ['sin(45°)', '√2/2'], ['sin(60°)', '√3/2'], ['sin(90°)', '1'], ['sin(180°)', '0'],
+    ['cos(0°)', '1'], ['cos(30°)', '√3/2'], ['cos(45°)', '√2/2'], ['cos(60°)', '1/2'], ['cos(90°)', '0'], ['cos(180°)', '-1'],
+    ['tg(0°)', '0'], ['tg(30°)', '√3/3'], ['tg(45°)', '1'], ['tg(60°)', '√3'], ['tg(90°)', '--'], ['tg(180°)', '0'],
+    ['ctg(0°)', '--'], ['ctg(30°)', '√3'], ['ctg(45°)', '1'], ['ctg(60°)', '√3/3'], ['ctg(90°)', '0'], ['ctg(180°)', '--']
+]);
+let MathQuestionComponent = MathQuestionComponent_1 = class MathQuestionComponent extends _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_2__["GameComponent"] {
+    constructor() {
+        super(...arguments);
+        this.name = MathQuestionComponent_1.name;
+        this.currentQuestion = '';
+        this.currentState = MathQuestion.None;
+        this.allQuestions = Array.from(answersMap.keys());
+        this.result = '';
+        this.waitingTime = 0;
+        this.css = '';
+    }
+    start() {
+        const mathScore = _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_6__["GameObjectCollection"].findDescendantByName('mathScore', _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_6__["GameObjectCollection"].root(this.gameObject));
+        this.mathScoreCounterComponent = mathScore.getComponent(_math_score_counter_component__WEBPACK_IMPORTED_MODULE_7__["MathScoreCounterComponent"].name);
+        const mathQuestion = _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_6__["GameObjectCollection"].findDescendantByName('mathQuestion', _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_6__["GameObjectCollection"].root(this.gameObject));
+        this.renderer = mathQuestion.getComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_4__["HtmlRendererGameComponent"].name);
+        this.setQuestion();
+    }
+    draw() {
+        this.gameObject.text = `${this.currentQuestion}${this.result}`;
+    }
+    update() {
+        if (this.currentState === MathQuestion.DisplayingCorrect && this.waitingTime < _business_common_timer__WEBPACK_IMPORTED_MODULE_5__["Timer"].getTime()) {
+            this.setQuestion();
+        }
+        this.renderer.addAdditionalCss(this.css);
+    }
+    destroy() {
+    }
+    answer(answer) {
+        if (this.currentState !== MathQuestion.WaitingAnswer) {
+            return;
+        }
+        if (answersMap.get(this.currentQuestion) === answer) {
+            this.result = ` ${answer} Верно!!!`;
+            this.css = 'color: #0F0';
+            this.mathScoreCounterComponent.incrementScore();
+        }
+        else {
+            this.result = ` Правильный ответ: ${answersMap.get(this.currentQuestion)}`;
+            this.css = 'color: #F00';
+        }
+        this.currentState = MathQuestion.DisplayingCorrect;
+        this.waitingTime = _business_common_timer__WEBPACK_IMPORTED_MODULE_5__["Timer"].getTime() + 5000;
+    }
+    setQuestion() {
+        const index = _business_common_v_math__WEBPACK_IMPORTED_MODULE_3__["VMath"].randIntMaxIncluded(0, this.allQuestions.length - 1);
+        this.currentQuestion = this.allQuestions[index];
+        this.currentState = MathQuestion.WaitingAnswer;
+        this.css = 'color: #000';
+        this.result = '';
+    }
+};
+MathQuestionComponent = MathQuestionComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Exclude"])()
+], MathQuestionComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/_games/impossible-dino/components/math/math-score-counter-component.ts":
+/*!****************************************************************************************!*\
+  !*** ./src/app/_games/impossible-dino/components/math/math-score-counter-component.ts ***!
+  \****************************************************************************************/
+/*! exports provided: MathScoreCounterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MathScoreCounterComponent", function() { return MathScoreCounterComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! class-transformer */ "./node_modules/class-transformer/index.js");
+/* harmony import */ var class_transformer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(class_transformer__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../business/game-components/core/base/game-component */ "./src/app/business/game-components/core/base/game-component.ts");
+
+var MathScoreCounterComponent_1;
+
+
+let MathScoreCounterComponent = MathScoreCounterComponent_1 = class MathScoreCounterComponent extends _business_game_components_core_base_game_component__WEBPACK_IMPORTED_MODULE_2__["GameComponent"] {
+    constructor() {
+        super(...arguments);
+        this.name = MathScoreCounterComponent_1.name;
+        this.hiScore = 0;
+        this.score = 0;
+    }
+    start() {
+    }
+    draw() {
+        this.gameObject.text = `Math ${this.hiScore} ${this.score}`;
+    }
+    update() {
+        if (this.hiScore < this.score) {
+            this.hiScore = this.score;
+        }
+    }
+    destroy() {
+    }
+    reset() {
+        this.score = 0;
+    }
+    incrementScore() {
+        this.score++;
+    }
+};
+MathScoreCounterComponent = MathScoreCounterComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(class_transformer__WEBPACK_IMPORTED_MODULE_1__["Exclude"])()
+], MathScoreCounterComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/_games/impossible-dino/data/impossible-dino-data.ts":
 /*!*********************************************************************!*\
   !*** ./src/app/_games/impossible-dino/data/impossible-dino-data.ts ***!
@@ -879,12 +908,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _business_game_components_core_animate_game_component_animate_game_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../business/game-components/core/animate-game-component/animate-game-component */ "./src/app/business/game-components/core/animate-game-component/animate-game-component.ts");
 /* harmony import */ var _components_ground_shifter_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/ground-shifter-component */ "./src/app/_games/impossible-dino/components/ground-shifter-component.ts");
 /* harmony import */ var _components_dino_jumper_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/dino-jumper-component */ "./src/app/_games/impossible-dino/components/dino-jumper-component.ts");
-/* harmony import */ var _components_cacti_producer_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/cacti-producer-component */ "./src/app/_games/impossible-dino/components/cacti-producer-component.ts");
-/* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
-/* harmony import */ var _business_common_rect__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../business/common/rect */ "./src/app/business/common/rect.ts");
-/* harmony import */ var _components_dino_clock_game_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/dino-clock-game-component */ "./src/app/_games/impossible-dino/components/dino-clock-game-component.ts");
-/* harmony import */ var _components_dino_score_counter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/dino-score-counter-component */ "./src/app/_games/impossible-dino/components/dino-score-counter-component.ts");
-/* harmony import */ var _components_dino_lives_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/dino-lives-component */ "./src/app/_games/impossible-dino/components/dino-lives-component.ts");
+/* harmony import */ var _business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../business/game-components/core/collision-game-component */ "./src/app/business/game-components/core/collision-game-component.ts");
+/* harmony import */ var _business_common_rect__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../business/common/rect */ "./src/app/business/common/rect.ts");
+/* harmony import */ var _components_dino_clock_game_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/dino-clock-game-component */ "./src/app/_games/impossible-dino/components/dino-clock-game-component.ts");
+/* harmony import */ var _components_dino_score_counter_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/dino-score-counter-component */ "./src/app/_games/impossible-dino/components/dino-score-counter-component.ts");
+/* harmony import */ var _components_dino_lives_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/dino-lives-component */ "./src/app/_games/impossible-dino/components/dino-lives-component.ts");
+/* harmony import */ var _components_math_math_score_counter_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/math/math-score-counter-component */ "./src/app/_games/impossible-dino/components/math/math-score-counter-component.ts");
+/* harmony import */ var _components_math_math_producer_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/math/math-producer-component */ "./src/app/_games/impossible-dino/components/math/math-producer-component.ts");
+/* harmony import */ var _components_math_math_question_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/math/math-question-component */ "./src/app/_games/impossible-dino/components/math/math-question-component.ts");
+
+
 
 
 
@@ -955,10 +988,15 @@ class ImpossibleDinoData {
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('speed', 200),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('margin', 100),
             ]),
-            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_cacti_producer_component__WEBPACK_IMPORTED_MODULE_10__["CactiProducerComponent"], [
-                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('frequency', 1500),
-                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('shiftIntervalFrom', 500),
-                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('shiftIntervalTo', 1000)
+            /*ComponentFactory.createComponent(CactiProducerComponent, [
+                new NameValuePair('frequency', 300),
+                new NameValuePair('shiftIntervalFrom', 20),
+                new NameValuePair('shiftIntervalTo', 200)
+            ], true),*/
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_math_math_producer_component__WEBPACK_IMPORTED_MODULE_16__["MathProducerComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('frequency', 300),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('shiftIntervalFrom', 20),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('shiftIntervalTo', 200)
             ], true)
         ], true);
         const dino = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(groundHolder, 'Dino', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createLocalTransform(groundHolder.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](50, -19), 40, 43, 0), [
@@ -977,23 +1015,35 @@ class ImpossibleDinoData {
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('durationOfJump', 0.32),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('jumpHeight', 85),
             ]),
-            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_11__["CollisionGameComponent"], [
-                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](20, 0, 20, 15), new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](0, 15, 27, 20), new _business_common_rect__WEBPACK_IMPORTED_MODULE_12__["Rect"](10, 36, 14, 6)])
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_business_game_components_core_collision_game_component__WEBPACK_IMPORTED_MODULE_10__["CollisionGameComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_11__["Rect"](20, 0, 20, 15), new _business_common_rect__WEBPACK_IMPORTED_MODULE_11__["Rect"](0, 15, 27, 20), new _business_common_rect__WEBPACK_IMPORTED_MODULE_11__["Rect"](10, 36, 14, 6)])
             ]),
-            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_dino_lives_component__WEBPACK_IMPORTED_MODULE_15__["DinoLivesComponent"], [
-                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('lives', 3)
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_dino_lives_component__WEBPACK_IMPORTED_MODULE_14__["DinoLivesComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('lives', 3000)
             ])
         ], true);
         const svgDinoClockRootObj = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'SvgDinoClockRootObj', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createGlobalTransform(rootGameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](30, 30), 100, 100, 0), [
-            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_dino_clock_game_component__WEBPACK_IMPORTED_MODULE_13__["DinoClockGameComponent"], [])
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_dino_clock_game_component__WEBPACK_IMPORTED_MODULE_12__["DinoClockGameComponent"], [])
         ], true);
         const dinoScore = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(svgDinoClockRootObj, 'dinoScore', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createLocalTransform(svgDinoClockRootObj.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](110, 0), 150, 20, 0), [
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_4__["HtmlRendererGameComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('cssStyle', 'font-family: \'Tangerine\', serif; font-size: 20px;')
             ], true),
-            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_dino_score_counter_component__WEBPACK_IMPORTED_MODULE_14__["DinoScoreCounterComponent"], [
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_dino_score_counter_component__WEBPACK_IMPORTED_MODULE_13__["DinoScoreCounterComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('counterSpeed', 10)
             ])
+        ], true);
+        const mathScore = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'mathScore', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createLocalTransform(rootGameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](250, 30), 150, 20, 0), [
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_4__["HtmlRendererGameComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('cssStyle', 'font-family: \'Tangerine\', serif; font-size: 20px;')
+            ], true),
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_math_math_score_counter_component__WEBPACK_IMPORTED_MODULE_15__["MathScoreCounterComponent"], [])
+        ], true);
+        const mathQuestion = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'mathQuestion', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createLocalTransform(rootGameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](450, 30), 300, 20, 0), [
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_4__["HtmlRendererGameComponent"], [
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('cssStyle', 'font-family: \'Tangerine\', serif; font-size: 20px; font-weight: bold;')
+            ], true),
+            _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_math_math_question_component__WEBPACK_IMPORTED_MODULE_17__["MathQuestionComponent"], [])
         ], true);
         return rootGameObject;
     }
@@ -1332,7 +1382,7 @@ __webpack_require__.r(__webpack_exports__);
 
 class Timer {
     static initialize() {
-        Timer.initialTimerValue = Timer.getTime();
+        Timer.initialTimerValue = Timer.getRealTime();
         // Timer.lastTimerValue = Timer.initialTimerValue;
         // Timer.callTime = Timer.initialTimerValue;
         Timer.start();
@@ -1345,7 +1395,7 @@ class Timer {
         return Timer.dividerValue;
     }
     static set divider(value) {
-        if (!Object(util__WEBPACK_IMPORTED_MODULE_0__["isNumber"])(value) || value <= 0) {
+        if (!Object(util__WEBPACK_IMPORTED_MODULE_0__["isNumber"])(value) || value < 0) {
             _logger__WEBPACK_IMPORTED_MODULE_1__["Logger"].warn(`Timer's divider value is invalid: ${value}`);
             return;
         }
@@ -1356,26 +1406,26 @@ class Timer {
     }
     // delta have to be in secs.
     static get delta() {
-        return (Timer.callTime - Timer.lastTimerValue) / 1000;
+        return ((Timer.callTime * Timer.divider) - (Timer.lastTimerValue * Timer.divider)) / 1000;
     }
     static start() {
         Timer.isStarted = true;
-        Timer.lastTimerValue = Timer.getTime();
+        Timer.lastTimerValue = Timer.getRealTime();
         Timer.callTime = Timer.initialTimerValue;
     }
     static stop() {
         Timer.isStarted = false;
     }
     static getTime() {
+        return Date.now() * Timer.divider;
+    }
+    static getRealTime() {
         return Date.now();
     }
     static intervalCallback() {
         Timer.callsNumber++;
-        if (Timer.callTime % Timer.divider !== 0) {
-            return;
-        }
         Timer.lastTimerValue = Timer.callTime;
-        Timer.callTime = Timer.getTime();
+        Timer.callTime = Timer.getRealTime();
         this.timerEvent.next();
     }
 }
@@ -3218,6 +3268,7 @@ class GameManager {
         }
     }
     setTimer() {
+        _common_timer__WEBPACK_IMPORTED_MODULE_2__["Timer"].divider = 1;
         if (this.timerSubscription) {
             this.timerSubscription.unsubscribe();
         }
