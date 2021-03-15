@@ -55,7 +55,7 @@ export class DinoLivesComponent extends GameComponent {
 
 
 		if (this.collisionComponent.collisions.length > 0) {
-			this.setLives(this.lives - 1)
+			// this.setLives(this.lives - 1);
 			if (this.lives === 0) {
 				Timer.divider = 0;
 			}
