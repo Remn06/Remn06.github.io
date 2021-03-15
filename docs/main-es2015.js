@@ -346,8 +346,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../business/game-components/core/html-renderer-game-component/html-renderer-game-component */ "./src/app/business/game-components/core/html-renderer-game-component/html-renderer-game-component.ts");
 /* harmony import */ var _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../business/common/name-value-pair */ "./src/app/business/common/name-value-pair.ts");
 /* harmony import */ var _business_common_timer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../business/common/timer */ "./src/app/business/common/timer.ts");
+/* harmony import */ var _business_screen_game_screen__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../business/screen/game-screen */ "./src/app/business/screen/game-screen.ts");
 
 var DinoLivesComponent_1;
+
 
 
 
@@ -363,6 +365,7 @@ let DinoLivesComponent = DinoLivesComponent_1 = class DinoLivesComponent extends
     constructor() {
         super(...arguments);
         this.name = DinoLivesComponent_1.name;
+        this.livesGameObjects = [];
     }
     start() {
         const rootGameObject = _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_7__["GameObjectCollection"].root(this.gameObject);
@@ -372,19 +375,40 @@ let DinoLivesComponent = DinoLivesComponent_1 = class DinoLivesComponent extends
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_10__["NameValuePair"]('cssStyle', '')
             ], true)
         ], true, '');
+        this.setLives(this.lives);
     }
     draw() {
     }
     update() {
+        const gameScreen = _business_screen_game_screen__WEBPACK_IMPORTED_MODULE_12__["GameScreen"].getDefaultScreen();
+        const width = gameScreen.width;
+        this.livesGameObject.transform.localPosition = new _business_common_vector2__WEBPACK_IMPORTED_MODULE_6__["Vector2"](width - 100, 25);
         if (this.collisionComponent.collisions.length > 0) {
-            this.lives--;
+            this.setLives(this.lives - 1);
             if (this.lives === 0) {
                 _business_common_timer__WEBPACK_IMPORTED_MODULE_11__["Timer"].divider = 0;
             }
         }
-        this.livesGameObject.text = 'lives: ' + this.lives;
     }
     destroy() {
+    }
+    setLives(lives) {
+        this.lives = lives;
+        let heartWidth = 30;
+        let heartHeight = 30;
+        for (let i = 0; i < this.livesGameObjects.length; i++) {
+            _business_core_game_object_collection__WEBPACK_IMPORTED_MODULE_7__["GameObjectCollection"].remove(this.livesGameObjects[i]);
+        }
+        this.livesGameObjects.length = 0;
+        for (let i = 0; i < this.lives; i++) {
+            let heartGameObject = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_4__["GameObjectFactory"].createGameObject(this.livesGameObject, 'LiveHeart', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_5__["TransformFactory"].createLocalTransform(this.livesGameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_6__["Vector2"](i * (heartWidth + 5), 0), heartWidth, heartHeight, 0), [
+                _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_8__["ComponentFactory"].createComponent(_business_game_components_core_html_renderer_game_component_html_renderer_game_component__WEBPACK_IMPORTED_MODULE_9__["HtmlRendererGameComponent"], [
+                    new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_10__["NameValuePair"]('backgroundImage', 'assets/games/impossibleDino/img/heart.png'),
+                    new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_10__["NameValuePair"]('cssStyle', '')
+                ], true)
+            ], true);
+            this.livesGameObjects.push(heartGameObject);
+        }
     }
 };
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -996,7 +1020,8 @@ class ImpossibleDinoData {
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_math_math_producer_component__WEBPACK_IMPORTED_MODULE_16__["MathProducerComponent"], [
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('frequency', 300),
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('shiftIntervalFrom', 20),
-                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('shiftIntervalTo', 200)
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('shiftIntervalTo', 200),
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('bonusInterval', 3000)
             ], true)
         ], true);
         const dino = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(groundHolder, 'Dino', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createLocalTransform(groundHolder.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](50, -19), 40, 43, 0), [
