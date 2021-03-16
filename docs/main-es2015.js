@@ -384,7 +384,7 @@ let DinoLivesComponent = DinoLivesComponent_1 = class DinoLivesComponent extends
         const width = gameScreen.width;
         this.livesGameObject.transform.localPosition = new _business_common_vector2__WEBPACK_IMPORTED_MODULE_6__["Vector2"](width - 100, 25);
         if (this.collisionComponent.collisions.length > 0) {
-            this.setLives(this.lives - 1);
+            // this.setLives(this.lives - 1);
             if (this.lives === 0) {
                 _business_common_timer__WEBPACK_IMPORTED_MODULE_11__["Timer"].divider = 0;
             }
@@ -1044,7 +1044,7 @@ class ImpossibleDinoData {
                 new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('meshCollider', [new _business_common_rect__WEBPACK_IMPORTED_MODULE_11__["Rect"](20, 0, 20, 15), new _business_common_rect__WEBPACK_IMPORTED_MODULE_11__["Rect"](0, 15, 27, 20), new _business_common_rect__WEBPACK_IMPORTED_MODULE_11__["Rect"](10, 36, 14, 6)])
             ]),
             _business_core_factory_component_factory__WEBPACK_IMPORTED_MODULE_3__["ComponentFactory"].createComponent(_components_dino_lives_component__WEBPACK_IMPORTED_MODULE_14__["DinoLivesComponent"], [
-                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('lives', 3000)
+                new _business_common_name_value_pair__WEBPACK_IMPORTED_MODULE_5__["NameValuePair"]('lives', 3)
             ])
         ], true);
         const svgDinoClockRootObj = _business_core_factory_game_object_factory__WEBPACK_IMPORTED_MODULE_0__["GameObjectFactory"].createGameObject(rootGameObject, 'SvgDinoClockRootObj', _business_core_factory_transform_factory__WEBPACK_IMPORTED_MODULE_1__["TransformFactory"].createGlobalTransform(rootGameObject.transform, new _business_common_vector2__WEBPACK_IMPORTED_MODULE_2__["Vector2"](30, 30), 100, 100, 0), [

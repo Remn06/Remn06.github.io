@@ -148,7 +148,7 @@ export class ImpossibleDinoData {
 					new NameValuePair('meshCollider', [new Rect(20, 0, 20, 15), new Rect(0, 15, 27, 20), new Rect(10, 36, 14, 6)])
 				]),
 				ComponentFactory.createComponent(DinoLivesComponent, [
-					new NameValuePair('lives', 2)
+					new NameValuePair('lives', 3)
 				])
 			],
 			true
